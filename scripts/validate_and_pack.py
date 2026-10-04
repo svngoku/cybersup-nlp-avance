@@ -6,7 +6,6 @@ Run after build_slides.mjs and the PDF export. Standard library only.
 from pathlib import Path
 from collections import Counter
 import ast
-import hashlib
 import json
 import re
 import zipfile
@@ -93,7 +92,7 @@ def main():
     student_paths.append(validation_path)
     student_zip = OUT/'CYBERSUP-NLP-M2-Pack-etudiant.zip'
     template_path = ROOT/'CYBERSUP - TEMPLATE DATA_IA.pptx'
-    teacher_paths = set(student_paths + [pptx, template_path, OUT/'Notes-presentateur.md', ROOT/'README.md', ROOT/'docs/GUIDE_FORMATEUR.md', ROOT/'evaluation/CORRIGES_QUIZ.md'])
+    teacher_paths = set(student_paths + [pptx, OUT/'Notes-presentateur.md', ROOT/'README.md', ROOT/'docs/GUIDE_FORMATEUR.md', ROOT/'evaluation/CORRIGES_QUIZ.md'])
     practical_guide_path = ROOT/'docs/FIL_CONDUCTEUR_PRATIQUE.md'
     if practical_guide_path.is_file():
         teacher_paths.add(practical_guide_path)
@@ -112,7 +111,7 @@ def main():
             assert runtime_doc.is_file(), runtime_doc
             teacher_paths.add(runtime_doc)
     teacher_zip = OUT/'CYBERSUP-NLP-M2-Pack-formateur.zip'
-    report = {'date':'2026-10-04','slides':len(slides),'slides_with_notes':len(note_parts),'native_tables':table_count,'diagrams':len(diagrams),'latex_formula_images':len(formulas),'notebooks':len(nb_files),'minutes_by_day':dict(totals),'colab_t4_executed':False,'student_pack_files':len(student_paths),'instructor_pack_files':len(teacher_paths),'template_sha256':hashlib.sha256((ROOT/'CYBERSUP - TEMPLATE DATA_IA.pptx').read_bytes()).hexdigest()}
+    report = {'date':'2026-10-04','slides':len(slides),'slides_with_notes':len(note_parts),'native_tables':table_count,'diagrams':len(diagrams),'latex_formula_images':len(formulas),'notebooks':len(nb_files),'minutes_by_day':dict(totals),'colab_t4_executed':False,'student_pack_files':len(student_paths),'instructor_pack_files':len(teacher_paths),'template_included':False}
     (ROOT/'.build/course-validation.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
     validation_path.write_text(f'''# Validation et préparation de la séance
 
@@ -126,8 +125,6 @@ def main():
 - {len(nb_files)} notebooks valides en JSON et syntaxe Python, sans sorties préremplies.
 - Export PDF du support. Les notes détaillées se consultent dans PowerPoint ou Notes-presentateur.md.
 - Pack étudiant contrôlé par liste autorisée, sans PowerPoint contenant les notes, corrigés ou guide formateur.
-- Template original conservé. Empreinte SHA256 : `{report['template_sha256']}`.
-- Template source inclus dans le pack formateur pour permettre sa régénération dans le runtime approprié.
 
 ## Vérifications CPU partielles
 
@@ -153,7 +150,7 @@ Le chargement des poids des modèles, les entraînements GPU et l'enchaînement 
         names = z.namelist()
         assert len(names) == len(set(names)) == report['instructor_pack_files']
         assert 'output/VALIDATION.md' in names
-        assert template_path.name in names
+        assert template_path.name not in names
         if cpu_checks_path.is_file():
             assert 'docs/VERIFICATIONS_CPU.md' in names
         if practical_guide_path.is_file():

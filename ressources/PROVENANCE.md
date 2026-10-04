@@ -4,7 +4,7 @@
 
 ## Template Cybersup fourni
 
-Le support dérive de `CYBERSUP - TEMPLATE DATA_IA.pptx`, fourni dans ce dossier. Sa mise en page et son identité visuelle servent de base au cours ; le fichier original est conservé. La qualité de cette reprise doit être vérifiée séparément de celle du contenu pédagogique.
+Le support reprend la mise en page et l'identité visuelle du template Cybersup fourni par le formateur. Le fichier original est conservé localement, hors du dépôt et des packs distribués. La qualité de cette reprise doit être vérifiée séparément de celle du contenu pédagogique.
 
 Le présentateur du cours est **Chrys NIONGOLO**. Les exemples de biographie, photo ou certifications présents dans un template ne sont pas des informations vérifiées sur le formateur. Aucune biographie ne doit en être déduite.
 

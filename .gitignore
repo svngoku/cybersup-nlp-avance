@@ -20,3 +20,5 @@ adaptateur_*.zip
 /output/CYBERSUP-NLP-M2-35h.pdf
 # Supports tiers fournis pour consultation locale ; voir leur provenance.
 /ressources/*.pptx
+# Template de travail conservé localement, hors dépôt et packs.
+/CYBERSUP - TEMPLATE DATA_IA.pptx

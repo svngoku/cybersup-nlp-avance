@@ -10,8 +10,6 @@
 - 14 notebooks valides en JSON et syntaxe Python, sans sorties préremplies.
 - Export PDF du support. Les notes détaillées se consultent dans PowerPoint ou Notes-presentateur.md.
 - Pack étudiant contrôlé par liste autorisée, sans PowerPoint contenant les notes, corrigés ou guide formateur.
-- Template original conservé. Empreinte SHA256 : `d9e8da6adbc57a0abb31a0930e362f43069c5cb1b89f60bea3e1a454e188400d`.
-- Template source inclus dans le pack formateur pour permettre sa régénération dans le runtime approprié.
 
 ## Vérifications CPU partielles
 
