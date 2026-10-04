@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-10-04T11:35:52.061Z",
+  "source": "course/slides.json",
+  "source_sha256": "53eb3acf79b142f990394e9e9ab6c8c1b906ab9c35112fbcfb010ac5026d1746",
+  "renderer": {
+    "mathjax": "3.2.2",
+    "sharp": "0.34.3",
+    "font": "MathJax TeX, vector paths",
+    "node": "v22.19.0"
+  },
+  "options": {
+    "max_width": 1115,
+    "max_height": 110,
+    "font_size": 44,
+    "scale": 3,
+    "color": "#282A59"
+  },
+  "count": 10,
+  "validation": "LaTeX parsed; SVG paths rendered; transparent PNG pixels and dimensions checked.",
+  "entries": [
+    {
+      "slide": 10,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1332,
+      "png_height": 330,
+      "display_width": 444,
+      "display_height": 110,
+      "effective_em_px": 39.01,
+      "warning": null
+    },
+    {
+      "slide": 18,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1170,
+      "png_height": 330,
+      "display_width": 390,
+      "display_height": 110,
+      "effective_em_px": 37.82,
+      "warning": null
+    },
+    {
+      "slide": 32,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1083,
+      "png_height": 330,
+      "display_width": 361,
+      "display_height": 110,
+      "effective_em_px": 32.52,
+      "warning": null
+    },
+    {
+      "slide": 33,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1038,
+      "png_height": 330,
+      "display_width": 346,
+      "display_height": 110,
+      "effective_em_px": 31.69,
+      "warning": null
+    },
+    {
+      "slide": 50,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 777,
+      "png_height": 186,
+      "display_width": 259,
+      "display_height": 62,
+      "effective_em_px": 44,
+      "warning": null
+    },
+    {
+      "slide": 53,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1284,
+      "png_height": 165,
+      "display_width": 428,
+      "display_height": 55,
+      "effective_em_px": 44,
+      "warning": null
+    },
+    {
+      "slide": 55,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1659,
+      "png_height": 330,
+      "display_width": 553,
+      "display_height": 110,
+      "effective_em_px": 31.39,
+      "warning": null
+    },
+    {
+      "slide": 78,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1173,
+      "png_height": 288,
+      "display_width": 391,
+      "display_height": 96,
+      "effective_em_px": 44,
+      "warning": null
+    },
+    {
+      "slide": 79,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 1266,
+      "png_height": 330,
+      "display_width": 422,
+      "display_height": 110,
+      "effective_em_px": 40.22,
+      "warning": null
+    },
+    {
+      "slide": 81,
+      "status": "rendered",
+      "latex_error_nodes": 0,
+      "transparent": true,
+      "png_width": 2112,
+      "png_height": 330,
+      "display_width": 704,
+      "display_height": 110,
+      "effective_em_px": 40.07,
+      "warning": null
+    }
+  ]
+}

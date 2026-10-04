@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">decalage causal</title><desc id="desc">Les entrées le, colis, arrive, demain, EOS sont alignées avec les cibles colis, arrive, demain, EOS, aucune. Les quatre premières sorties prédisent le token suivant.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<text x="25" y="120" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#171923" text-anchor="start">
+<tspan x="25" dy="0">Entrée</tspan>
+<tspan x="25" dy="34">à la position t</tspan>
+</text>
+<text x="25" y="272" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#171923" text-anchor="start">
+<tspan x="25" dy="0">Cible</tspan>
+<tspan x="25" dy="34">token t+1</tspan>
+</text>
+<text x="318" y="43" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="318" dy="0">1</tspan>
+</text>
+<rect x="235" y="70" width="165" height="70" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="317.5" y="115.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="317.5" dy="0">le</tspan>
+</text>
+<rect x="235" y="241" width="165" height="70" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="317.5" y="286.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="317.5" dy="0">colis</tspan>
+</text>
+<polyline points="318,145 318,231" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<text x="337" y="193" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="start">
+<tspan x="337" dy="0">logit 1</tspan>
+</text>
+<text x="505" y="43" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="505" dy="0">2</tspan>
+</text>
+<rect x="422" y="70" width="165" height="70" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="504.5" y="115.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="504.5" dy="0">colis</tspan>
+</text>
+<rect x="422" y="241" width="165" height="70" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="504.5" y="286.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="504.5" dy="0">arrive</tspan>
+</text>
+<polyline points="505,145 505,231" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<text x="524" y="193" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="start">
+<tspan x="524" dy="0">logit 2</tspan>
+</text>
+<text x="692" y="43" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="692" dy="0">3</tspan>
+</text>
+<rect x="609" y="70" width="165" height="70" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="691.5" y="115.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="691.5" dy="0">arrive</tspan>
+</text>
+<rect x="609" y="241" width="165" height="70" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="691.5" y="286.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="691.5" dy="0">demain</tspan>
+</text>
+<polyline points="692,145 692,231" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<text x="711" y="193" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="start">
+<tspan x="711" dy="0">logit 3</tspan>
+</text>
+<text x="879" y="43" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="879" dy="0">4</tspan>
+</text>
+<rect x="796" y="70" width="165" height="70" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="878.5" y="115.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="878.5" dy="0">demain</tspan>
+</text>
+<rect x="796" y="241" width="165" height="70" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="878.5" y="286.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="878.5" dy="0">EOS</tspan>
+</text>
+<polyline points="879,145 879,231" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<text x="898" y="193" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="start">
+<tspan x="898" dy="0">logit 4</tspan>
+</text>
+<text x="1066" y="43" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="1066" dy="0">5</tspan>
+</text>
+<rect x="983" y="70" width="165" height="70" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="1065.5" y="115.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="1065.5" dy="0">EOS</tspan>
+</text>
+<rect x="983" y="241" width="165" height="70" rx="14" fill="#ECEEF1" stroke="#565968" stroke-width="2"/>
+<text x="1065.5" y="286.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#565968" text-anchor="middle">
+<tspan x="1065.5" dy="0">—</tspan>
+</text>
+<text x="1066" y="193" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="1066" dy="0">ignoré</tspan>
+</text>
+</svg>

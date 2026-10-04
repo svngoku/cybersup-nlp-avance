@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">qlora</title><desc id="desc">L’entrée se sépare entre une base W0 gelée en quatre bits et une branche LoRA A puis B et facteur alpha sur r. Les deux contributions sont additionnées en sortie. Le calcul des couches quantifiées utilise FP16 dans cet exemple.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<rect x="18" y="144" width="101" height="82" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="68.5" y="196.55" font-family="DM Sans, Arial, sans-serif" font-size="33" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="68.5" dy="0">x</tspan>
+</text>
+<rect x="283" y="26" width="478" height="92" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="522.0" y="64.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="522.0" dy="0">W₀ : base figée</tspan>
+<tspan x="522.0" dy="35">poids stockés en NF4 · 4 bits</tspan>
+</text>
+<polyline points="119,185 184,185 184,72 279,72" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<text x="522" y="157" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#282A59" text-anchor="middle">
+<tspan x="522" dy="0">Calcul de ces couches : FP16</tspan>
+</text>
+<polyline points="761,72 931,72 931,149" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="262" y="234" width="159" height="83" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="341.5" y="267.65" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="341.5" dy="0">A</tspan>
+<tspan x="341.5" dy="36">rang r</tspan>
+</text>
+<rect x="480" y="234" width="159" height="83" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="559.5" y="267.8" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="559.5" dy="0">B</tspan>
+<tspan x="559.5" dy="35">projection</tspan>
+</text>
+<rect x="697" y="240" width="123" height="71" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="758.5" y="286.35" font-family="DM Sans, Arial, sans-serif" font-size="31" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="758.5" dy="0">α / r</tspan>
+</text>
+<polyline points="184,185 184,275 257,275" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<polyline points="422,275 475,275" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<polyline points="640,275 692,275" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<polyline points="821,275 931,275 931,221" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<circle cx="931" cy="185" r="33" fill="#FFFFFF" stroke="#282A59" stroke-width="3"/>
+<text x="931" y="196" font-family="DM Sans, Arial, sans-serif" font-size="34" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="931" dy="0">+</tspan>
+</text>
+<polyline points="966,185 1026,185" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="1029" y="144" width="151" height="82" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="1104.5" y="196.55" font-family="DM Sans, Arial, sans-serif" font-size="33" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="1104.5" dy="0">y</tspan>
+</text>
+<text x="546" y="358" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="546" dy="0">A et B : paramètres entraînables</tspan>
+</text>
+</svg>

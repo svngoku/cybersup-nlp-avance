@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">tetes taches</title><desc id="desc">Un encodeur transforme quatre tokens en quatre vecteurs. Une branche agrège une représentation globale vers cinq classes ; une autre conserve les quatre positions vers des logits NER.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<rect x="20" y="140" width="182" height="95" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="111.0" y="179.8" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="111.0" dy="0">Texte</tspan>
+<tspan x="111.0" dy="35">4 tokens</tspan>
+</text>
+<polyline points="202,187 252,187" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="253" y="108" width="235" height="158" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="370.5" y="178.35" font-family="DM Sans, Arial, sans-serif" font-size="31" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="370.5" dy="0">Encodeur</tspan>
+<tspan x="370.5" dy="39">H : 4 × d</tspan>
+</text>
+<polyline points="488,187 548,187 548,76 610,76" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="611" y="28" width="245" height="96" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="733.5" y="68.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="733.5" dy="0">Représentation</tspan>
+<tspan x="733.5" dy="34">globale</tspan>
+</text>
+<polyline points="856,76 921,76" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="922" y="28" width="258" height="96" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="1051.0" y="68.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="1051.0" dy="0">Tête globale</tspan>
+<tspan x="1051.0" dy="35">5 logits</tspan>
+</text>
+<text x="1051" y="156" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="middle">
+<tspan x="1051" dy="0">1 classe / message</tspan>
+</text>
+<polyline points="488,187 548,187 548,278 610,278" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="611" y="230" width="245" height="96" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="733.5" y="270.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="733.5" dy="0">Représentation</tspan>
+<tspan x="733.5" dy="34">de chaque token</tspan>
+</text>
+<polyline points="856,278 921,278" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="922" y="230" width="258" height="96" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="1051.0" y="270.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="1051.0" dy="0">Tête NER</tspan>
+<tspan x="1051.0" dy="35">4 × C logits</tspan>
+</text>
+<text x="1051" y="358" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="middle">
+<tspan x="1051" dy="0">1 label / token</tspan>
+</text>
+</svg>

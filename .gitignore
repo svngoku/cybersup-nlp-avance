@@ -1,0 +1,22 @@
+.build/
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+.DS_Store
+wandb/
+results/
+checkpoints/
+resultats/
+.ipynb_checkpoints/
+node_modules/
+*.pem
+*.key
+modele_*.zip
+adaptateur_*.zip
+# Premiers exports remplacés par la version illustrée.
+/output/CYBERSUP-NLP-M2-35h.pptx
+/output/CYBERSUP-NLP-M2-35h.pdf
+# Supports tiers fournis pour consultation locale ; voir leur provenance.
+/ressources/*.pptx

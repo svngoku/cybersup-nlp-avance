@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">qkv</title><desc id="desc">La séquence X alimente trois projections apprises WQ, WK et WV, produisant respectivement queries, keys et values avec leurs rôles distincts.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<rect x="22" y="142" width="195" height="94" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="119.5" y="180.5" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="119.5" dy="0">X</tspan>
+<tspan x="119.5" dy="38">séquence</tspan>
+</text>
+<polyline points="217,189 262,189 262,61 308,61" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="308" y="6" width="205" height="110" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="410.5" y="38.75" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="410.5" dy="0">WQ</tspan>
+<tspan x="410.5" dy="31">projection</tspan>
+<tspan x="410.5" dy="31">apprise</tspan>
+</text>
+<polyline points="514,61 570,61" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="571" y="18" width="150" height="86" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="646.0" y="74.3" font-family="DM Sans, Arial, sans-serif" font-size="38" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="646.0" dy="0">Q</tspan>
+</text>
+<polyline points="722,61 774,61" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="775" y="18" width="405" height="86" rx="14" fill="#FFFFFF" stroke="#282A59" stroke-width="2"/>
+<text x="977.5" y="70.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="977.5" dy="0">Ce que je recherche</tspan>
+</text>
+<polyline points="217,189 262,189 262,186 308,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="308" y="131" width="205" height="110" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="410.5" y="163.75" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="410.5" dy="0">WK</tspan>
+<tspan x="410.5" dy="31">projection</tspan>
+<tspan x="410.5" dy="31">apprise</tspan>
+</text>
+<polyline points="514,186 570,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="571" y="143" width="150" height="86" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="646.0" y="199.3" font-family="DM Sans, Arial, sans-serif" font-size="38" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="646.0" dy="0">K</tspan>
+</text>
+<polyline points="722,186 774,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="775" y="143" width="405" height="86" rx="14" fill="#FFFFFF" stroke="#282A59" stroke-width="2"/>
+<text x="977.5" y="195.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="977.5" dy="0">Ce qui me rend repérable</tspan>
+</text>
+<polyline points="217,189 262,189 262,311 308,311" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="308" y="256" width="205" height="110" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="410.5" y="288.75" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="410.5" dy="0">WV</tspan>
+<tspan x="410.5" dy="31">projection</tspan>
+<tspan x="410.5" dy="31">apprise</tspan>
+</text>
+<polyline points="514,311 570,311" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="571" y="268" width="150" height="86" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="646.0" y="324.3" font-family="DM Sans, Arial, sans-serif" font-size="38" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="646.0" dy="0">V</tspan>
+</text>
+<polyline points="722,311 774,311" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<rect x="775" y="268" width="405" height="86" rx="14" fill="#FFFFFF" stroke="#282A59" stroke-width="2"/>
+<text x="977.5" y="320.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="977.5" dy="0">Ce que je transmets</tspan>
+</text>
+</svg>

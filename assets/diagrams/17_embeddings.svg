@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">embeddings</title><desc id="desc">Deux vecteurs illustratifs colis et livraison pointent dans des directions voisines ; facture pointe ailleurs. Deux phrases proches évoquent un colis non reçu.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<text x="30" y="32" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#565968" text-anchor="start">
+<tspan x="30" dy="0">Espace 2D construit pour expliquer</tspan>
+</text>
+<polyline points="75,303 620,303" fill="none" stroke="#565968" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#grey-arrow)"/>
+<polyline points="75,303 75,58" fill="none" stroke="#565968" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#grey-arrow)"/>
+<text x="575" y="342" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#565968" text-anchor="start">
+<tspan x="575" dy="0">Axe 1</tspan>
+</text>
+<text x="84" y="67" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#565968" text-anchor="start">
+<tspan x="84" dy="0">Axe 2</tspan>
+</text>
+<polyline points="75,303 322,122" fill="none" stroke="#282A59" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<circle cx="322" cy="122" r="6" fill="#282A59" stroke="#282A59" stroke-width="3"/>
+<text x="315" y="100" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="700" fill="#282A59" text-anchor="start">
+<tspan x="315" dy="0">colis</tspan>
+</text>
+<polyline points="75,303 373,161" fill="none" stroke="#BF2E00" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<circle cx="373" cy="161" r="6" fill="#BF2E00" stroke="#BF2E00" stroke-width="3"/>
+<text x="387" y="170" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="700" fill="#BF2E00" text-anchor="start">
+<tspan x="387" dy="0">livraison</tspan>
+</text>
+<polyline points="75,303 555,269" fill="none" stroke="#282A59" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<circle cx="555" cy="269" r="6" fill="#282A59" stroke="#282A59" stroke-width="3"/>
+<text x="505" y="247" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="700" fill="#282A59" text-anchor="start">
+<tspan x="505" dy="0">facture</tspan>
+</text>
+<rect x="695" y="62" width="475" height="88" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="932.5" y="116.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="932.5" dy="0">« Où est mon colis ? »</tspan>
+</text>
+<polyline points="933,159 933,195" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<rect x="695" y="205" width="475" height="88" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="932.5" y="259.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="932.5" dy="0">« Je n’ai rien reçu. »</tspan>
+</text>
+<text x="932" y="339" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="932" dy="0">Usages voisins à vérifier</tspan>
+</text>
+</svg>

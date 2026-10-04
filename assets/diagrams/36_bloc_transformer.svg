@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">bloc transformer</title><desc id="desc">Un bloc Post-LN relie entrée, attention, addition du premier résidu, LayerNorm, réseau positionnel FFN, addition du second résidu, LayerNorm et sortie.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<text x="25" y="32" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#565968" text-anchor="start">
+<tspan x="25" dy="0">Exemple Post-LN · type BERT</tspan>
+</text>
+<rect x="20" y="154" width="90" height="64" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="65.0" y="197.2" font-family="DM Sans, Arial, sans-serif" font-size="32" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="65.0" dy="0">x</tspan>
+</text>
+<rect x="156" y="132" width="160" height="108" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="236.0" y="195.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="236.0" dy="0">Attention</tspan>
+</text>
+<circle cx="368" cy="186" r="27" fill="#FFFFFF" stroke="#282A59" stroke-width="3"/>
+<text x="368" y="197" font-family="DM Sans, Arial, sans-serif" font-size="34" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="368" dy="0">+</tspan>
+</text>
+<rect x="421" y="145" width="138" height="82" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="490.0" y="178.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="490.0" dy="0">Layer</tspan>
+<tspan x="490.0" dy="34">Norm</tspan>
+</text>
+<rect x="611" y="132" width="145" height="108" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="683.5" y="196.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="683.5" dy="0">FFN</tspan>
+</text>
+<circle cx="810" cy="186" r="27" fill="#FFFFFF" stroke="#282A59" stroke-width="3"/>
+<text x="810" y="197" font-family="DM Sans, Arial, sans-serif" font-size="34" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="810" dy="0">+</tspan>
+</text>
+<rect x="858" y="145" width="138" height="82" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="927.0" y="178.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="927.0" dy="0">Layer</tspan>
+<tspan x="927.0" dy="34">Norm</tspan>
+</text>
+<rect x="1043" y="154" width="135" height="64" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="1110.5" y="195.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="1110.5" dy="0">sortie</tspan>
+</text>
+<polyline points="110,186 156,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="316,186 341,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="395,186 421,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="559,186 611,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="756,186 783,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="837,186 858,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="996,186 1043,186" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="129,186 129,76 368,76 368,156" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<text x="251" y="66" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="middle">
+<tspan x="251" dy="0">résidu</tspan>
+</text>
+<polyline points="584,186 584,308 810,308 810,216" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<text x="686" y="345" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="middle">
+<tspan x="686" dy="0">résidu</tspan>
+</text>
+<text x="231" y="282" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="231" dy="0">entre</tspan>
+<tspan x="231" dy="31">positions</tspan>
+</text>
+<text x="685" y="275" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="685" dy="0">par position</tspan>
+</text>
+</svg>

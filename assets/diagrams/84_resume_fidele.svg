@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">resume fidele</title><desc id="desc">Trois faits de la source, référence AB123 reçue mardi, article manquant et vérification demandée, sont reliés à leurs formulations dans un résumé. Un remboursement effectué est signalé comme non étayé.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<text x="243" y="34" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="243" dy="0">Faits de la source</tspan>
+</text>
+<rect x="20" y="60" width="450" height="69" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="245.0" y="104.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="245.0" dy="0">AB123 reçu mardi.</tspan>
+</text>
+<polyline points="474,94 594,94 594,94 690,94" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="20" y="152" width="450" height="69" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="245.0" y="196.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="245.0" dy="0">Un article manque.</tspan>
+</text>
+<polyline points="474,186 594,186 594,132 690,132" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="20" y="244" width="450" height="69" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="245.0" y="288.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="245.0" dy="0">Vérification demandée.</tspan>
+</text>
+<polyline points="474,278 594,278 594,170 690,170" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<text x="943" y="34" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="943" dy="0">Résumé fidèle</tspan>
+</text>
+<rect x="695" y="59" width="487" height="151" rx="14" fill="#FFFFFF" stroke="#282A59" stroke-width="2"/>
+<text x="938.5" y="109.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="938.5" dy="0">AB123 reçu mardi ;</tspan>
+<tspan x="938.5" dy="35">un article manque.</tspan>
+<tspan x="938.5" dy="35">Vérification demandée.</tspan>
+</text>
+<rect x="695" y="272" width="487" height="60" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="938.5" y="311.1" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="938.5" dy="0">« Remboursement effectué »</tspan>
+</text>
+<text x="941" y="255" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="941" dy="0">Non étayé par la source</tspan>
+</text>
+</svg>

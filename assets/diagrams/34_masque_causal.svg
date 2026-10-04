@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">masque causal</title><desc id="desc">Matrice de masque causal quatre par quatre : zéro sur et sous la diagonale, moins l’infini au-dessus. La troisième position ne lit que les trois premières positions.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<text x="520" y="29" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="520" dy="0">Clés : positions lues</tspan>
+</text>
+<text x="25" y="65" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="start">
+<tspan x="25" dy="0">Query</tspan>
+</text>
+<text x="355" y="68" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="355" dy="0">le</tspan>
+</text>
+<text x="465" y="68" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="465" dy="0">colis</tspan>
+</text>
+<text x="575" y="68" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="575" dy="0">arrive</tspan>
+</text>
+<text x="685" y="68" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="685" dy="0">demain</tspan>
+</text>
+<text x="240" y="123" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="end">
+<tspan x="240" dy="0">1 · le</tspan>
+</text>
+<rect x="300" y="83" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="354.0" y="124.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="354.0" dy="0">0</tspan>
+</text>
+<rect x="410" y="83" width="108" height="61" rx="5" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="464.0" y="124.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="464.0" dy="0">−∞</tspan>
+</text>
+<rect x="520" y="83" width="108" height="61" rx="5" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="574.0" y="124.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="574.0" dy="0">−∞</tspan>
+</text>
+<rect x="630" y="83" width="108" height="61" rx="5" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="684.0" y="124.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="684.0" dy="0">−∞</tspan>
+</text>
+<text x="240" y="186" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="end">
+<tspan x="240" dy="0">2 · colis</tspan>
+</text>
+<rect x="300" y="146" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="354.0" y="187.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="354.0" dy="0">0</tspan>
+</text>
+<rect x="410" y="146" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="464.0" y="187.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="464.0" dy="0">0</tspan>
+</text>
+<rect x="520" y="146" width="108" height="61" rx="5" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="574.0" y="187.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="574.0" dy="0">−∞</tspan>
+</text>
+<rect x="630" y="146" width="108" height="61" rx="5" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="684.0" y="187.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="684.0" dy="0">−∞</tspan>
+</text>
+<text x="240" y="249" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="end">
+<tspan x="240" dy="0">3 · arrive</tspan>
+</text>
+<rect x="300" y="209" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="354.0" y="250.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="354.0" dy="0">0</tspan>
+</text>
+<rect x="410" y="209" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="464.0" y="250.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="464.0" dy="0">0</tspan>
+</text>
+<rect x="520" y="209" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="574.0" y="250.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="574.0" dy="0">0</tspan>
+</text>
+<rect x="630" y="209" width="108" height="61" rx="5" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="684.0" y="250.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="684.0" dy="0">−∞</tspan>
+</text>
+<text x="240" y="312" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="end">
+<tspan x="240" dy="0">4 · demain</tspan>
+</text>
+<rect x="300" y="272" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="354.0" y="313.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="354.0" dy="0">0</tspan>
+</text>
+<rect x="410" y="272" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="464.0" y="313.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="464.0" dy="0">0</tspan>
+</text>
+<rect x="520" y="272" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="574.0" y="313.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="574.0" dy="0">0</tspan>
+</text>
+<rect x="630" y="272" width="108" height="61" rx="5" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="684.0" y="313.0" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="684.0" dy="0">0</tspan>
+</text>
+<rect x="296" y="205" width="448" height="70" rx="7" fill="none" stroke="#BF2E00" stroke-width="3"/>
+<rect x="815" y="90" width="360" height="62" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="995.0" y="130.1" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="995.0" dy="0">0 : accès autorisé</tspan>
+</text>
+<rect x="815" y="170" width="360" height="62" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="995.0" y="210.1" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="995.0" dy="0">−∞ : accès interdit</tspan>
+</text>
+<text x="995" y="282" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="995" dy="0">La ligne 3 lit</tspan>
+<tspan x="995" dy="34">les positions 1, 2 et 3.</tspan>
+</text>
+</svg>

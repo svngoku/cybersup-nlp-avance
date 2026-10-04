@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">architectures</title><desc id="desc">Trois colonnes comparent BERT encodeur bidirectionnel, GPT décodeur causal, et T5 avec encodeur, décodeur causal et liaison de cross-attention depuis le texte source.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<rect x="15" y="12" width="370" height="352" rx="18" fill="#FFFFFF" stroke="#D5D8E4" stroke-width="2"/>
+<text x="200" y="50" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#282A59" text-anchor="middle">
+<tspan x="200" dy="0">BERT · encodeur</tspan>
+</text>
+<rect x="415" y="12" width="370" height="352" rx="18" fill="#FFFFFF" stroke="#D5D8E4" stroke-width="2"/>
+<text x="600" y="50" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#282A59" text-anchor="middle">
+<tspan x="600" dy="0">GPT · décodeur</tspan>
+</text>
+<rect x="815" y="12" width="370" height="352" rx="18" fill="#FFFFFF" stroke="#D5D8E4" stroke-width="2"/>
+<text x="1000" y="50" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#282A59" text-anchor="middle">
+<tspan x="1000" dy="0">T5 · encodeur-décodeur</tspan>
+</text>
+<text x="200" y="105" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="200" dy="0">Représentations</tspan>
+</text>
+<rect x="44" y="146" width="312" height="89" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="200.0" y="182.8" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="200.0" dy="0">Self-attention</tspan>
+<tspan x="200.0" dy="35">bidirectionnelle</tspan>
+</text>
+<polyline points="200,146 200,117" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="69" y="281" width="262" height="58" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="200.0" y="319.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="200.0" dy="0">Texte complet</tspan>
+</text>
+<polyline points="200,280 200,240" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<text x="600" y="105" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="600" dy="0">Token suivant</tspan>
+</text>
+<rect x="444" y="146" width="312" height="89" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="600.0" y="182.8" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="600.0" dy="0">Self-attention</tspan>
+<tspan x="600.0" dy="35">causale</tspan>
+</text>
+<polyline points="600,146 600,117" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<rect x="457" y="281" width="286" height="58" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="600.0" y="318.75" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="600.0" dy="0">Tokens déjà produits</tspan>
+</text>
+<polyline points="600,280 600,240" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<text x="1090" y="112" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="1090" dy="0">Token suivant</tspan>
+</text>
+<rect x="833" y="184" width="146" height="75" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="906.0" y="230.25" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="906.0" dy="0">Encodeur</tspan>
+</text>
+<rect x="1012" y="184" width="156" height="75" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="1090.0" y="214.75" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="1090.0" dy="0">Décodeur</tspan>
+<tspan x="1090.0" dy="31">causal</tspan>
+</text>
+<polyline points="979,221 1008,221" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<text x="834" y="152" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#282A59" text-anchor="start">
+<tspan x="834" dy="0">Cross-attention</tspan>
+</text>
+<rect x="833" y="285" width="146" height="70" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="906.0" y="313.25" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="906.0" dy="0">Texte</tspan>
+<tspan x="906.0" dy="31">source</tspan>
+</text>
+<rect x="1012" y="285" width="156" height="70" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="1090.0" y="313.25" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="1090.0" dy="0">Tokens déjà</tspan>
+<tspan x="1090.0" dy="31">produits</tspan>
+</text>
+<polyline points="906,284 906,263" fill="none" stroke="#282A59" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="1090,284 1090,263" fill="none" stroke="#BF2E00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<polyline points="1090,184 1090,125" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+</svg>

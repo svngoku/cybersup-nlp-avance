@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">multi tetes</title><desc id="desc">Deux branches d’attention parallèles reçoivent X, utilisent des projections différentes, puis rejoignent une concaténation et une projection de sortie WO.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<rect x="22" y="140" width="185" height="98" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="114.5" y="181.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="114.5" dy="0">X</tspan>
+<tspan x="114.5" dy="36">séquence</tspan>
+</text>
+<polyline points="207,189 250,189 250,95 292,95" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="292" y="40" width="235" height="110" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="409.5" y="72.75" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="409.5" dy="0">Tête 1</tspan>
+<tspan x="409.5" dy="31">Q1, K1, V1</tspan>
+<tspan x="409.5" dy="31">→ attention</tspan>
+</text>
+<polyline points="528,95 574,95 574,189 620,189" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="207,189 250,189 250,280 292,280" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="292" y="225" width="235" height="110" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="409.5" y="257.75" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="409.5" dy="0">Tête 2</tspan>
+<tspan x="409.5" dy="31">Q2, K2, V2</tspan>
+<tspan x="409.5" dy="31">→ attention</tspan>
+</text>
+<polyline points="528,280 574,280 574,189 620,189" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<rect x="620" y="132" width="235" height="114" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="737.5" y="181.45" font-family="DM Sans, Arial, sans-serif" font-size="27" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="737.5" dy="0">Concaténation</tspan>
+<tspan x="737.5" dy="34">[ tête 1 | tête 2 ]</tspan>
+</text>
+<polyline points="855,189 903,189" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="904" y="140" width="275" height="98" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="1041.5" y="181.3" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="1041.5" dy="0">Projection WO</tspan>
+<tspan x="1041.5" dy="35">sortie : d_model</tspan>
+</text>
+<text x="600" y="359" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="600" dy="0">Deux têtes illustrées ; leurs rôles ne sont pas fixés à l’avance.</tspan>
+</text>
+</svg>
