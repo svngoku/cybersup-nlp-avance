@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="375" viewBox="0 0 1200 375" role="img" aria-labelledby="title desc">
+<title id="title">word2vec</title><desc id="desc">Deux objectifs d’apprentissage Word2Vec sur le colis arrive. À gauche, CBOW combine les vecteurs des mots de contexte le et arrive par une moyenne pour prédire colis. À droite, Skip-gram utilise le vecteur de colis pour prédire séparément ses voisins le et arrive. Les vecteurs sont ajustés par les erreurs de prédiction.</desc>
+<defs>
+<marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#282A59"/></marker>
+<marker id="orange-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#BF2E00"/></marker>
+<marker id="grey-arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#565968"/></marker>
+</defs>
+<rect width="1200" height="375" fill="white"/>
+<rect x="12" y="10" width="575" height="350" rx="18" fill="#FFFFFF" stroke="#282A59" stroke-width="2"/>
+<rect x="612" y="10" width="575" height="350" rx="18" fill="#FFFFFF" stroke="#BF2E00" stroke-width="2"/>
+<text x="299" y="49" font-family="DM Sans, Arial, sans-serif" font-size="32" font-weight="700" fill="#282A59" text-anchor="middle">
+<tspan x="299" dy="0">CBOW</tspan>
+</text>
+<text x="899" y="49" font-family="DM Sans, Arial, sans-serif" font-size="32" font-weight="700" fill="#BF2E00" text-anchor="middle">
+<tspan x="899" dy="0">Skip-gram</tspan>
+</text>
+<text x="299" y="89" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="299" dy="0">Contexte → mot central</tspan>
+</text>
+<text x="899" y="89" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="500" fill="#171923" text-anchor="middle">
+<tspan x="899" dy="0">Mot central → contexte</tspan>
+</text>
+<rect x="27" y="140" width="110" height="64" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="82.0" y="182.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="82.0" dy="0">le</tspan>
+</text>
+<rect x="27" y="237" width="110" height="64" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="82.0" y="279.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="82.0" dy="0">arrive</tspan>
+</text>
+<rect x="202" y="166" width="189" height="100" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="296.5" y="209.1" font-family="DM Sans, Arial, sans-serif" font-size="26" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="296.5" dy="0">Moyenne</tspan>
+<tspan x="296.5" dy="32">des vecteurs</tspan>
+</text>
+<polyline points="139,172 169,172 169,202 195,202" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<polyline points="139,269 169,269 169,232 195,232" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<text x="515" y="155" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="middle">
+<tspan x="515" dy="0">Prédire</tspan>
+</text>
+<polyline points="394,216 454,216" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<rect x="460" y="184" width="110" height="64" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="515.0" y="226.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="515.0" dy="0">colis</tspan>
+</text>
+<rect x="637" y="184" width="110" height="64" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="692.0" y="226.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="692.0" dy="0">colis</tspan>
+</text>
+<polyline points="750,216 780,216" fill="none" stroke="#282A59" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue-arrow)"/>
+<rect x="786" y="166" width="169" height="100" rx="14" fill="#F0F1F7" stroke="#282A59" stroke-width="2"/>
+<text x="870.5" y="209.25" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#282A59" text-anchor="middle">
+<tspan x="870.5" dy="0">Vecteur</tspan>
+<tspan x="870.5" dy="31">de « colis »</tspan>
+</text>
+<text x="1099" y="126" font-family="DM Sans, Arial, sans-serif" font-size="25" font-weight="500" fill="#BF2E00" text-anchor="middle">
+<tspan x="1099" dy="0">Prédire</tspan>
+</text>
+<polyline points="958,202 990,202 990,172 1037,172" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<polyline points="958,232 990,232 990,269 1037,269" fill="none" stroke="#BF2E00" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#orange-arrow)"/>
+<rect x="1044" y="140" width="110" height="64" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="1099.0" y="182.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="1099.0" dy="0">le</tspan>
+</text>
+<rect x="1044" y="237" width="110" height="64" rx="14" fill="#FFF0E8" stroke="#BF2E00" stroke-width="2"/>
+<text x="1099.0" y="279.15" font-family="DM Sans, Arial, sans-serif" font-size="29" font-weight="600" fill="#BF2E00" text-anchor="middle">
+<tspan x="1099.0" dy="0">arrive</tspan>
+</text>
+<text x="299" y="336" font-family="DM Sans, Arial, sans-serif" font-size="24" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="299" dy="0">« le colis arrive » · fenêtre de 1</tspan>
+</text>
+<text x="899" y="336" font-family="DM Sans, Arial, sans-serif" font-size="24" font-weight="500" fill="#565968" text-anchor="middle">
+<tspan x="899" dy="0">Deux voisins : deux cibles à prédire</tspan>
+</text>
+</svg>

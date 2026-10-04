@@ -18,12 +18,12 @@ Les poids et les éventuels artefacts d'entraînement destinés à l'après-midi
 
 ## Insérer les dix microdémos sans ajouter une minute
 
-Les temps sont des minutes pédagogiques cumulées depuis le début de la matinée, hors pauses. Ils s'insèrent dans les blocs de vingt minutes du [programme](PROGRAMME_35H.md), en remplaçant la fin de l'explication et l'exercice déjà prévus. Chaque matin reste à **180 minutes**, chaque après-midi à **240 minutes**. Une démo de sept minutes peut suivre : une minute de prédiction, trois de manipulation, deux d'explication, une de vérification. Une remédiation remplace la variante ; elle ne rallonge pas le bloc.
+Les temps sont des minutes pédagogiques cumulées depuis le début de la matinée, hors pauses. Ils s'insèrent dans les créneaux du [programme](PROGRAMME_35H.md), en remplaçant la fin de l'explication et l'exercice déjà prévus. Le J1 ménage d'abord 45 minutes de repères après l'accueil ; les jours 2 à 5 suivent les blocs de vingt minutes. Chaque matin reste à **180 minutes**, chaque après-midi à **240 minutes**. Une démo de sept minutes peut suivre : une minute de prédiction, trois de manipulation, deux d'explication, une de vérification. Une remédiation remplace la variante ; elle ne rallonge pas le bloc.
 
 | Repère | Créneau existant | Temps de démo inclus | Action visible | Matériel minimal |
 |---|---|---:|---|---|
-| J1-A | TF-IDF, 60–80 | 73–80 : 7 min | Changer une requête, lire les voisins | CPU |
-| J1-B | BPE, 100–120 | 113–120 : 7 min | Comparer deux vocabulaires sur les mêmes textes | CPU |
+| J1-A | TF-IDF et baseline, 80–95 | 88–95 : 7 min | Changer une requête, lire les voisins | CPU |
+| J1-B | BPE, 110–120 | 113–120 : 7 min | Comparer deux vocabulaires sur les mêmes textes | CPU |
 | J2-A | Scores et softmax, 60–80 | 72–80 : 8 min | Modifier V après avoir prédit l'effet | CPU |
 | J2-B | Masques, 80–100 | 92–100 : 8 min | Perturber le futur, comparer avec/sans masque | CPU |
 | J3-A | Collator, 40–60 | 53–60 : 7 min | Assembler deux phrases de longueurs différentes | CPU + tokenizer en cache |
@@ -36,6 +36,8 @@ Les temps sont des minutes pédagogiques cumulées depuis le début de la matin�
 Ces manipulations occupent 73 minutes **à l'intérieur** des 900 minutes de matinée. Le reste des activités, calculs et corrections du programme est conservé. Si une sortie tarde, passer à la sortie de répétition attribuée au formateur et consacrer le temps restant à l'interprétation.
 
 ## J1 — Faire changer la représentation avant de nommer ses avantages
+
+**Avant les deux microdémos :** consacrer les minutes 5–50 à l'introduction du support. Partir d'une demande client, faire nommer document/corpus/token/vocabulaire/embedding, puis comparer les informations utilisées par TF-IDF, Word2Vec, GloVe, fastText et les représentations contextuelles. Pour chaque méthode, relier l'origine à une idée et poser la question de la diapositive ; les notes donnent la réponse et la remédiation. Le schéma CBOW/Skip-gram se lit dans les deux sens de prédiction. Aucun entraînement supplémentaire n'est nécessaire pour ce premier contact. La [fiche historique](SOURCES_INTRO_NLP.md) sert de repère, sans contrôle de mémorisation des dates.
 
 ### J1-A · Une paraphrase est-elle retrouvée par les mots ?
 

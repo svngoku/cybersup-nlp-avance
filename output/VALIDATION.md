@@ -2,9 +2,9 @@
 
 État au 4 octobre 2026.
 
-- 113 diapositives éditables et autant de notes du présentateur.
-- 26 tableaux natifs dans le support.
-- 14 illustrations et architectures originales, avec sources SVG et descriptions accessibles.
+- 121 diapositives éditables et autant de notes du présentateur.
+- 28 tableaux natifs dans le support.
+- 15 illustrations et architectures originales, avec sources SVG et descriptions accessibles.
 - 10 formules rendues en images depuis LaTeX ; sources, légendes des symboles et explications détaillées conservées.
 - 5 journées de 420 minutes, soit 35 heures hors pauses et déjeuner.
 - 14 notebooks valides en JSON et syntaxe Python, sans sorties préremplies.

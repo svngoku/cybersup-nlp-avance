@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-04T11:35:52.061Z",
+  "generated_at": "2026-10-04T11:57:17.325Z",
   "source": "course/slides.json",
-  "source_sha256": "53eb3acf79b142f990394e9e9ab6c8c1b906ab9c35112fbcfb010ac5026d1746",
+  "source_sha256": "34dbcb57b44b3f2f82f1e1da5f6d44b26274eae2adc40bdc7b79f12a3a800527",
   "renderer": {
     "mathjax": "3.2.2",
     "sharp": "0.34.3",
     "font": "MathJax TeX, vector paths",
-    "node": "v22.19.0"
+    "node": "v24.19.0"
   },
   "options": {
     "max_width": 1115,
@@ -19,7 +19,7 @@
   "validation": "LaTeX parsed; SVG paths rendered; transparent PNG pixels and dimensions checked.",
   "entries": [
     {
-      "slide": 10,
+      "slide": 18,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -31,7 +31,7 @@
       "warning": null
     },
     {
-      "slide": 18,
+      "slide": 26,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -43,7 +43,7 @@
       "warning": null
     },
     {
-      "slide": 32,
+      "slide": 40,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -55,7 +55,7 @@
       "warning": null
     },
     {
-      "slide": 33,
+      "slide": 41,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -67,7 +67,7 @@
       "warning": null
     },
     {
-      "slide": 50,
+      "slide": 58,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -79,7 +79,7 @@
       "warning": null
     },
     {
-      "slide": 53,
+      "slide": 61,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -91,7 +91,7 @@
       "warning": null
     },
     {
-      "slide": 55,
+      "slide": 63,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -103,7 +103,7 @@
       "warning": null
     },
     {
-      "slide": 78,
+      "slide": 86,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -115,7 +115,7 @@
       "warning": null
     },
     {
-      "slide": 79,
+      "slide": 87,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,
@@ -127,7 +127,7 @@
       "warning": null
     },
     {
-      "slide": 81,
+      "slide": 89,
       "status": "rendered",
       "latex_error_nodes": 0,
       "transparent": true,

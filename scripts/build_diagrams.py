@@ -9,6 +9,7 @@ import argparse
 import json
 import shutil
 import subprocess
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets' / 'diagrams'
@@ -89,7 +90,45 @@ SPECS = {
     77: ('decalage_causal', 'Chaque logit à la position t vise le token t+1 ; appliquer ce décalage une seule fois.', 'Les entrées le, colis, arrive, demain, EOS sont alignées avec les cibles colis, arrive, demain, EOS, aucune. Les quatre premières sorties prédisent le token suivant.'),
     80: ('qlora', 'Base stockée en NF4 ; calcul en FP16 ici ; seuls les adaptateurs sont entraînables.', 'L’entrée se sépare entre une base W0 gelée en quatre bits et une branche LoRA A puis B et facteur alpha sur r. Les deux contributions sont additionnées en sortie. Le calcul des couches quantifiées utilise FP16 dans cet exemple.'),
     84: ('resume_fidele', 'Chaque affirmation du résumé doit être étayée par un fait de la source.', 'Trois faits de la source, référence AB123 reçue mardi, article manquant et vérification demandée, sont reliés à leurs formulations dans un résumé. Un remboursement effectué est signalé comme non étayé.'),
+    200: ('word2vec', 'Mikolov et al. · Google, 2013 · Des vecteurs appris par prédiction locale.', 'Deux objectifs d’apprentissage Word2Vec sur le colis arrive. À gauche, CBOW combine les vecteurs des mots de contexte le et arrive par une moyenne pour prédire colis. À droite, Skip-gram utilise le vecteur de colis pour prédire séparément ses voisins le et arrive. Les vecteurs sont ajustés par les erreurs de prédiction.'),
 }
+
+# These keys identify drawing routines, not current slide positions.
+SLIDE_TITLES = {
+    17: 'Un embedding rapproche des usages similaires',
+    29: 'Q, K, V : demander, comparer, récupérer',
+    34: 'Le masque causal empêche de lire la réponse future',
+    35: 'Plusieurs têtes : plusieurs comparaisons apprises',
+    36: "Un bloc ne se limite pas à l'attention",
+    38: 'Encodeur, décodeur, encodeur-décodeur',
+    40: 'Décomposer pipeline() pour savoir ce qui se passe',
+    49: 'Un encodeur et une tête répondent à notre question',
+    58: 'Un mot annoté peut devenir plusieurs sous-tokens',
+    75: 'Le chat template transforme les rôles en tokens',
+    76: 'Superviser la réponse, garder la question dans le contexte',
+    77: "Le décalage causal ne doit se produire qu'une fois",
+    80: 'QLoRA : quantifier la base, entraîner les adaptateurs',
+    84: 'Résumer : conserver les faits utiles sous une contrainte',
+    200: 'Word2Vec : apprendre en prédisant les voisins',
+}
+
+
+def resolve_slide_numbers(slides):
+    """Resolve every drawing by its unique title before writing any output."""
+    if set(SPECS) != set(SLIDE_TITLES):
+        raise ValueError('Every drawing must have exactly one stable slide title.')
+    positions = {}
+    for number, slide in enumerate(slides, 1):
+        positions.setdefault(slide.get('title'), []).append(number)
+    resolved = {}
+    for internal_id, title in SLIDE_TITLES.items():
+        matches = positions.get(title, [])
+        if len(matches) != 1:
+            raise ValueError(f'Expected exactly one slide titled {title!r}; found {len(matches)}.')
+        resolved[internal_id] = matches[0]
+    if len(set(resolved.values())) != len(resolved):
+        raise ValueError('Two drawings resolve to the same slide.')
+    return resolved
 
 
 def build(number):
@@ -288,6 +327,31 @@ def build(number):
         s.box(695,59,487,151,['AB123 reçu mardi ;','un article manque.','Vérification demandée.'],size=28,fill=WHITE)
         s.box(695,272,487,60,'« Remboursement effectué »',size=26,accent=True)
         s.text(941,255,'Non étayé par la source',size=26,fill=ORANGE,weight=600,anchor='middle')
+    elif number == 200:
+        s.rect(12,10,575,350,fill=WHITE,stroke=BLUE,radius=18)
+        s.rect(612,10,575,350,fill=WHITE,stroke=ORANGE,radius=18)
+        s.text(299,49,'CBOW',size=32,fill=BLUE,weight=700,anchor='middle')
+        s.text(899,49,'Skip-gram',size=32,fill=ORANGE,weight=700,anchor='middle')
+        s.text(299,89,'Contexte → mot central',size=26,anchor='middle')
+        s.text(899,89,'Mot central → contexte',size=26,anchor='middle')
+        s.box(27,140,110,64,'le',size=29)
+        s.box(27,237,110,64,'arrive',size=29)
+        s.box(202,166,189,100,['Moyenne','des vecteurs'],size=26)
+        s.arrow([(139,172),(169,172),(169,202),(195,202)])
+        s.arrow([(139,269),(169,269),(169,232),(195,232)])
+        s.text(515,155,'Prédire',size=25,fill=ORANGE,anchor='middle')
+        s.arrow([(394,216),(454,216)],color=ORANGE)
+        s.box(460,184,110,64,'colis',size=29,accent=True)
+        s.box(637,184,110,64,'colis',size=29)
+        s.arrow([(750,216),(780,216)])
+        s.box(786,166,169,100,['Vecteur','de « colis »'],size=25)
+        s.text(1099,126,'Prédire',size=25,fill=ORANGE,anchor='middle')
+        s.arrow([(958,202),(990,202),(990,172),(1037,172)],color=ORANGE)
+        s.arrow([(958,232),(990,232),(990,269),(1037,269)],color=ORANGE)
+        s.box(1044,140,110,64,'le',size=29,accent=True)
+        s.box(1044,237,110,64,'arrive',size=29,accent=True)
+        s.text(299,336,'« le colis arrive » · fenêtre de 1',size=24,fill=MUTED,anchor='middle')
+        s.text(899,336,'Deux voisins : deux cibles à prédire',size=24,fill=MUTED,anchor='middle')
     else:
         raise ValueError(number)
     return s.finish(), caption, alt
@@ -300,13 +364,20 @@ def main():
     args=parser.parse_args()
     if args.png_width < 1600:
         parser.error('Use a PNG width of at least 1600 pixels for legible slide assets.')
-    OUT.mkdir(parents=True,exist_ok=True)
+    source=json.loads((ROOT/'course/slides.json').read_text(encoding='utf-8'))
+    slides=source if isinstance(source,list) else source['slides']
+    resolved=resolve_slide_numbers(slides)
     renderer=shutil.which('rsvg-convert') or shutil.which('magick')
     if not args.svg_only and not renderer:
         parser.error('Install librsvg (rsvg-convert) or ImageMagick, or pass --svg-only.')
+    manifest_path=OUT/'manifest.json'
+    previous=json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.is_file() else {}
+    OUT.mkdir(parents=True,exist_ok=True)
     manifest={}
-    for number,(slug,_,_) in SPECS.items():
-        svg,caption,alt=build(number)
+    for internal_id,(slug,_,_) in SPECS.items():
+        number=resolved[internal_id]
+        svg,caption,alt=build(internal_id)
+        ET.fromstring(svg)
         vector=OUT/f'{number:02}_{slug}.svg'
         raster=vector.with_suffix('.png')
         vector.write_text(svg,encoding='utf-8')
@@ -315,9 +386,28 @@ def main():
                 subprocess.run([renderer,'--width',str(args.png_width),'--output',str(raster),str(vector)],check=True)
             else:
                 subprocess.run([renderer,'-background','white','-density','192',str(vector),'-resize',str(args.png_width),str(raster)],check=True)
-        manifest[str(number)]={'svg':str(vector.relative_to(ROOT)),'png':str(raster.relative_to(ROOT)),'caption':caption,'alt':alt}
-    (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print(json.dumps({'diagrams':len(manifest),'format':'SVG + PNG' if not args.svg_only else 'SVG','png_width':args.png_width if not args.svg_only else None,'manifest':str((OUT/'manifest.json').relative_to(ROOT))},ensure_ascii=False))
+            header=raster.read_bytes()[:24]
+            if header[:8] != b'\x89PNG\r\n\x1a\n' or int.from_bytes(header[16:20],'big') != args.png_width or int.from_bytes(header[20:24],'big') <= 0:
+                raise ValueError(f'Invalid rendered PNG dimensions: {raster}')
+        manifest[str(number)]={'svg':str(vector.relative_to(ROOT)),'png':str(raster.relative_to(ROOT)),'caption':caption,'alt':alt,'slide_title':SLIDE_TITLES[internal_id]}
+    manifest=dict(sorted(manifest.items(),key=lambda item:int(item[0])))
+    manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    retired=[]
+    if not args.svg_only:
+        old_paths={str(asset[key]) for asset in previous.values() for key in ('svg','png') if asset.get(key)}
+        new_paths={asset[key] for asset in manifest.values() for key in ('svg','png')}
+        # Retire only files explicitly owned by the previous manifest, after all renders validate.
+        for name in sorted(old_paths-new_paths):
+            file=(ROOT/name).resolve()
+            if file.parent != OUT.resolve() or file.suffix not in {'.svg','.png'} or not file.is_file():
+                continue
+            backup=ROOT/'.build/diagrams-retired'
+            backup.mkdir(parents=True,exist_ok=True)
+            (backup/'manifest-before-refresh.json').write_text(json.dumps(previous,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+            shutil.copy2(file,backup/file.name)
+            file.unlink()
+            retired.append(name)
+    print(json.dumps({'diagrams':len(manifest),'format':'SVG + PNG' if not args.svg_only else 'SVG','png_width':args.png_width if not args.svg_only else None,'manifest':str(manifest_path.relative_to(ROOT)),'retired_files':retired},ensure_ascii=False))
 
 
 if __name__=='__main__':

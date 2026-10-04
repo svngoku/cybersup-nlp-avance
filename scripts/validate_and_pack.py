@@ -16,6 +16,16 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output'
 NS = {'a':'http://schemas.openxmlformats.org/drawingml/2006/main'}
 
+def validate_asset_links(slides, diagrams, formulas):
+    expected_formulas = {str(i): slide['formula_latex'].strip() for i, slide in enumerate(slides, 1) if slide.get('formula_latex')}
+    assert set(formulas) == set(expected_formulas), 'Formula manifest slide positions do not match formula_latex sources'
+    for num, latex in expected_formulas.items():
+        assert formulas[num].get('latex') == latex, f'Formula source mismatch on slide {num}'
+    for num, asset in diagrams.items():
+        assert num.isdigit() and str(int(num)) == num and 1 <= int(num) <= len(slides), f'Invalid diagram slide number {num}'
+        assert asset.get('slide_title') == slides[int(num)-1]['title'], f'Diagram title mismatch on slide {num}'
+
+
 def main():
     source = json.loads((ROOT / 'course/slides.json').read_text())
     slides = source if isinstance(source, list) else source['slides']
@@ -45,13 +55,13 @@ def main():
     diagrams = json.loads((ROOT/'assets/diagrams/manifest.json').read_text())
     formulas = json.loads((ROOT/'assets/formulas/manifest.json').read_text())
     assert len(diagrams) >= 12
-    assert len(formulas) == sum(bool(s.get('formula')) for s in slides)
+    validate_asset_links(slides, diagrams, formulas)
     for collection in (diagrams, formulas):
         for num, asset in collection.items():
             assert (ROOT/asset['png']).is_file()
             assert (ROOT/asset['svg']).is_file()
             assert asset.get('alt'), num
-    pptx = OUT / 'CYBERSUP-NLP-M2-35h-visuel.pptx'
+    pptx = OUT / 'CYBERSUP-NLP-M2-35h-introduction.pptx'
     with zipfile.ZipFile(pptx) as z:
         slide_parts = [n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+.xml', n)]
         note_parts = [n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+.xml', n)]
@@ -68,11 +78,12 @@ def main():
         for num in set(diagrams) | set(formulas):
             xml = ET.fromstring(z.read(f'ppt/slides/slide{num}.xml'))
             assert len(xml.findall('.//p:pic',pns)) >= 1, f'Missing slide image {num}'
-    pdf = OUT / 'CYBERSUP-NLP-M2-35h-visuel.pdf'
+    pdf = OUT / 'CYBERSUP-NLP-M2-35h-introduction.pdf'
     assert pdf.exists() and pdf.stat().st_size > 10000, 'Export PDF first'
     assert (OUT / 'Notes-presentateur.md').exists()
     student_paths = [pdf, ROOT/'docs/ETUDIANTS.md', ROOT/'docs/COLAB.md', ROOT/'docs/PROGRAMME_35H.md', ROOT/'evaluation/PROJET.md', ROOT/'evaluation/QUIZ.md', ROOT/'evaluation/MODEL_CARD.md', ROOT/'ressources/RESSOURCES_VERIFIEES.md', ROOT/'ressources/PROVENANCE.md', ROOT/'requirements-colab.txt']
     student_paths += sorted((ROOT/'notebooks/etudiants').glob('*.ipynb'))
+    student_paths.append(ROOT/'docs/SOURCES_INTRO_NLP.md')
     if (ROOT/'docs/RUNPOD_OPTION.md').exists():
         student_paths.append(ROOT/'docs/RUNPOD_OPTION.md')
     assert len([x for x in student_paths if x.suffix=='.ipynb']) == 7

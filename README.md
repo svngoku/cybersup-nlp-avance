@@ -26,13 +26,14 @@ Les modèles entraînés sur les petits corpus pédagogiques ne constituent pas 
 
 | Public | Fichier | Usage |
 |---|---|---|
-| Formateur | [PowerPoint du cours](output/CYBERSUP-NLP-M2-35h-visuel.pptx) | Version illustrée avec notes du présentateur |
-| Tous | [PDF de projection](output/CYBERSUP-NLP-M2-35h-visuel.pdf) | Version illustrée sans notes du présentateur |
+| Formateur | [PowerPoint du cours](output/CYBERSUP-NLP-M2-35h-introduction.pptx) | Version illustrée avec introduction NLP et notes du présentateur |
+| Tous | [PDF de projection](output/CYBERSUP-NLP-M2-35h-introduction.pdf) | Version illustrée avec introduction NLP, sans notes du présentateur |
 | Formateur | [Notes détaillées](output/Notes-presentateur.md) | Explications orales, exemples, questions et réponses par diapositive |
 | Formateur | `CYBERSUP-NLP-M2-Pack-formateur.zip` | Archive livrée séparément : support, notes, guides et corrigés |
 | Étudiants | `CYBERSUP-NLP-M2-Pack-etudiant.zip` | Archive livrée séparément : notebooks et consignes étudiantes |
 | Tous | [Programme des 35 heures](docs/PROGRAMME_35H.md) | Objectifs, horaires pédagogiques et preuves attendues |
 | Tous | [Ressources vérifiées](ressources/RESSOURCES_VERIFIEES.md) | Lectures ciblées et exercices associés |
+| Tous | [Origines et idées des méthodes NLP](docs/SOURCES_INTRO_NLP.md) | Chercheurs, institutions, dates et sources primaires |
 
 Les archives se distribuent séparément. Après décompression du pack formateur, les liens vers les supports, les notes et le rapport de validation fonctionnent depuis sa racine.
 
@@ -44,13 +45,15 @@ Le [fil conducteur pratique, réservé au formateur](docs/FIL_CONDUCTEUR_PRATIQU
 
 | Jour | Matin : comprendre et prédire | Après-midi : construire et vérifier |
 |---|---|---|
-| 1 | Corpus, tokenisation, TF-IDF, embeddings, similarité | [01 — Textes et recherche](notebooks/etudiants/01_j1_textes_recherche.ipynb), 240 min |
+| 1 | Introduction NLP, TF-IDF, Word2Vec, GloVe/fastText, contexte ; corpus et tokenisation | [01 — Textes et recherche](notebooks/etudiants/01_j1_textes_recherche.ipynb), 240 min |
 | 2 | Attention, masques, encodeur/décodeur, génération | [02 — Attention et Transformers](notebooks/etudiants/02_j2_attention_transformers.ipynb), 240 min |
 | 3 | Fine-tuning, pertes, `Trainer`, NER et alignement | [03 — Classification](notebooks/etudiants/03_j3_classification.ipynb), 140 min ; [04 — NER](notebooks/etudiants/04_j3_ner.ipynb), 100 min |
 | 4 | Curation, SFT, LoRA/QLoRA, résumé et factualité | [05 — SFT et LoRA](notebooks/etudiants/05_j4_sft_lora.ipynb), 160 min ; [06 — Adaptation au résumé](notebooks/etudiants/06_j4_resume_evaluation.ipynb), 80 min |
 | 5 | Comparaisons, robustesse, démo et documentation | [07 — Projet](notebooks/etudiants/07_j5_projet.ipynb), 240 min, soutenances comprises |
 
 Les corrigés correspondants sont dans `notebooks/formateur/`, avec le suffixe `_corrige.ipynb`. Ne distribuer aux étudiants que leur pack dédié.
+
+Après cinq minutes d'accueil, le J1 commence par **45 minutes d'introduction** : vocabulaire du NLP, sac de mots et TF-IDF, Word2Vec (CBOW/Skip-gram), GloVe, fastText et représentations contextuelles. Huit diapositives relient chaque idée à un exemple, à ses origines et à une courte activité. Les notes détaillent les chercheurs, institutions, nuances historiques et réponses attendues. Ce créneau est inclus dans les trois heures du matin ; les quatre heures de TP sont conservées.
 
 ## Démarrage
 
@@ -73,16 +76,6 @@ Le [projet](evaluation/PROJET.md) fournit le barème sur 20 et le protocole de c
 Le statut des vérifications est détaillé dans le [rapport de validation](output/VALIDATION.md). **L'exécution complète dans une session Google Colab T4, ou Runpod L4 si cette option est retenue, reste à effectuer avant le cours.** Un contrôle statique ou une exécution CPU partielle ne valide ni l'allocation d'un GPU, ni les téléchargements de poids dans ces environnements, ni la durée des entraînements. Le [guide Colab](docs/COLAB.md) donne la répétition générale à réaliser et les parcours de repli.
 
 Le cours s'appuie principalement sur le [cours Hugging Face en français](https://huggingface.co/learn/llm-course/fr/chapter1/1), complété par les chapitres avancés en anglais et [Stanford CS224N](https://web.stanford.edu/class/cs224n/). Les notebooks et exercices du présent pack sont des constructions pédagogiques originales. Aucune publication sur GitHub, le Hub ou Spaces n'est nécessaire pour suivre le cours.
-
-## Modifier et régénérer les supports
-
-Le PowerPoint livré se modifie directement dans PowerPoint : textes, tableaux et notes du présentateur sont éditables. Les schémas et les formules sont des images haute résolution ; leurs sources SVG et LaTeX sont conservées dans `assets/` et `course/slides.json`. Les notes expliquent chaque symbole, ses dimensions, le calcul numérique, les hypothèses et les erreurs fréquentes. Elles décrivent aussi comment lire chaque architecture et chaque flèche.
-
-Le pack formateur contient le template original `CYBERSUP - TEMPLATE DATA_IA.pptx`, les sources des diapositives dans `course/`, les visuels dans `assets/`, les notebooks et leurs scripts de génération dans `scripts/`. Les fichiers sans le suffixe `-visuel` présents dans le dossier de travail correspondent au premier export ; les packs contiennent la version illustrée.
-
-La régénération du PPTX avec `scripts/build_slides.mjs` requiert le **runtime Artifact Tool fourni par Codex et les utilitaires du skill Présentations**. Les chemins se configurent avec `NLP_RUNTIME_MODULES`, `NLP_SLIDES_SKILL` et `NLP_RUNTIME_PYTHON`. Cet environnement spécifique, ainsi que le template à la racine, est nécessaire ; les scripts fournis ne constituent pas un projet npm autonome prêt à construire sur toute machine. La modification directe du PPTX et l'exécution des notebooks restent indépendantes de cette chaîne de fabrication.
-
-Lorsqu'il est présent au moment du packaging, le compte rendu `docs/VERIFICATIONS_CPU.md` est inclus dans le pack formateur. Il décrit les vérifications CPU partielles réellement exécutées ; il complète le rapport de livraison sans valider les chargements de poids ni les entraînements GPU.
 
 ## Contrôles du dépôt
 

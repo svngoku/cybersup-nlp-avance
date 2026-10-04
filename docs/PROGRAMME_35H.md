@@ -33,31 +33,33 @@ Prérequis : Python, tableaux NumPy, bases de PyTorch, split entraînement/valid
 
 ## Rythme des matinées
 
-Chaque matin comprend neuf blocs de 20 minutes : **12 minutes d'explication, 5 minutes de prédiction/calcul/tri en binôme, 3 minutes de mise en commun**. Ce découpage est une consigne d'animation : ne pas parler vingt minutes sans faire travailler le groupe. Les questions détaillées et les remédiations sont dans le guide formateur et les notes du présentateur.
+Les jours 2 à 5 suivent neuf blocs de 20 minutes : **12 minutes d'explication, 5 minutes de prédiction/calcul/tri en binôme, 3 minutes de mise en commun**. Le jour 1 commence par 45 minutes de repères après l'accueil, avec des activités courtes à chaque notion. Ce découpage est une consigne d'animation : ne pas parler vingt minutes sans faire travailler le groupe. Les questions détaillées et les remédiations sont dans le guide formateur et les notes du présentateur.
 
 ## Jour 1 — Du texte à une représentation exploitable
 
 | Temps matin | Notion | Activité et preuve observable |
 |---|---|---|
-| 0–20 | Diagnostic et tâches NLP | Classer quatre besoins : recherche, classification, NER, génération |
-| 20–40 | Corpus, annotation et provenance | Annoter une demande ambiguë et expliciter la règle |
-| 40–60 | Découpage et fuites | Ranger des paraphrases du même scénario dans un même split |
-| 60–80 | Sac de mots et TF-IDF | Comparer deux documents qui partagent un mot rare |
-| 80–100 | Tokenisation et identifiants | Segmenter « remboursement », un nom propre et un emoji |
-| 100–120 | BPE et vocabulaire | Effectuer deux fusions sur un minuscule corpus |
-| 120–140 | Embeddings et contexte | Distinguer index de vocabulaire, vecteur et sens en contexte |
-| 140–160 | Cosinus et recherche | Calculer un cosinus à deux dimensions et classer des voisins |
-| 160–180 | Protocole du TP | Écrire l'hypothèse « les embeddings aident sur les paraphrases » |
+| 0–5 | Accueil et objectifs | Définir une sortie attendue pour une demande client |
+| 5–20 | Qu'est-ce que le NLP ? Vocabulaire commun | Distinguer document, corpus, token, vocabulaire et embedding |
+| 20–30 | Repères historiques, sac de mots et TF-IDF | Relier fréquence, rareté et recherche ; Luhn, Spärck Jones, Salton |
+| 30–43 | Word2Vec, GloVe et fastText | Lire CBOW/Skip-gram ; situer Google, Stanford et FAIR |
+| 43–50 | Du vecteur statique au contexte | Distinguer deux emplois de « banque » ; diagnostic de compréhension |
+| 50–75 | Tâches, corpus, annotation et fuites | Définir une règle d'annotation ; séparer les groupes de paraphrases |
+| 75–100 | Sac de mots, TF-IDF et première baseline | Calculer une pondération ; microdémo de recherche ; lire une confusion |
+| 100–125 | Tokenisation, BPE et tenseurs | Faire deux fusions ; comparer des vocabulaires ; distinguer token et ID |
+| 125–150 | Embeddings, cosinus et contre-exemples | Calculer un cosinus ; expliquer une proximité trompeuse |
+| 150–180 | Comparaison, quiz et protocole du TP | Écrire une hypothèse testable et justifier le choix de représentation |
 | **Total matin** | **180 min** | |
+
+Les huit diapositives d'introduction occupent 45 minutes, de la minute 5 à la minute 50. Les [repères historiques sourcés](SOURCES_INTRO_NLP.md) donnent les dates, chercheurs et institutions ; les années ne sont pas à mémoriser pour l'évaluation. Les calculs détaillés arrivent après l'intuition, et la pratique de l'après-midi reste inchangée.
 
 | Après-midi — notebook 01 | Minutes | Livrable intermédiaire |
 |---|---:|---|
-| Import Colab, corpus, lecture des exemples | 20 | Périphérique, versions et rôle de chaque colonne |
-| Baseline lexicale TF-IDF | 45 | Requêtes, voisins et premier tableau d'erreurs |
-| Tokenisation/BPE et effets du vocabulaire | 45 | Deux découpages commentés et impact sur la longueur |
-| Embeddings multilingues et similarité | 50 | Comparaison sur les mêmes requêtes |
-| Ablation et cas difficiles : négation, faute, paraphrase | 50 | Une variable modifiée, résultat et interprétation |
-| Restitution, quiz J1 et export | 30 | Notebook et `resultats/j1_resultats.json` |
+| Cadrage, données et tokenisation | 35 | Périphérique, versions et rôle de chaque colonne |
+| TF-IDF et recherche | 50 | Requêtes, voisins et premier tableau d'erreurs |
+| Tokenizer BPE et expériences | 40 | Deux découpages commentés et impact sur la longueur |
+| Embeddings et comparaison | 55 | Comparaison sur les mêmes requêtes |
+| Analyse d’erreurs, test et restitution | 60 | Choix figé avant test, erreurs expliquées, notebook et `resultats/j1_resultats.json` |
 | **Total après-midi** | **240** | |
 
 ## Jour 2 — Comprendre ce que fait un Transformer

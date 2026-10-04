@@ -28,6 +28,10 @@ Le socle est le cours Hugging Face en français pour les bases et les tâches cl
 
 Les lectures longues sont des références, pas des devoirs de lecture intégrale pendant la semaine. Avant une séance, choisir une section et une question à laquelle elle doit répondre. Les notebooks HF servent de pistes complémentaires ; les notebooks distribués ici sont autonomes et adaptés au cas fil rouge.
 
+## Introduction historique du J1
+
+La fiche [Repères historiques et sources primaires](../docs/SOURCES_INTRO_NLP.md) relie IDF, espace vectoriel, Word2Vec, GloVe, fastText, ELMo, Transformer, GPT et BERT à leurs publications, chercheurs et institutions. Elle distingue prépublication et publication, et explique les notations sans attribuer TF-IDF ou les embeddings à une invention unique. Les lectures servent de références ; aucune lecture intégrale supplémentaire n'est imposée.
+
 ## Documentation opérationnelle : suivre la version du TP
 
 | ID | Référence | Ce qu'il faut vérifier |

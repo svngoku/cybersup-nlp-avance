@@ -37,43 +37,216 @@ Présenter cette carte pendant l'accueil du jour 1. La progression suit une mêm
 
 Jour 1 · matin · 5 min
 
-DURÉE : 5 min, accueil des deux diapositives précédentes inclus. Faire écrire individuellement une définition du NLP en une phrase puis demander un exemple de sortie attendue. Retenir une formulation opérationnelle : transformer du langage en une sortie utile, avec un protocole pour vérifier cette utilité. Annoncer les trois questions de la journée : quelle information conserver, quelle représentation construire, quelle preuve demander ? Le TP part de douze fiches FAQ et de requêtes françaises dont on connaît la fiche pertinente. Les huit requêtes de validation servent à comparer les réglages ; les six requêtes finales restent réservées. La classification à cinq intentions sera pratiquée au jour 3. Vérifier que les étudiants savent ouvrir un notebook et identifier une cellule de texte et une cellule de code. Le GPU n'est pas nécessaire pour TF-IDF. Transition : deux phrases contenant presque les mêmes mots peuvent vouloir dire des choses différentes ; la première activité rend cette difficulté tangible.
+DURÉE : 5 min, accueil des trois diapositives précédentes inclus. Faire écrire individuellement une définition du NLP en une phrase puis demander un exemple de sortie attendue. Retenir une formulation opérationnelle : transformer du langage en une sortie utile, avec un protocole pour vérifier cette utilité. Annoncer les trois questions de la journée : quelle information conserver, quelle représentation construire, quelle preuve demander ? Le TP part de douze fiches FAQ et de requêtes françaises dont on connaît la fiche pertinente. Les huit requêtes de validation servent à comparer les réglages ; les six requêtes finales restent réservées. La classification à cinq intentions sera pratiquée au jour 3. Vérifier que les étudiants savent ouvrir un notebook et identifier une cellule de texte et une cellule de code. Le GPU n'est pas nécessaire pour TF-IDF. Transition : deux phrases contenant presque les mêmes mots peuvent vouloir dire des choses différentes ; la première activité rend cette difficulté tangible.
 
 
 
 
 
-## 5. Même vocabulaire, intention différente
+## 5. Le NLP : faire travailler une machine sur du langage
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 8 min
 
-DÉROULÉ : 2 min de lecture individuelle, 4 min de classement en binôme, 4 min de mise en commun. Demander une intention parmi les cinq labels puis autoriser la réponse « ambigu ». Pour le premier exemple, « retour » n'indique pas un retour de produit : l'intention dominante est compte. Pour le second, retour et facturation sont tous deux défendables. La bonne réponse dépend de la politique d'annotation ; il faut la documenter plutôt qu'accuser le modèle. Faire constater qu'un mot déclencheur peut servir de raccourci trompeur. QUESTION : supprimer les petits mots aide-t-il toujours ? RÉPONSE : non ; supprimer « ne » et « pas » peut inverser le sens. Observer aussi les pronoms : « il ne fonctionne plus » nécessite parfois le contexte précédent. Insister sur la distinction entre ambiguïté linguistique et mauvaise annotation. Dans le TP, les binômes conserveront les exemples qui mettent leur représentation en difficulté et expliqueront pourquoi. Une machine ne peut pas résoudre un cahier des charges qui laisse la sortie attendue indéfinie.
+OBJECTIF ET DÉROULÉ — 2 min pour lire un message, 2 min pour montrer trois sorties, 2 min de propositions en binôme, 2 min de correction. Dire d’abord : le traitement automatique du langage naturel, ou TAL, correspond à Natural Language Processing, NLP. Le langage naturel est celui que les personnes emploient pour communiquer ; il comporte des ambiguïtés et ne suit pas le contrat strict d’un langage de programmation.
+
+EXEMPLE GUIDÉ — Afficher : « La banque a débité deux fois mon achat à Paris ; pouvez-vous m’aider ? » Une classification peut produire facturation ; une extraction peut repérer Paris comme lieu ; un résumé peut produire « Le client signale un double débit ». Le même texte donne donc plusieurs tâches, avec des sorties et des critères différents. Retrouver une fiche utile est encore une autre tâche : la recherche d’information. Générer une réponse exige notamment de contrôler les informations inventées.
+
+ACTIVITÉ — Demander aux binômes de choisir une sortie vérifiable pour ce message, puis de proposer une erreur possible. Attendre un exemple concret : mauvaise catégorie, ville omise ou remboursement promis sans preuve. Le NLP ne se réduit ni aux chatbots ni à la génération. Une méthode lexicale et un Transformer peuvent tous deux faire partie d’un système NLP.
+
+VÉRIFICATION — « Une réponse grammaticalement correcte suffit-elle ? » Non : sa pertinence dépend de la tâche, et les faits doivent rester conformes au texte. Si les étudiants répondent seulement « utiliser BERT », revenir à la sortie attendue.
+
+LIEN AVEC LA SEMAINE — Les TP partiront de textes français, construiront une représentation, puis compareront un comportement observable. L’objectif est de justifier un choix, pas de réciter des noms de modèles.
+
+
+
+- https://huggingface.co/learn/llm-course/fr/chapter1/1
+
+## 6. Cinq mots pour suivre toute la semaine
+
+Jour 1 · matin · 7 min
+
+DÉROULÉ — 2 min de lecture d’un ticket, 2 min pour nommer les cinq objets, 2 min de tri en binôme, 1 min de vérification. Un document est ici une unité choisie pour la tâche : un ticket, une fiche FAQ ou un avis. Ce n’est pas nécessairement un fichier. Un corpus est l’ensemble de ces documents ; ses sous-ensembles d’apprentissage, de validation et de test auront des rôles distincts.
+
+PASSER DU TEXTE AUX NOMBRES — Dans « Mon compte est bloqué », un découpage simple peut produire quatre tokens. D’autres tokenizers découpent un mot en plusieurs sous-unités et ajoutent des tokens spéciaux. Le vocabulaire associe les unités connues à des identifiants entiers. L’identifiant 42 indique une entrée dans une table ; il ne signifie ni une intensité ni une proximité sémantique. Un embedding est un vecteur appris, par exemple une liste de 384 nombres pour un modèle donné. Cette dimension est un choix du modèle, pas une propriété universelle du langage. Ne pas laisser croire que la première coordonnée signifie automatiquement « finance ».
+
+ACTIVITÉ — Faire classer cinq objets lus oralement : une collection de tickets, un ticket, un morceau de mot, une table unité→ID et une liste de nombres apprise. Demander d’expliquer une confusion, surtout token contre ID.
+
+QUESTION — « Deux mots ayant des IDs voisins ont-ils un sens voisin ? » Non : l’ordre des identifiants ne définit pas la géométrie des embeddings. Remédiation : comparer les numéros de deux personnes dans un annuaire à leurs caractéristiques.
+
+LIEN — Dans les notebooks, ces mots deviennent des objets inspectables : données, tokens, input_ids et matrices. Une représentation TF-IDF est aussi un vecteur ; dans ce cours, le mot embedding désigne plus précisément une représentation dense apprise.
+
+
+
+- https://huggingface.co/learn/llm-course/fr/chapter2/4
+- https://huggingface.co/learn/llm-course/fr/chapter6/1
+
+## 7. Compter, apprendre, puis contextualiser
+
+Jour 1 · matin · 5 min
+
+LECTURE DE LA FRISE — Parcourir les lignes de haut en bas pendant 3 min, puis consacrer 1 min à une prédiction et 1 min à la correction. Ces repères servent à comprendre des idées ; ils ne donnent ni une date unique de naissance du NLP ni une succession où chaque méthode rend les précédentes inutiles. Les approches symboliques, statistiques et neuronales ont coexisté.
+
+PREMIERS REPÈRES — Alan Turing publie son article sur le jeu d’imitation en 1950. Il ne décrit pas un Transformer. Joseph Weizenbaum, au MIT, présente ELIZA en 1966 : des règles de décomposition et de recomposition peuvent donner une impression de conversation. Hans Peter Luhn, chez IBM, étudie les fréquences pour la recherche documentaire en 1957. Karen Spärck Jones, à Cambridge, formalise un principe de pondération par spécificité en 1972, associé à l’IDF.
+
+REPRÉSENTATIONS APPRISES — Word2Vec paraît en 2013 avec l’équipe de Tomas Mikolov chez Google ; GloVe en 2014 à Stanford ; les représentations sous-lexicales de fastText apparaissent en prépublication en 2016, puis en revue en 2017 chez FAIR. Aucune de ces dates n’est l’invention générale des embeddings.
+
+CONTEXTE — ELMo, publié en 2018 par Matthew Peters et ses collègues d’AI2 et de l’université de Washington, emploie des réseaux récurrents bidirectionnels. BERT, de Jacob Devlin et ses collègues chez Google, est diffusé en 2018 puis publié à NAACL en 2019 ; il utilise un encodeur Transformer. Le Transformer de Vaswani et ses collègues date de 2017 ; GPT d’OpenAI fournit un autre repère en 2018.
+
+QUESTION — « Une méthode de 1972 peut-elle rester une bonne baseline aujourd’hui ? » Oui : le choix dépend des données, de la tâche et du coût mesurés.
+
+
+
+- https://academic.oup.com/mind/article/LIX/236/433/986238
+- https://doi.org/10.1145/365153.365168
+- https://web.stanford.edu/class/linguist289/luhn57.pdf
+- https://www.cl.cam.ac.uk/archive/ksj21/ksjdigipapers/jdoc72.pdf
+- https://arxiv.org/abs/1301.3781
+- https://aclanthology.org/D14-1162/
+- https://aclanthology.org/Q17-1010/
+- https://aclanthology.org/N18-1202/
+- https://aclanthology.org/N19-1423/
+- https://arxiv.org/abs/1706.03762
+- https://openai.com/index/language-unsupervised/
+
+## 8. TF-IDF : des mots utiles pour retrouver un document
+
+Jour 1 · matin · 5 min
+
+DÉROULÉ — 1 min de lecture, 2 min de comparaison, 1 min de prédiction, 1 min de correction. Le calcul détaillé de TF-IDF et le cosinus viennent plus loin : cette première rencontre installe l’intuition. Construire oralement trois documents : « compte bloqué », « compte créé » et « compte facture ». Avec le vocabulaire compte, bloqué, créé, facture, le premier sac de mots devient [1, 1, 0, 0]. Les zéros ont un sens : ces termes sont absents de ce document.
+
+IDÉE — Le mot compte apparaît dans les trois documents ; il les distingue peu. Bloqué n’apparaît que dans le premier et aide davantage à retrouver cette fiche. TF mesure la présence ou fréquence dans un document ; IDF tient compte du nombre de documents contenant le terme. Les variantes de lissage et de normalisation seront précisées avec le code : éviter d’annoncer une pondération numérique avant d’avoir fixé sa définition.
+
+REPÈRES HISTORIQUES — Hans Peter Luhn a étudié l’usage des fréquences dans la recherche d’information en 1957. L’article de Karen Spärck Jones de 1972 est un repère majeur pour l’IDF. La représentation vectorielle a notamment été développée par Gerard Salton, A. Wong et C. S. Yang, avec un article en 1975. Ne pas attribuer tout TF-IDF à un inventeur unique en 1972, ni sa création à la synthèse de Salton et Buckley de 1988.
+
+VÉRIFICATION — « Retrouverons-nous forcément facture avec la requête justificatif d’achat ? » Non : sans recouvrement lexical, cette représentation peut manquer la paraphrase. Une faute très rare peut aussi recevoir un poids élevé sans être utile.
+
+LIEN — Le TP commence volontairement par cette baseline lisible : on peut inspecter les termes, expliquer un classement, puis déterminer si une représentation apprise apporte réellement quelque chose.
+
+
+
+- https://web.stanford.edu/class/linguist289/luhn57.pdf
+- https://www.cl.cam.ac.uk/archive/ksj21/ksjdigipapers/jdoc72.pdf
+- https://doi.org/10.1145/361219.361220
+- https://www.sciencedirect.com/science/article/pii/0306457388900210
+
+## 9. Word2Vec : apprendre en prédisant les voisins
+
+Jour 1 · matin · 8 min
+
+DÉROULÉ — 2 min sur une fenêtre de texte, 2 min pour lire les deux sens de prédiction, 2 min d’activité, 2 min de correction. Tomas Mikolov, Kai Chen, Greg Corrado et Jeffrey Dean, chez Google, proposent en 2013 les architectures CBOW et skip-gram présentées ici. Word2Vec est une famille de méthodes d’apprentissage de représentations de mots ; ce n’est ni le premier embedding ni un modèle complet de compréhension de phrases.
+
+LECTURE GUIDÉE DU SCHÉMA — Prendre « le colis arrive demain » et une fenêtre illustrative d’un mot de chaque côté de colis. Pour CBOW, les entrées le et arrive pointent vers leurs vecteurs ; leur combinaison sert à prédire colis. L’étiquette de la tâche provient donc du texte lui-même. Pour skip-gram, partir de colis et suivre les flèches vers deux prédictions : le et arrive. Les sorties sont des objectifs d’entraînement, pas des mots automatiquement ajoutés au ticket. La table de vecteurs se modifie progressivement avec les erreurs de prédiction.
+
+ACTIVITÉ — Demander aux binômes de déplacer le centre de colis vers arrive et de nommer les entrées et sorties dans chaque architecture. Réponse avec la même fenêtre : CBOW reçoit colis et demain ; skip-gram part de arrive pour prédire colis et demain. Une fenêtre plus grande ajoute d’autres voisins.
+
+INTERPRÉTATION — Des mots rencontrés dans des contextes comparables peuvent obtenir des vecteurs proches. Le CBOW présenté agrège un contexte sans préserver son ordre. Le vecteur statique de colis ne change pas simplement parce qu’on le relit dans une nouvelle phrase ; il mélange ce que l’apprentissage a capté de ses usages. Les détails de normalisation et d’optimisation ne sont pas nécessaires pour comprendre cette première architecture.
+
+VÉRIFICATION — « Doit-on annoter chaque fenêtre à la main ? » Non : le texte fournit les mots cibles. « Proches signifie synonymes ? » Pas forcément : colis et livraison peuvent être associés sans être interchangeables.
+
+Description accessible du schéma
+Deux objectifs d’apprentissage Word2Vec sur le colis arrive. À gauche, CBOW combine les vecteurs des mots de contexte le et arrive par une moyenne pour prédire colis. À droite, Skip-gram utilise le vecteur de colis pour prédire séparément ses voisins le et arrive. Les vecteurs sont ajustés par les erreurs de prédiction.
+Mikolov et al. · Google, 2013 · Des vecteurs appris par prédiction locale.
+
+Repères associés à l'illustration
+Mikolov, Chen, Corrado et Dean — Google, 2013.
+CBOW : le contexte local aide à prédire le mot central.
+Skip-gram : le mot central aide à prédire les mots du contexte.
+L’entraînement ajuste une table de vecteurs ; une entrée garde ensuite un vecteur statique.
+
+- https://arxiv.org/abs/1301.3781
+- https://arxiv.org/abs/1310.4546
+
+## 10. GloVe et fastText : deux idées complémentaires
+
+Jour 1 · matin · 5 min
+
+DÉROULÉ — 2 min pour comparer les informations exploitées, 1 min d’exemple, 1 min de prédiction, 1 min de correction. En 2014, Jeffrey Pennington, Richard Socher et Christopher Manning, à Stanford, présentent GloVe. La méthode apprend des vecteurs à partir de statistiques globales de cooccurrence : combien de fois des mots apparaissent dans le voisinage d’autres mots sur le corpus. Global ne veut pas dire que tous les mots d’un document sont systématiquement voisins ; les comptes reposent sur une définition du contexte.
+
+FASTTEXT — Piotr Bojanowski, Edouard Grave, Armand Joulin et Tomas Mikolov, chez Facebook AI Research, diffusent leur travail sous-lexical en 2016, puis le publient dans TACL en 2017. Les mots sont représentés en utilisant aussi des n-grammes de caractères. Des formes comme remboursement et remboursements partagent de nombreux morceaux ; leur apprentissage peut donc partager de l’information. Faire préciser que ces morceaux sont des séquences de caractères, pas forcément des morphèmes corrects.
+
+ACTIVITÉ — Proposer remboursable et une faute comme remboursemant. Demander si des morceaux connus pourraient aider, puis pourquoi cela ne garantit ni une bonne représentation ni une correction orthographique. La réponse dépend des morceaux appris et du corpus. Avec le modèle adéquat, fastText peut construire un vecteur pour une forme absente du vocabulaire de mots ; un simple export de vecteurs fixes peut ne pas conserver cette capacité.
+
+PIÈGE — Les n-grammes de caractères de fastText ne sont pas les sous-tokens BPE de notre prochain exercice. Les deux utilisent des morceaux, mais leurs algorithmes et leurs rôles diffèrent.
+
+QUESTION — « Le vecteur de banque devient-il différent dans chaque phrase avec GloVe ou fastText ? » Non : à modèle fixé, ces méthodes restent statiques pour la même forme. Cette limite prépare les représentations contextuelles.
+
+
+
+- https://aclanthology.org/D14-1162/
+- https://nlp.stanford.edu/pubs/glove.pdf
+- https://arxiv.org/abs/1607.04606
+- https://aclanthology.org/Q17-1010/
+
+## 11. Un mot, plusieurs sens : passer au contexte
+
+Jour 1 · matin · 5 min
+
+DÉROULÉ — 1 min de lecture des deux phrases, 2 min de comparaison, 1 min de prédiction, 1 min de vérification. Demander d’abord le sens de banque dans chaque phrase. Dans la première, il s’agit d’un établissement financier ; dans la seconde, d’un ensemble organisé de données. Ce contraste suffit pour installer le besoin de contexte, sans dessiner des distances prétendument mesurées.
+
+EXPLICATION — Une table statique fournit le même vecteur pour la même entrée banque, à modèle fixé. Un modèle contextuel part lui aussi d’entrées numériques, puis combine l’information de la séquence : ses représentations internes peuvent différer selon les mots autour, les positions, la couche et l’architecture. Si le tokenizer découpe une forme en plusieurs sous-tokens, il faut préciser comment on les observe ou les agrège ; parler d’un seul vecteur de mot est alors une simplification pédagogique. Les dimensions restent compatibles même lorsque les coordonnées changent.
+
+REPÈRES — ELMo, publié à NAACL en 2018 par Matthew Peters et ses collègues d’AI2 et de l’université de Washington, apprend des représentations contextuelles avec des modèles de langue récurrents bidirectionnels. ELMo n’est pas un Transformer. BERT, proposé par Jacob Devlin, Ming-Wei Chang, Kenton Lee et Kristina Toutanova chez Google, est diffusé en octobre 2018 puis publié à NAACL en 2019. Son encodeur Transformer exploite un contexte bidirectionnel. Le décodeur causal de la famille GPT, étudié au jour 2, utilise le contexte autorisé à gauche pour prédire la suite.
+
+VÉRIFICATION — « Contextuel signifie-t-il que le modèle comprend toujours la négation ? » Non : une représentation plus expressive n’est pas une garantie de raisonnement ou de vérité. Il faut tester le comportement.
+
+LIEN — Le TP utilisera aussi un encodeur de phrases multilingue. Obtenir une représentation de phrase demande un mécanisme et un entraînement adaptés ; ce n’est pas simplement renommer un vecteur Word2Vec.
+
+
+
+- https://aclanthology.org/N18-1202/
+- https://arxiv.org/abs/1810.04805
+- https://aclanthology.org/N19-1423/
+- https://openai.com/index/language-unsupervised/
+
+## 12. Diagnostic : que sait cette représentation ?
+
+Jour 1 · matin · 2 min
+
+DÉROULÉ STRICT — 30 secondes de choix individuel, 45 secondes de comparaison avec le voisin, 45 secondes de correction collective. Afficher ou dire les choix : TF-IDF, Word2Vec ou GloVe, fastText, représentation contextuelle de type ELMo ou BERT. Chaque étudiant associe A, B, C et D à une famille ; il ne s’agit pas encore de sélectionner le meilleur système pour une entreprise.
+
+CORRECTION — A renvoie naturellement à TF-IDF et à une recherche lexicale. B renvoie ici aux embeddings statiques de Word2Vec ou GloVe, même si d’autres méthodes apprennent aussi des proximités. C vise fastText et ses n-grammes de caractères. D vise une représentation contextuelle : la représentation d’une occurrence dépend de son contexte autorisé. Ces associations décrivent des idées dominantes et non des capacités exclusives. Un système complet peut combiner plusieurs familles.
+
+RELANCE — Demander une limite sur une seule réponse, selon l’hésitation observée. Pour A, une paraphrase sans mot commun ; pour B, la polysémie ou des associations qui ne sont pas des synonymes ; pour C, des morceaux peu informatifs ou une faute qui reste ambiguë ; pour D, une erreur possible sur la négation ou les faits. Aucun modèle n’est garanti de résoudre le besoin par son seul nom.
+
+REMEDIATION — Si token, ID et embedding sont confondus, reprendre l’exemple du lexique pendant la correction plutôt que prolonger le quiz. Si toutes les réponses sont acquises, demander quel résultat concret ferait préférer une baseline lexicale à un modèle plus coûteux. Attendre : une meilleure mesure pertinente, moins d’erreurs gênantes, ou un coût moindre à qualité suffisante.
+
+TRANSITION — Revenir aux intentions ambiguës puis au protocole de données. Les repères sont désormais posés ; le reste du matin mettra les objets, les calculs et les limites à l’épreuve avant les quatre heures de pratique.
 
 
 
 
 
-## 6. Une tâche = une entrée et une sortie vérifiable
+## 13. Même vocabulaire, intention différente
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : expliquer les cinq lignes en 4 min, faire reformuler une tâche métier en 3 min, corriger collectivement en 3 min. Partir de « automatiser le support » : cette demande est trop large pour choisir une métrique. La décomposer en orientation, extraction de références, recherche d'un cas proche et rédaction d'une réponse. Faire préciser la granularité : un label par message, un label par mot ou une séquence produite ? QUESTION : un chatbot est-il une tâche unique ? RÉPONSE : c'est souvent une application qui combine plusieurs tâches. Une sortie plausible peut être inutile si elle ne correspond pas à l'action souhaitée. Ne pas confondre intention de l'utilisateur, sentiment et urgence : « Très mécontent du délai » peut être négatif, relever de livraison et rester non urgent. Le TP utilisera un même message pour examiner plusieurs représentations, puis le projet choisira une tâche principale et un critère de succès. Demander un exemple de sortie incorrecte avant de montrer les modèles : cela rend l'évaluation concrète dès le début.
+DÉROULÉ : 1 min de lecture individuelle, 2 min de classement en binôme, 2 min de mise en commun. Demander une intention parmi les cinq labels puis autoriser la réponse « ambigu ». Pour le premier exemple, « retour » n'indique pas un retour de produit : l'intention dominante est compte. Pour le second, retour et facturation sont tous deux défendables. La bonne réponse dépend de la politique d'annotation ; il faut la documenter plutôt qu'accuser le modèle. Faire constater qu'un mot déclencheur peut servir de raccourci trompeur. QUESTION : supprimer les petits mots aide-t-il toujours ? RÉPONSE : non ; supprimer « ne » et « pas » peut inverser le sens. Observer aussi les pronoms : « il ne fonctionne plus » nécessite parfois le contexte précédent. Insister sur la distinction entre ambiguïté linguistique et mauvaise annotation. Dans le TP, les binômes conserveront les exemples qui mettent leur représentation en difficulté et expliqueront pourquoi. Une machine ne peut pas résoudre un cahier des charges qui laisse la sortie attendue indéfinie.
+
+
+
+
+
+## 14. Une tâche = une entrée et une sortie vérifiable
+
+Jour 1 · matin · 5 min
+
+DÉROULÉ : expliquer les cinq lignes en 2 min, faire reformuler une tâche métier en 2 min, corriger collectivement en 1 min. Partir de « automatiser le support » : cette demande est trop large pour choisir une métrique. La décomposer en orientation, extraction de références, recherche d'un cas proche et rédaction d'une réponse. Faire préciser la granularité : un label par message, un label par mot ou une séquence produite ? QUESTION : un chatbot est-il une tâche unique ? RÉPONSE : c'est souvent une application qui combine plusieurs tâches. Une sortie plausible peut être inutile si elle ne correspond pas à l'action souhaitée. Ne pas confondre intention de l'utilisateur, sentiment et urgence : « Très mécontent du délai » peut être négatif, relever de livraison et rester non urgent. Le TP utilisera un même message pour examiner plusieurs représentations, puis le projet choisira une tâche principale et un critère de succès. Demander un exemple de sortie incorrecte avant de montrer les modèles : cela rend l'évaluation concrète dès le début.
 
 
 
 - https://huggingface.co/learn/llm-course/fr/chapter1/2
 
-## 7. Le jeu de données est déjà une décision de modèle
+## 15. Le jeu de données est déjà une décision de modèle
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 3 min pour décrire les objets, 4 min d'audit de trois exemples, 3 min de restitution. Dans le TP1, une fiche possède un identifiant, un titre et un texte ; une requête possède une fiche attendue. Il y a douze fiches, huit requêtes de validation et six requêtes finales. L'index documentaire est connu du système : on peut ajuster sa représentation sur ces fiches sans utiliser les requêtes test pour régler le moteur. QUESTION : la fiche attendue est-elle toujours unique ? RÉPONSE : c'est notre convention pédagogique ; un vrai service peut accepter plusieurs réponses pertinentes. Faire lire une requête ambiguë et demander si le problème vient du moteur ou de la référence choisie. Le corpus fictif est inspectable mais ne représente pas la diversité de vrais clients. Les groupes de paraphrases et les labels d'intention seront introduits dans le TP3 de classification ; ne pas chercher ces champs dans le TP1. Dans l'atelier, on décrit les limites avant d'afficher les scores. Une table de deux ambiguïtés précises vaut davantage que l'affirmation générale « les données sont propres ».
+DÉROULÉ : 1 min pour décrire les objets, 2 min d'audit de trois exemples, 2 min de restitution. Dans le TP1, une fiche possède un identifiant, un titre et un texte ; une requête possède une fiche attendue. Il y a douze fiches, huit requêtes de validation et six requêtes finales. L'index documentaire est connu du système : on peut ajuster sa représentation sur ces fiches sans utiliser les requêtes test pour régler le moteur. QUESTION : la fiche attendue est-elle toujours unique ? RÉPONSE : c'est notre convention pédagogique ; un vrai service peut accepter plusieurs réponses pertinentes. Faire lire une requête ambiguë et demander si le problème vient du moteur ou de la référence choisie. Le corpus fictif est inspectable mais ne représente pas la diversité de vrais clients. Les groupes de paraphrases et les labels d'intention seront introduits dans le TP3 de classification ; ne pas chercher ces champs dans le TP1. Dans l'atelier, on décrit les limites avant d'afficher les scores. Une table de deux ambiguïtés précises vaut davantage que l'affirmation générale « les données sont propres ».
 
 
 
 - https://huggingface.co/learn/llm-course/fr/chapter5/1
 
-## 8. Une fuite de données peut fabriquer un bon score
+## 16. Une fuite de données peut fabriquer un bon score
 
 Jour 1 · matin · 10 min
 
@@ -83,17 +256,17 @@ DÉROULÉ : 3 min de démonstration sur six cartes, 4 min de répartition en bin
 
 - https://scikit-learn.org/stable/common_pitfalls.html#data-leakage
 
-## 9. Sac de mots : compter avant de comprendre
+## 17. Sac de mots : compter avant de comprendre
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 3 min de lecture de matrice, 4 min de construction d'une nouvelle ligne, 3 min de discussion. Expliquer que les colonnes forment un vocabulaire choisi ; les mots absents de cette petite table sont ignorés pour l'exemple. Demander le vecteur de « retard de facture » : [0, 1, 1]. Puis comparer « le client accuse le vendeur » et « le vendeur accuse le client » : les comptes unigrammes coïncident malgré une relation inversée. QUESTION : cette limite rend-elle la méthode inutile ? RÉPONSE : non ; de nombreuses intentions possèdent des indices lexicaux très discriminants et la baseline est rapide à auditer. Introduire brièvement les bigrammes, qui conservent un ordre local comme « pas reçu », sans donner une compréhension générale de la phrase. Mentionner que la matrice est creuse : la plupart des cases valent zéro. Dans le TP, afficher les termes les plus associés à chaque classe et chercher les raccourcis. L'interprétabilité d'un poids aide à diagnostiquer, mais elle ne prouve pas une causalité linguistique. COMPLÉMENT À EXPLICITER : Simple, interprétable, mais l'ordre des mots disparaît.
+DÉROULÉ : 1 min de lecture de matrice, 2 min de construction d'une nouvelle ligne, 2 min de discussion. Expliquer que les colonnes forment un vocabulaire choisi ; les mots absents de cette petite table sont ignorés pour l'exemple. Demander le vecteur de « retard de facture » : [0, 1, 1]. Puis comparer « le client accuse le vendeur » et « le vendeur accuse le client » : les comptes unigrammes coïncident malgré une relation inversée. QUESTION : cette limite rend-elle la méthode inutile ? RÉPONSE : non ; de nombreuses intentions possèdent des indices lexicaux très discriminants et la baseline est rapide à auditer. Introduire brièvement les bigrammes, qui conservent un ordre local comme « pas reçu », sans donner une compréhension générale de la phrase. Mentionner que la matrice est creuse : la plupart des cases valent zéro. Dans le TP, afficher les termes dominants des fiches et les mots partagés avec la requête pour expliquer le classement. L'interprétabilité d'un poids aide à diagnostiquer, mais elle ne prouve pas une causalité linguistique. COMPLÉMENT À EXPLICITER : Simple, interprétable, mais l'ordre des mots disparaît.
 
 
 
 - https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction
 
-## 10. TF-IDF : un terme rare peut mieux distinguer
+## 18. TF-IDF : un terme rare peut mieux distinguer
 
 Jour 1 · matin · 10 min
 
@@ -140,47 +313,47 @@ N = 4, df = 1, tf = 2 : w = 2 × ln(4) ≈ 2,773 avec la formule simplifiée.
 
 - https://scikit-learn.org/stable/modules/feature_extraction.html#tfidf-term-weighting
 
-## 11. Une baseline de recherche tient dans une chaîne claire
+## 19. Une baseline de recherche tient dans une chaîne claire
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 3 min d'explication, 4 min de prédiction de comportement, 3 min de discussion. La requête et chaque fiche deviennent des vecteurs TF-IDF dans le même vocabulaire. Le cosinus fournit un score par fiche ; on classe ces scores. Dans notre TP, chaque requête possède une seule fiche attendue. Recall@3 vaut un si cette fiche est parmi les trois premières ; le rang réciproque vaut un divisé par son rang, et MRR moyenne ces valeurs. QUESTION : faut-il remplacer la baseline dès qu'un Transformer est disponible ? RÉPONSE : on le décide en comparant pertinence, coût et erreurs sur les mêmes requêtes. Une référence exacte peut favoriser le lexical, tandis qu'une paraphrase peut favoriser un embedding. Faire anticiper une requête sans aucun terme connu : ses scores peuvent être tous nuls, et l'ordre de départage devient déterminant. Dans le TP, on compare unigrammes et bigrammes sur validation, puis on fige le choix avant test. La régression logistique sera ajoutée au jour 3 pour transformer une représentation lexicale en classifieur à cinq intentions.
+DÉROULÉ : 1 min d'explication, 2 min de prédiction de comportement, 2 min de discussion. La requête et chaque fiche deviennent des vecteurs TF-IDF dans le même vocabulaire. Le cosinus fournit un score par fiche ; on classe ces scores. Dans notre TP, chaque requête possède une seule fiche attendue. Recall@3 vaut un si cette fiche est parmi les trois premières ; le rang réciproque vaut un divisé par son rang, et MRR moyenne ces valeurs. QUESTION : faut-il remplacer la baseline dès qu'un Transformer est disponible ? RÉPONSE : on le décide en comparant pertinence, coût et erreurs sur les mêmes requêtes. Une référence exacte peut favoriser le lexical, tandis qu'une paraphrase peut favoriser un embedding. Faire anticiper une requête sans aucun terme connu : ses scores peuvent être tous nuls, et l'ordre de départage devient déterminant. Dans le TP, on compare unigrammes et bigrammes sur validation, puis on fige le choix avant test. La régression logistique sera ajoutée au jour 3 pour transformer une représentation lexicale en classifieur à cinq intentions.
 
 
 
 - https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction
 
-## 12. Lire une confusion au lieu d'admirer un pourcentage
+## 20. Lire une confusion au lieu d'admirer un pourcentage
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 3 min de lecture, 4 min de calcul, 3 min d'interprétation. Insister sur l'orientation de la matrice : les lignes correspondent aux labels réels et les colonnes aux prédictions. Il y a dix messages de chaque classe. La diagonale contient 8 + 9 = 17 décisions correctes. Pour livraison, la précision vaut 8/9, environ 0,89, car neuf messages ont été prédits livraison ; le rappel vaut 8/10 = 0,80. Faire calculer les mêmes quantités pour facturation puis demander lequel des deux systèmes serait préférable si les erreurs avaient des coûts différents. QUESTION : un score de 85 % suffit-il pour déployer ? RÉPONSE : non, il manque la taille et la représentativité du test, le coût des erreurs et le comportement hors distribution. Les nombres affichés sont inventés pour le calcul, pas obtenus par nos notebooks. Ce calcul prépare la classification du jour 3 ; le TP1 de recherche utilise Recall@k et MRR plutôt qu’une matrice de confusion. Au TP3, vérifier les totaux et relier chaque cellule non diagonale à des textes concrets. Le jour 3 introduira le macro-F1 pour les cinq classes. COMPLÉMENT À EXPLICITER : Les 3 erreurs méritent une lecture ligne par ligne.
+DÉROULÉ : 1 min de lecture, 2 min de calcul, 2 min d'interprétation. Insister sur l'orientation de la matrice : les lignes correspondent aux labels réels et les colonnes aux prédictions. Il y a dix messages de chaque classe. La diagonale contient 8 + 9 = 17 décisions correctes. Pour livraison, la précision vaut 8/9, environ 0,89, car neuf messages ont été prédits livraison ; le rappel vaut 8/10 = 0,80. Faire calculer les mêmes quantités pour facturation puis demander lequel des deux systèmes serait préférable si les erreurs avaient des coûts différents. QUESTION : un score de 85 % suffit-il pour déployer ? RÉPONSE : non, il manque la taille et la représentativité du test, le coût des erreurs et le comportement hors distribution. Les nombres affichés sont inventés pour le calcul, pas obtenus par nos notebooks. Ce calcul prépare la classification du jour 3 ; le TP1 de recherche utilise Recall@k et MRR plutôt qu’une matrice de confusion. Au TP3, vérifier les totaux et relier chaque cellule non diagonale à des textes concrets. Le jour 3 introduira le macro-F1 pour les cinq classes. COMPLÉMENT À EXPLICITER : Les 3 erreurs méritent une lecture ligne par ligne.
 
 
 
 - https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics
 
-## 13. Tokeniser : choisir les unités lues par le modèle
+## 21. Tokeniser : choisir les unités lues par le modèle
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 4 min d'explication, 3 min de proposition de découpages, 3 min de comparaison. L'exemple de sous-mots est illustratif : ne pas annoncer que tous les tokenizers découpent remboursement ainsi. Le découpage exact se mesure avec le tokenizer choisi. Introduire un token comme une unité du vocabulaire et un identifiant comme son indice numérique. QUESTION : un token est-il toujours un mot ? RÉPONSE : non ; il peut être un fragment, un signe ou une représentation liée aux octets. Faire comparer « l'abonnement », une adresse électronique et un emoji. Le nombre de caractères n'indique pas directement le nombre de tokens ; cette différence affecte longueur maximale, coût et troncature. Ne pas présenter les sous-mots comme des morphèmes garantis : leur découpage est souvent appris à partir de fréquences. Le TP affichera tokens, identifiants et reconstruction pour des phrases françaises. Pour l'adaptation d'un modèle existant, on garde son tokenizer ; entraîner un nouveau tokenizer constitue un exercice distinct, pas un remplacement compatible automatique.
+DÉROULÉ : 1 min d'explication, 2 min de proposition de découpages, 2 min de comparaison. L'exemple de sous-mots est illustratif : ne pas annoncer que tous les tokenizers découpent remboursement ainsi. Le découpage exact se mesure avec le tokenizer choisi. Introduire un token comme une unité du vocabulaire et un identifiant comme son indice numérique. QUESTION : un token est-il toujours un mot ? RÉPONSE : non ; il peut être un fragment, un signe ou une représentation liée aux octets. Faire comparer « l'abonnement », une adresse électronique et un emoji. Le nombre de caractères n'indique pas directement le nombre de tokens ; cette différence affecte longueur maximale, coût et troncature. Ne pas présenter les sous-mots comme des morphèmes garantis : leur découpage est souvent appris à partir de fréquences. Le TP affichera tokens, identifiants et reconstruction pour des phrases françaises. Pour l'adaptation d'un modèle existant, on garde son tokenizer ; entraîner un nouveau tokenizer constitue un exercice distinct, pas un remplacement compatible automatique.
 
 
 
 - https://huggingface.co/learn/llm-course/fr/chapter2/4
 
-## 14. Prétraiter le français sans effacer le sens
+## 22. Prétraiter le français sans effacer le sens
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 2 min pour lire les cas, 5 min en groupes, 3 min de restitution. Chaque groupe défend une transformation et nomme un cas où elle serait nuisible. Lowercasing peut aider une baseline lexicale en regroupant des variantes, mais supprimer l'information de casse utile à la NER. Retirer les accents peut réduire certaines variantes tout en fusionnant des mots différents. Supprimer systématiquement ponctuation, négation et emojis peut effacer des indices de sens. QUESTION : faut-il lemmatiser avant un Transformer ? RÉPONSE : généralement, on commence avec le texte attendu par son tokenizer et on ne transforme que pour une raison validée expérimentalement. L'anonymisation doit préserver la nature de l'information si la tâche en dépend : remplacer toutes les références par une chaîne identique peut rendre l'extraction artificiellement facile. Le corpus de formation est fictif ; les étudiants ne doivent pas ajouter leurs messages privés pour rendre la démonstration plus réaliste. Relier cette activité au TP : conserver le texte brut, produire une version transformée séparée et comparer les erreurs au lieu d'écraser la source.
+DÉROULÉ : 1 min pour lire les cas, 2 min en groupes, 2 min de restitution. Chaque groupe défend une transformation et nomme un cas où elle serait nuisible. Lowercasing peut aider une baseline lexicale en regroupant des variantes, mais supprimer l'information de casse utile à la NER. Retirer les accents peut réduire certaines variantes tout en fusionnant des mots différents. Supprimer systématiquement ponctuation, négation et emojis peut effacer des indices de sens. QUESTION : faut-il lemmatiser avant un Transformer ? RÉPONSE : généralement, on commence avec le texte attendu par son tokenizer et on ne transforme que pour une raison validée expérimentalement. L'anonymisation doit préserver la nature de l'information si la tâche en dépend : remplacer toutes les références par une chaîne identique peut rendre l'extraction artificiellement facile. Le corpus de formation est fictif ; les étudiants ne doivent pas ajouter leurs messages privés pour rendre la démonstration plus réaliste. Relier cette activité au TP : conserver le texte brut, produire une version transformée séparée et comparer les erreurs au lieu d'écraser la source.
 
 
 
 - https://huggingface.co/learn/llm-course/fr/chapter6/4
 
-## 15. BPE à la main : fusionner les paires fréquentes
+## 23. BPE à la main : fusionner les paires fréquentes
 
 Jour 1 · matin · 10 min
 
@@ -190,17 +363,17 @@ DÉROULÉ : 3 min de calcul guidé, 4 min en binôme, 3 min de correction. Notre
 
 - https://huggingface.co/learn/llm-course/fr/chapter6/5
 
-## 16. Des tokens aux tenseurs : trois objets différents
+## 24. Des tokens aux tenseurs : trois objets différents
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 4 min de distinction des objets, 3 min d'appariement par binôme, 3 min de correction. Les identifiants affichés sont fictifs ; on ne peut pas déduire leur valeur sans lire le tokenizer. Un identifiant 5678 n'est pas plus proche sémantiquement de 5679 que de 4 : c'est une adresse dans une table, pas une mesure. Le modèle récupère ensuite un vecteur par adresse. La cinquième case vaut ici zéro comme identifiant de padding illustratif et reçoit un masque nul ; les deux vecteurs ont bien cinq positions. Le véritable identifiant de padding dépend du tokenizer. QUESTION : pourquoi grouper des phrases courtes et longues pose-t-il un problème ? RÉPONSE : un batch doit être représenté par un tenseur rectangulaire ; on ajoute du padding et on indique les positions valides. Demander aux étudiants de détecter volontairement une incompatibilité de longueur. Le jour 3 distinguera attention_mask et labels ignorés à -100 ; ils ne rendent pas le même service. Dans le TP, afficher les dimensions constitue un premier réflexe de diagnostic, avant toute recherche compliquée d'erreur.
+DÉROULÉ : 1 min de distinction des objets, 2 min d'appariement par binôme, 2 min de correction. Les identifiants affichés sont fictifs ; on ne peut pas déduire leur valeur sans lire le tokenizer. Un identifiant 5678 n'est pas plus proche sémantiquement de 5679 que de 4 : c'est une adresse dans une table, pas une mesure. Le modèle récupère ensuite un vecteur par adresse. La cinquième case vaut ici zéro comme identifiant de padding illustratif et reçoit un masque nul ; les deux vecteurs ont bien cinq positions. Le véritable identifiant de padding dépend du tokenizer. QUESTION : pourquoi grouper des phrases courtes et longues pose-t-il un problème ? RÉPONSE : un batch doit être représenté par un tenseur rectangulaire ; on ajoute du padding et on indique les positions valides. Demander aux étudiants de détecter volontairement une incompatibilité de longueur. Le jour 3 distinguera attention_mask et labels ignorés à -100 ; ils ne rendent pas le même service. Dans le TP, afficher les dimensions constitue un premier réflexe de diagnostic, avant toute recherche compliquée d'erreur.
 
 
 
 - https://huggingface.co/learn/llm-course/fr/chapter2/5
 
-## 17. Un embedding rapproche des usages similaires
+## 25. Un embedding rapproche des usages similaires
 
 Jour 1 · matin · 10 min
 
@@ -236,7 +409,7 @@ La qualité dépend de l'apprentissage et du domaine.
 
 - https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 
-## 18. Cosinus : comparer une direction plutôt qu'une taille
+## 26. Cosinus : comparer une direction plutôt qu'une taille
 
 Jour 1 · matin · 10 min
 
@@ -283,17 +456,17 @@ u = (1,0), v = (1,1) : produit = 1 ; normes = 1 et √2 ; cosinus ≈ 0,707.
 
 - https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html
 
-## 19. Une proximité sémantique peut cacher une contradiction
+## 27. Une proximité sémantique peut cacher une contradiction
 
-Jour 1 · matin · 10 min
+Jour 1 · matin · 5 min
 
-DÉROULÉ : 2 min de prédiction, 5 min de confrontation de cas, 3 min de synthèse. Demander si les deux phrases du titre devraient être éloignées. La réponse dépend de l'objectif : pour retrouver des échanges sur une livraison, la proximité thématique est utile ; pour décider qu'une livraison a eu lieu, elle est dangereuse. L'embedding ne doit donc pas être évalué hors de son usage. QUESTION : plus le vecteur est grand, meilleure est la représentation ? RÉPONSE : la dimension seule ne suffit pas ; l'objectif d'apprentissage, les données et l'évaluation comptent. Faire construire trois requêtes et leur document pertinent de référence avant de lancer la recherche. Une question hors domaine doit pouvoir conduire à « aucun résultat suffisamment fiable », mais le seuil n'est pas universel. Dans le TP, comparer lexical et sémantique sur le même ensemble de requêtes, avec une colonne expliquant la pertinence. Éviter de choisir après coup uniquement les phrases qui rendent le modèle impressionnant. Ces contre-exemples deviendront des tests de robustesse du projet.
+DÉROULÉ : 1 min de prédiction, 2 min de confrontation de cas, 2 min de synthèse. Demander si les deux phrases du titre devraient être éloignées. La réponse dépend de l'objectif : pour retrouver des échanges sur une livraison, la proximité thématique est utile ; pour décider qu'une livraison a eu lieu, elle est dangereuse. L'embedding ne doit donc pas être évalué hors de son usage. QUESTION : plus le vecteur est grand, meilleure est la représentation ? RÉPONSE : la dimension seule ne suffit pas ; l'objectif d'apprentissage, les données et l'évaluation comptent. Faire construire trois requêtes et leur document pertinent de référence avant de lancer la recherche. Une question hors domaine doit pouvoir conduire à « aucun résultat suffisamment fiable », mais le seuil n'est pas universel. Dans le TP, comparer lexical et sémantique sur le même ensemble de requêtes, avec une colonne expliquant la pertinence. Éviter de choisir après coup uniquement les phrases qui rendent le modèle impressionnant. Ces contre-exemples deviendront des tests de robustesse du projet.
 
 
 
 - https://www.sbert.net/examples/sentence_transformer/applications/semantic-search/README.html
 
-## 20. Choisir une représentation avec une expérience
+## 28. Choisir une représentation avec une expérience
 
 Jour 1 · matin · 10 min
 
@@ -303,17 +476,17 @@ DÉROULÉ : 3 min pour lire les hypothèses, 4 min pour proposer un protocole, 3
 
 - https://www.sbert.net/examples/sentence_transformer/applications/semantic-search/README.html
 
-## 21. Vérifier les acquis avant le TP
+## 29. Vérifier les acquis avant le TP
 
-Jour 1 · matin · 15 min
+Jour 1 · matin · 20 min
 
-DÉROULÉ : 4 min de réponses individuelles, 5 min de confrontation en binôme, 6 min de correction. Réponse 1 : éviter qu'une quasi-copie du scénario d'entraînement se retrouve dans le test et donne une estimation trop optimiste. Réponse 2 : non, l'unité dépend du tokenizer et peut être un sous-mot, un caractère, un signe ou un fragment lié aux octets. Réponse 3 : non, la similarité géométrique n'est pas une probabilité de vérité. Réponse 4 : une requête contenant une référence exacte ou un terme métier rare peut favoriser le lexical ; il faut le vérifier. Demander aux étudiants de justifier chaque réponse avec un exemple du matin. Si plus d'un tiers confond identifiant et embedding, reprendre les trois objets de la diapositive correspondante pendant la correction. Terminer par une prédiction écrite : quelle méthode gagnera sur les requêtes de leur binôme ? Elle sera confrontée aux résultats l'après-midi. Le quiz est formatif et sert à décider de l'accompagnement, pas à établir un classement des étudiants.
-
-
+DÉROULÉ : 5 min de réponses individuelles, 7 min de confrontation en binôme, 8 min de correction. Réponse 1 : éviter qu'une quasi-copie du scénario d'entraînement se retrouve dans le test et donne une estimation trop optimiste. Réponse 2 : non, l'unité dépend du tokenizer et peut être un sous-mot, un caractère, un signe ou un fragment lié aux octets. Réponse 3 : non, la similarité géométrique n'est pas une probabilité de vérité. Réponse 4 : une requête contenant une référence exacte ou un terme métier rare peut favoriser le lexical ; il faut le vérifier. Demander aux étudiants de justifier chaque réponse avec un exemple du matin. Si plus d'un tiers confond identifiant et embedding, reprendre les trois objets de la diapositive correspondante pendant la correction. Terminer par une prédiction écrite : quelle méthode gagnera sur les requêtes de leur binôme ? Elle sera confrontée aux résultats l'après-midi. Le quiz est formatif et sert à décider de l'accompagnement, pas à établir un classement des étudiants.
 
 
 
-## 22. TP 1A · Auditer les fiches et les requêtes
+
+
+## 30. TP 1A · Auditer les fiches et les requêtes
 
 Jour 1 · apres-midi · 35 min
 
@@ -323,7 +496,7 @@ ORGANISATION : 10 min d'ouverture et de diagnostic d'environnement, 15 min d'exp
 
 
 
-## 23. TP 1B · Construire la recherche lexicale
+## 31. TP 1B · Construire la recherche lexicale
 
 Jour 1 · apres-midi · 50 min
 
@@ -333,7 +506,7 @@ ORGANISATION : 10 min de lecture de la chaîne, 15 min de recherche lexicale, 15
 
 
 
-## 24. TP 1C · Inspecter et entraîner un tokenizer
+## 32. TP 1C · Inspecter et entraîner un tokenizer
 
 Jour 1 · apres-midi · 40 min
 
@@ -343,7 +516,7 @@ ORGANISATION : 10 min d'inspection, 20 min de BPE et d'expériences, 10 min de c
 
 - https://huggingface.co/learn/llm-course/fr/chapter6/2
 
-## 25. TP 1D · Comparer, tester et expliquer la recherche
+## 33. TP 1D · Comparer, tester et expliquer la recherche
 
 Jour 1 · apres-midi · 115 min
 
@@ -353,7 +526,7 @@ ORGANISATION : 55 min pour les embeddings et leur comparaison, puis 60 min pour 
 
 - https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
 
-## 26. Jour 2 · Comprendre les Transformers
+## 34. Jour 2 · Comprendre les Transformers
 
 Jour 2 · matin · 5 min
 
@@ -363,7 +536,7 @@ DURÉE : 5 min. Faire restituer la différence entre token et embedding par deux
 
 - https://arxiv.org/abs/1706.03762
 
-## 27. Prédire la suite : une cible obtenue sans annotation manuelle
+## 35. Prédire la suite : une cible obtenue sans annotation manuelle
 
 Jour 2 · matin · 10 min
 
@@ -373,7 +546,7 @@ DÉROULÉ : 3 min de lecture du décalage, 4 min de construction d'un autre exem
 
 - https://huggingface.co/learn/llm-course/fr/chapter7/6
 
-## 28. Pourquoi permettre aux tokens de se consulter ?
+## 36. Pourquoi permettre aux tokens de se consulter ?
 
 Jour 2 · matin · 10 min
 
@@ -383,7 +556,7 @@ DÉROULÉ : 3 min d'exemple linguistique, 4 min de schéma au tableau, 3 min de 
 
 - https://arxiv.org/abs/1706.03762
 
-## 29. Q, K, V : demander, comparer, récupérer
+## 37. Q, K, V : demander, comparer, récupérer
 
 Jour 2 · matin · 10 min
 
@@ -417,7 +590,7 @@ Ces trois représentations proviennent de projections apprises.
 
 - https://huggingface.co/learn/llm-course/fr/chapter1/4
 
-## 30. Les dimensions racontent le calcul
+## 38. Les dimensions racontent le calcul
 
 Jour 2 · matin · 10 min
 
@@ -431,7 +604,7 @@ Lecture : comparer chaque requête aux clés, mettre à l’échelle, ajouter le
 
 - https://arxiv.org/abs/1706.03762
 
-## 31. Étape 1 · Calculer les scores de correspondance
+## 39. Étape 1 · Calculer les scores de correspondance
 
 Jour 2 · matin · 10 min
 
@@ -441,7 +614,7 @@ DÉROULÉ : 3 min de calcul guidé, 4 min avec une nouvelle requête, 3 min de c
 
 
 
-## 32. Étape 2 · Mise à l'échelle et softmax
+## 40. Étape 2 · Mise à l'échelle et softmax
 
 Jour 2 · matin · 10 min
 
@@ -489,7 +662,7 @@ Scores [1 ; 0 ; 1], dₖ = 2 → poids ≈ [0,401 ; 0,198 ; 0,401] ; somme = 1.
 
 - https://arxiv.org/abs/1706.03762
 
-## 33. Étape 3 · Mélanger les valeurs
+## 41. Étape 3 · Mélanger les valeurs
 
 Jour 2 · matin · 10 min
 
@@ -534,7 +707,7 @@ o : vecteur de sortie, dimension 2
 
 
 
-## 34. Le masque causal empêche de lire la réponse future
+## 42. Le masque causal empêche de lire la réponse future
 
 Jour 2 · matin · 10 min
 
@@ -572,7 +745,7 @@ arrive | visible | visible | visible
 
 - https://huggingface.co/learn/llm-course/fr/chapter1/6
 
-## 35. Plusieurs têtes : plusieurs comparaisons apprises
+## 43. Plusieurs têtes : plusieurs comparaisons apprises
 
 Jour 2 · matin · 10 min
 
@@ -608,7 +781,7 @@ Les têtes ne portent pas des rôles linguistiques garantis.
 
 - https://arxiv.org/abs/1706.03762
 
-## 36. Un bloc ne se limite pas à l'attention
+## 44. Un bloc ne se limite pas à l'attention
 
 Jour 2 · matin · 10 min
 
@@ -647,7 +820,7 @@ La normalisation contrôle l'échelle des représentations.
 - https://arxiv.org/abs/1607.06450
 - https://arxiv.org/abs/1512.03385
 
-## 37. Sans information de position, l'ordre manque
+## 45. Sans information de position, l'ordre manque
 
 Jour 2 · matin · 10 min
 
@@ -657,7 +830,7 @@ DÉROULÉ : 3 min d'exemple, 4 min de discussion en binôme, 3 min de correction
 
 - https://arxiv.org/abs/2104.09864
 
-## 38. Encodeur, décodeur, encodeur-décodeur
+## 46. Encodeur, décodeur, encodeur-décodeur
 
 Jour 2 · matin · 10 min
 
@@ -696,7 +869,7 @@ Encodeur-décodeur | Entrée + préfixe de sortie | Traduction, résumé
 - https://huggingface.co/learn/llm-course/fr/chapter1/5
 - https://huggingface.co/learn/llm-course/fr/chapter1/7
 
-## 39. Préentraînement et adaptation ne répondent pas à la même question
+## 47. Préentraînement et adaptation ne répondent pas à la même question
 
 Jour 2 · matin · 10 min
 
@@ -707,7 +880,7 @@ DÉROULÉ : 3 min de comparaison des objectifs, 4 min d'appariement exemple-obje
 - https://huggingface.co/learn/llm-course/fr/chapter1/10
 - https://arxiv.org/abs/1810.04805
 
-## 40. Décomposer pipeline() pour savoir ce qui se passe
+## 48. Décomposer pipeline() pour savoir ce qui se passe
 
 Jour 2 · matin · 10 min
 
@@ -745,7 +918,7 @@ Comparer une phrase normale et une phrase piège.
 
 - https://huggingface.co/learn/llm-course/fr/chapter2/2
 
-## 41. Décoder : choisir parmi plusieurs suites possibles
+## 49. Décoder : choisir parmi plusieurs suites possibles
 
 Jour 2 · matin · 10 min
 
@@ -755,7 +928,7 @@ DÉROULÉ : 4 min d'explication, 3 min de calcul de noyau, 3 min de critique. Do
 
 - https://huggingface.co/docs/transformers/main_classes/text_generation
 
-## 42. Observer une génération avec un protocole
+## 50. Observer une génération avec un protocole
 
 Jour 2 · matin · 10 min
 
@@ -766,7 +939,7 @@ DÉROULÉ : 3 min de conception, 4 min en binôme, 3 min de discussion. Proposer
 - https://huggingface.co/docs/transformers/chat_templating
 - https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct
 
-## 43. Pouvez-vous expliquer l'attention sans le schéma ?
+## 51. Pouvez-vous expliquer l'attention sans le schéma ?
 
 Jour 2 · matin · 15 min
 
@@ -776,7 +949,7 @@ DÉROULÉ : 4 min individuelles, 5 min d'explication entre pairs, 6 min de corre
 
 
 
-## 44. TP 2A · Refaire QKᵀ, softmax et AV
+## 52. TP 2A · Refaire QKᵀ, softmax et AV
 
 Jour 2 · apres-midi · 60 min
 
@@ -786,7 +959,7 @@ ORGANISATION : 10 min de reprise des nombres, 20 min de construction du calcul, 
 
 
 
-## 45. TP 2B · Rendre le futur inaccessible
+## 53. TP 2B · Rendre le futur inaccessible
 
 Jour 2 · apres-midi · 60 min
 
@@ -796,7 +969,7 @@ ORGANISATION : 15 min sur le masque, 15 min sur le padding, 15 min sur les tête
 
 
 
-## 46. TP 2C · Observer un encodeur préentraîné
+## 54. TP 2C · Observer un encodeur préentraîné
 
 Jour 2 · apres-midi · 60 min
 
@@ -806,7 +979,7 @@ ORGANISATION : 10 min de lecture de la model card, 15 min de chargement et forme
 
 - https://huggingface.co/distilbert/distilbert-base-multilingual-cased
 
-## 47. TP 2D · Comparer les stratégies de génération
+## 55. TP 2D · Comparer les stratégies de génération
 
 Jour 2 · apres-midi · 60 min
 
@@ -816,7 +989,7 @@ ORGANISATION : 10 min de préparation, 20 min de générations contrôlées, 15 
 
 - https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct
 
-## 48. Jour 3 · Adapter un modèle à une tâche
+## 56. Jour 3 · Adapter un modèle à une tâche
 
 Jour 3 · matin · 5 min
 
@@ -826,7 +999,7 @@ DURÉE : 5 min. Reprendre le résultat du jour 2 : un modèle préentraîné pos
 
 - https://huggingface.co/learn/llm-course/fr/chapter3/1
 
-## 49. Un encodeur et une tête répondent à notre question
+## 57. Un encodeur et une tête répondent à notre question
 
 Jour 3 · matin · 10 min
 
@@ -862,7 +1035,7 @@ Le fine-tuning peut mettre à jour l'encodeur et la tête.
 
 - https://huggingface.co/docs/transformers/tasks/sequence_classification
 
-## 50. La loss pénalise la probabilité donnée à la bonne réponse
+## 58. La loss pénalise la probabilité donnée à la bonne réponse
 
 Jour 3 · matin · 10 min
 
@@ -908,7 +1081,7 @@ pᵧ = 0,8 → L ≈ 0,223 ; pᵧ = 0,2 → L ≈ 1,609 : moins croire la vraie 
 
 - https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
 
-## 51. Une étape d'apprentissage en cinq actions
+## 59. Une étape d'apprentissage en cinq actions
 
 Jour 3 · matin · 10 min
 
@@ -918,7 +1091,7 @@ DÉROULÉ : 4 min pour suivre une étape, 3 min d'ordonnancement de cartes, 3 mi
 
 - https://huggingface.co/learn/llm-course/fr/chapter3/4
 
-## 52. Padding dynamique : payer pour le batch réel
+## 60. Padding dynamique : payer pour le batch réel
 
 Jour 3 · matin · 10 min
 
@@ -928,7 +1101,7 @@ DÉROULÉ : 4 min de calcul, 3 min de comparaison en binôme, 3 min de correctio
 
 - https://huggingface.co/learn/llm-course/fr/chapter3/2
 
-## 53. Batch, pas et époque : ne pas mélanger les compteurs
+## 61. Batch, pas et époque : ne pas mélanger les compteurs
 
 Jour 3 · matin · 10 min
 
@@ -974,7 +1147,7 @@ B_eff : exemples par mise à jour complète
 
 - https://huggingface.co/docs/transformers/main_classes/trainer
 
-## 54. Choisir le modèle sur validation, conclure sur test
+## 62. Choisir le modèle sur validation, conclure sur test
 
 Jour 3 · matin · 10 min
 
@@ -984,7 +1157,7 @@ DÉROULÉ : 3 min de rappel, 4 min de scénario de sélection, 3 min de correcti
 
 - https://scikit-learn.org/stable/modules/cross_validation.html
 
-## 55. Macro-F1 : donner une voix à chaque classe
+## 63. Macro-F1 : donner une voix à chaque classe
 
 Jour 3 · matin · 10 min
 
@@ -1032,7 +1205,7 @@ TP = 4, FP = 1, FN = 4 → P = 0,8 ; R = 0,5 ; F₁ ≈ 0,615. Deux F₁ de 0,9 
 
 - https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html
 
-## 56. Diagnostiquer avant de multiplier les époques
+## 64. Diagnostiquer avant de multiplier les époques
 
 Jour 3 · matin · 10 min
 
@@ -1042,7 +1215,7 @@ DÉROULÉ : 3 min de lecture, 4 min de diagnostic en binôme, 3 min de correctio
 
 - https://huggingface.co/learn/llm-course/fr/chapter8/4
 
-## 57. NER : retrouver des segments et leur type
+## 65. NER : retrouver des segments et leur type
 
 Jour 3 · matin · 10 min
 
@@ -1052,7 +1225,7 @@ DÉROULÉ : 4 min d'annotation, 3 min de nouvel exemple, 3 min de correction. Le
 
 - https://huggingface.co/learn/llm-course/fr/chapter7/2
 
-## 58. Un mot annoté peut devenir plusieurs sous-tokens
+## 66. Un mot annoté peut devenir plusieurs sous-tokens
 
 Jour 3 · matin · 10 min
 
@@ -1092,7 +1265,7 @@ Du | 1 | I-PER
 
 - https://huggingface.co/docs/transformers/tasks/token_classification
 
-## 59. Deux masques, deux questions différentes
+## 67. Deux masques, deux questions différentes
 
 Jour 3 · matin · 10 min
 
@@ -1103,7 +1276,7 @@ DÉROULÉ : 4 min de distinction, 3 min de cas à classer, 3 min de correction. 
 - https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html
 - https://huggingface.co/docs/transformers/main_classes/data_collator
 
-## 60. Des logits aux entités : ne pas perdre l'alignement
+## 68. Des logits aux entités : ne pas perdre l'alignement
 
 Jour 3 · matin · 10 min
 
@@ -1113,7 +1286,7 @@ DÉROULÉ : 4 min de suivi d'un exemple, 3 min de reconstruction en binôme, 3 m
 
 - https://huggingface.co/docs/transformers/tasks/token_classification
 
-## 61. En NER, la frontière fait partie de la réponse
+## 69. En NER, la frontière fait partie de la réponse
 
 Jour 3 · matin · 10 min
 
@@ -1123,7 +1296,7 @@ DÉROULÉ : 4 min de jugement manuel, 3 min de calcul, 3 min de correction. Sur 
 
 - https://github.com/chakki-works/seqeval
 
-## 62. Une convention d'annotation vaut mieux qu'un débat sans règle
+## 70. Une convention d'annotation vaut mieux qu'un débat sans règle
 
 Jour 3 · matin · 10 min
 
@@ -1133,7 +1306,7 @@ DÉROULÉ : 2 min d'annotation individuelle, 5 min de comparaison, 3 min de réd
 
 
 
-## 63. Comparer un Transformer à la baseline équitablement
+## 71. Comparer un Transformer à la baseline équitablement
 
 Jour 3 · matin · 10 min
 
@@ -1143,7 +1316,7 @@ DÉROULÉ : 3 min de lecture, 4 min de conception d'une table, 3 min de discussi
 
 
 
-## 64. Sauvegarder pour recharger, pas seulement pour archiver
+## 72. Sauvegarder pour recharger, pas seulement pour archiver
 
 Jour 3 · matin · 10 min
 
@@ -1153,7 +1326,7 @@ DÉROULÉ : 3 min de scénario de perte de session, 4 min de checklist concrète
 
 - https://huggingface.co/learn/llm-course/fr/chapter4/3
 
-## 65. Du batch à la métrique : retrouver les responsabilités
+## 73. Du batch à la métrique : retrouver les responsabilités
 
 Jour 3 · matin · 15 min
 
@@ -1163,7 +1336,7 @@ DÉROULÉ : 4 min de réponses, 5 min de confrontation, 6 min de correction. Ré
 
 
 
-## 66. TP 3A · Préparer et entraîner le classifieur
+## 74. TP 3A · Préparer et entraîner le classifieur
 
 Jour 3 · apres-midi · 70 min
 
@@ -1173,7 +1346,7 @@ ORGANISATION : 15 min de préparation des groupes et de la baseline, 15 min de v
 
 
 
-## 67. TP 3B · Comparer puis transférer à des critiques réelles
+## 75. TP 3B · Comparer puis transférer à des critiques réelles
 
 Jour 3 · apres-midi · 70 min
 
@@ -1183,7 +1356,7 @@ ORGANISATION : 30 min pour terminer les 100 minutes du parcours support, puis 40
 
 - https://huggingface.co/datasets/tblard/allocine
 
-## 68. TP 3C · Aligner les mots, les sous-tokens et les labels
+## 76. TP 3C · Aligner les mots, les sous-tokens et les labels
 
 Jour 3 · apres-midi · 50 min
 
@@ -1193,7 +1366,7 @@ ORGANISATION : 10 min de lecture du schéma, 20 min d'alignement, 10 min de cas 
 
 
 
-## 69. TP 3D · Mesurer des entités complètes
+## 77. TP 3D · Mesurer des entités complètes
 
 Jour 3 · apres-midi · 50 min
 
@@ -1203,7 +1376,7 @@ ORGANISATION : 20 min d'entraînement court et de calcul manuel, 15 min d'évalu
 
 - https://github.com/chakki-works/seqeval
 
-## 70. Jour 4 · Adapter un petit LLM efficacement
+## 78. Jour 4 · Adapter un petit LLM efficacement
 
 Jour 4 · matin · 5 min
 
@@ -1213,7 +1386,7 @@ DURÉE : 5 min. Revenir au vocabulaire : préentraînement apprend de nombreuses
 
 - https://huggingface.co/learn/llm-course/en/chapter11/1
 
-## 71. Prompt, RAG ou fine-tuning : quel problème résoudre ?
+## 79. Prompt, RAG ou fine-tuning : quel problème résoudre ?
 
 Jour 4 · matin · 10 min
 
@@ -1224,7 +1397,7 @@ DÉROULÉ : 3 min de comparaison, 4 min de choix sur cas, 3 min de discussion. D
 - https://arxiv.org/abs/2005.11401
 - https://huggingface.co/learn/llm-course/en/chapter11/1
 
-## 72. SFT : montrer les réponses que l'on souhaite obtenir
+## 80. SFT : montrer les réponses que l'on souhaite obtenir
 
 Jour 4 · matin · 10 min
 
@@ -1234,7 +1407,7 @@ DÉROULÉ : 4 min de définition, 3 min de construction d'un exemple, 3 min de c
 
 - https://huggingface.co/learn/llm-course/en/chapter11/2
 
-## 73. Une bonne démonstration enseigne aussi les limites
+## 81. Une bonne démonstration enseigne aussi les limites
 
 Jour 4 · matin · 10 min
 
@@ -1244,7 +1417,7 @@ DÉROULÉ : 2 min de lecture, 5 min de rédaction en binôme, 3 min de comparais
 
 
 
-## 74. Curater : garder des exemples utiles et traçables
+## 82. Curater : garder des exemples utiles et traçables
 
 Jour 4 · matin · 10 min
 
@@ -1254,7 +1427,7 @@ DÉROULÉ : 3 min de méthode, 4 min d'audit de quatre paires, 3 min de décisio
 
 - https://huggingface.co/learn/llm-course/en/chapter10/1
 
-## 75. Le chat template transforme les rôles en tokens
+## 83. Le chat template transforme les rôles en tokens
 
 Jour 4 · matin · 10 min
 
@@ -1292,7 +1465,7 @@ Inspecter le texte rendu et les tokens spéciaux.
 
 - https://huggingface.co/docs/transformers/chat_templating
 
-## 76. Superviser la réponse, garder la question dans le contexte
+## 84. Superviser la réponse, garder la question dans le contexte
 
 Jour 4 · matin · 10 min
 
@@ -1332,7 +1505,7 @@ Padding | Non comme contexte utile | Non
 
 - https://huggingface.co/docs/trl/sft_trainer
 
-## 77. Le décalage causal ne doit se produire qu'une fois
+## 85. Le décalage causal ne doit se produire qu'une fois
 
 Jour 4 · matin · 10 min
 
@@ -1371,7 +1544,7 @@ Une loss basse peut cacher une mauvaise préparation des labels.
 - https://huggingface.co/learn/llm-course/fr/chapter7/6
 - https://huggingface.co/docs/trl/sft_trainer
 
-## 78. LoRA : apprendre une petite correction de matrice
+## 86. LoRA : apprendre une petite correction de matrice
 
 Jour 4 · matin · 10 min
 
@@ -1431,7 +1604,7 @@ W₀ = I, x = (2 ; 1), A = [1, −1], B = (0,5 ; 1), α/r = 1 → y = (2,5 ; 2).
 
 - https://arxiv.org/abs/2106.09685
 
-## 79. LoRA : combien de paramètres apprend-on ?
+## 87. LoRA : combien de paramètres apprend-on ?
 
 Jour 4 · matin · 10 min
 
@@ -1480,7 +1653,7 @@ N_LoRA : paramètres entraînables de A et B
 - https://arxiv.org/abs/2106.09685
 - https://huggingface.co/docs/peft/package_reference/lora
 
-## 80. QLoRA : quantifier la base, entraîner les adaptateurs
+## 88. QLoRA : quantifier la base, entraîner les adaptateurs
 
 Jour 4 · matin · 10 min
 
@@ -1518,7 +1691,7 @@ Préparer le modèle quantifié avant d'ajouter et entraîner LoRA.
 - https://huggingface.co/docs/peft/developer_guides/quantization
 - https://huggingface.co/docs/transformers/quantization/bitsandbytes
 
-## 81. La mémoire des poids n'est pas la mémoire totale
+## 89. La mémoire des poids n'est pas la mémoire totale
 
 Jour 4 · matin · 10 min
 
@@ -1565,7 +1738,7 @@ M_buffers : mémoire de travail et autres tampons
 
 - https://huggingface.co/docs/transformers/perf_train_gpu_one
 
-## 82. Quatre leviers à régler avec une raison
+## 90. Quatre leviers à régler avec une raison
 
 Jour 4 · matin · 10 min
 
@@ -1575,7 +1748,7 @@ DÉROULÉ : 3 min de présentation, 4 min de résolution d'un scénario, 3 min d
 
 - https://huggingface.co/docs/transformers/perf_train_gpu_one
 
-## 83. Après l'entraînement : base + adaptateur + tokenizer
+## 91. Après l'entraînement : base + adaptateur + tokenizer
 
 Jour 4 · matin · 10 min
 
@@ -1585,7 +1758,7 @@ DÉROULÉ : 3 min de schéma de fichiers, 4 min de protocole de comparaison, 3 m
 
 - https://huggingface.co/docs/peft/developer_guides/checkpoint
 
-## 84. Résumer : conserver les faits utiles sous une contrainte
+## 92. Résumer : conserver les faits utiles sous une contrainte
 
 Jour 4 · matin · 10 min
 
@@ -1621,7 +1794,7 @@ Fixer longueur et destinataire avant d'évaluer.
 
 - https://huggingface.co/learn/llm-course/fr/chapter7/5
 
-## 85. ROUGE mesure un recouvrement, pas la vérité
+## 93. ROUGE mesure un recouvrement, pas la vérité
 
 Jour 4 · matin · 10 min
 
@@ -1631,7 +1804,7 @@ DÉROULÉ : 3 min d'intuition, 4 min de contre-exemples, 3 min de conclusion. Co
 
 - https://aclanthology.org/W04-1013/
 
-## 86. Relier chaque affirmation à une preuve dans la source
+## 94. Relier chaque affirmation à une preuve dans la source
 
 Jour 4 · matin · 10 min
 
@@ -1641,7 +1814,7 @@ DÉROULÉ : 4 min de classement d'affirmations, 3 min d'accord inter-évaluateur
 
 
 
-## 87. Vérifier ce qui est réellement entraîné et évalué
+## 95. Vérifier ce qui est réellement entraîné et évalué
 
 Jour 4 · matin · 15 min
 
@@ -1651,7 +1824,7 @@ DÉROULÉ : 4 min individuelles, 5 min entre pairs, 6 min de correction. Répons
 
 
 
-## 88. TP 4A · Préparer les démonstrations et la supervision
+## 96. TP 4A · Préparer les démonstrations et la supervision
 
 Jour 4 · apres-midi · 80 min
 
@@ -1661,7 +1834,7 @@ ORGANISATION : 15 min d'environnement T4, 20 min d'audit des données, 20 min de
 
 
 
-## 89. TP 4B · Entraîner un adaptateur et mesurer l'effet
+## 97. TP 4B · Entraîner un adaptateur et mesurer l'effet
 
 Jour 4 · apres-midi · 80 min
 
@@ -1671,7 +1844,7 @@ ORGANISATION : 15 min de configuration, 25 min d'entraînement et d'exercices pa
 
 
 
-## 90. TP 4C · Fine-tuner un LoRA dédié au résumé
+## 98. TP 4C · Fine-tuner un LoRA dédié au résumé
 
 Jour 4 · apres-midi · 40 min
 
@@ -1681,7 +1854,7 @@ ORGANISATION : 5 min d'environnement, 10 min d'audit des données et de la super
 
 
 
-## 91. TP 4D · Comparer extractif, base et résumé adapté
+## 99. TP 4D · Comparer extractif, base et résumé adapté
 
 Jour 4 · apres-midi · 40 min
 
@@ -1691,7 +1864,7 @@ ORGANISATION : 15 min de sorties comparatives, 15 min de métriques et audit cro
 
 - https://aclanthology.org/W04-1013/
 
-## 92. Jour 5 · Évaluer, présenter et défendre un système
+## 100. Jour 5 · Évaluer, présenter et défendre un système
 
 Jour 5 · matin · 5 min
 
@@ -1701,7 +1874,7 @@ DURÉE : 5 min. Demander un exemple de différence entre « le code fonctionne �
 
 - https://web.stanford.edu/class/cs224n/
 
-## 93. Avant le score, écrire le contrat d'évaluation
+## 101. Avant le score, écrire le contrat d'évaluation
 
 Jour 5 · matin · 10 min
 
@@ -1711,7 +1884,7 @@ DÉROULÉ : 2 min de lecture, 5 min de contrat en binôme, 3 min de mise en comm
 
 
 
-## 94. Comparer qualité, coût et fiabilité d'exécution
+## 102. Comparer qualité, coût et fiabilité d'exécution
 
 Jour 5 · matin · 10 min
 
@@ -1721,7 +1894,7 @@ DÉROULÉ : 3 min de lecture, 4 min de scénario de choix, 3 min de discussion. 
 
 
 
-## 95. Une baseline zéro-shot exige aussi un protocole
+## 103. Une baseline zéro-shot exige aussi un protocole
 
 Jour 5 · matin · 10 min
 
@@ -1731,7 +1904,7 @@ DÉROULÉ : 4 min de construction du prompt, 3 min de cas de parsing, 3 min de c
 
 - https://huggingface.co/docs/transformers/chat_templating
 
-## 96. La métrique dépend de l'unité de réussite
+## 104. La métrique dépend de l'unité de réussite
 
 Jour 5 · matin · 10 min
 
@@ -1741,7 +1914,7 @@ DÉROULÉ : 3 min de rappel, 4 min d'appariement de mauvais scores, 3 min de cor
 
 - https://scikit-learn.org/stable/modules/model_evaluation.html
 
-## 97. Découper les résultats pour trouver les fragilités
+## 105. Découper les résultats pour trouver les fragilités
 
 Jour 5 · matin · 10 min
 
@@ -1751,7 +1924,7 @@ DÉROULÉ : 3 min de définition des tranches, 4 min de proposition par binôme,
 
 
 
-## 98. Un petit test produit un résultat incertain
+## 106. Un petit test produit un résultat incertain
 
 Jour 5 · matin · 10 min
 
@@ -1761,7 +1934,7 @@ DÉROULÉ : 4 min de calcul, 3 min de comparaison, 3 min de discussion. Si un sy
 
 
 
-## 99. Une grille humaine doit rendre les jugements comparables
+## 107. Une grille humaine doit rendre les jugements comparables
 
 Jour 5 · matin · 10 min
 
@@ -1771,7 +1944,7 @@ DÉROULÉ : 3 min de lecture, 4 min de notation indépendante, 3 min de discussi
 
 
 
-## 100. Un LLM juge peut aider, mais il faut aussi le contrôler
+## 108. Un LLM juge peut aider, mais il faut aussi le contrôler
 
 Jour 5 · matin · 10 min
 
@@ -1781,7 +1954,7 @@ DÉROULÉ : 4 min de principe, 3 min de conception d'un contrôle, 3 min de disc
 
 - https://arxiv.org/abs/2306.05685
 
-## 101. Analyser une erreur pour décider d'une action
+## 109. Analyser une erreur pour décider d'une action
 
 Jour 5 · matin · 10 min
 
@@ -1791,7 +1964,7 @@ DÉROULÉ : 3 min de lecture, 4 min sur une erreur réelle du binôme, 3 min de 
 
 
 
-## 102. Tester la robustesse avec des variations contrôlées
+## 110. Tester la robustesse avec des variations contrôlées
 
 Jour 5 · matin · 10 min
 
@@ -1801,7 +1974,7 @@ DÉROULÉ : 2 min de consigne, 5 min de création de paires, 3 min de mise en co
 
 
 
-## 103. Mesurer la latence dans des conditions compréhensibles
+## 111. Mesurer la latence dans des conditions compréhensibles
 
 Jour 5 · matin · 10 min
 
@@ -1811,7 +1984,7 @@ DÉROULÉ : 4 min de protocole, 3 min de repérage d'une mesure trompeuse, 3 min
 
 - https://pytorch.org/docs/stable/generated/torch.cuda.synchronize.html
 
-## 104. Une démo Gradio rend le comportement inspectable
+## 112. Une démo Gradio rend le comportement inspectable
 
 Jour 5 · matin · 10 min
 
@@ -1837,7 +2010,7 @@ REPÈRES DU CORPS DE DIAPOSITIVE À EXPLICITER
 
 - https://www.gradio.app/guides/quickstart
 
-## 105. Le livrable doit raconter comment le résultat a été obtenu
+## 113. Le livrable doit raconter comment le résultat a été obtenu
 
 Jour 5 · matin · 10 min
 
@@ -1848,7 +2021,7 @@ DÉROULÉ : 3 min de distinction des documents, 4 min de rédaction d'un paragra
 - https://huggingface.co/docs/hub/model-cards
 - https://huggingface.co/docs/hub/datasets-cards
 
-## 106. Publier sur le Hub : rendre l'artefact réutilisable
+## 114. Publier sur le Hub : rendre l'artefact réutilisable
 
 Jour 5 · matin · 10 min
 
@@ -1859,7 +2032,7 @@ DÉROULÉ : 3 min de chaîne de publication, 4 min d'audit de fichiers, 3 min de
 - https://huggingface.co/docs/hub/repositories-settings
 - https://huggingface.co/docs/hub/model-cards
 
-## 107. Mini-projet : une décision défendable en binôme
+## 115. Mini-projet : une décision défendable en binôme
 
 Jour 5 · matin · 10 min
 
@@ -1869,7 +2042,7 @@ DÉROULÉ : 3 min de présentation du barème, 4 min de choix du périmètre, 3 
 
 
 
-## 108. Soutenir : problème, preuve, décision, limite
+## 116. Soutenir : problème, preuve, décision, limite
 
 Jour 5 · matin · 10 min
 
@@ -1879,7 +2052,7 @@ DÉROULÉ : 2 min de présentation du format, 5 min de répétition en binôme, 
 
 
 
-## 109. Avant de conclure : que peut-on réellement affirmer ?
+## 117. Avant de conclure : que peut-on réellement affirmer ?
 
 Jour 5 · matin · 15 min
 
@@ -1889,7 +2062,7 @@ DÉROULÉ : 4 min de réponses, 5 min de discussion, 6 min de correction. Répon
 
 
 
-## 110. TP 5A · Verrouiller le protocole et lancer les références
+## 118. TP 5A · Verrouiller le protocole et lancer les références
 
 Jour 5 · apres-midi · 75 min
 
@@ -1899,7 +2072,7 @@ ORGANISATION : 15 min de contrat, 20 min de rechargement et audit des partitions
 
 
 
-## 111. TP 5B · Tester une amélioration et lire les erreurs
+## 119. TP 5B · Tester une amélioration et lire les erreurs
 
 Jour 5 · apres-midi · 75 min
 
@@ -1909,7 +2082,7 @@ ORGANISATION : 45 min de comparaison sur validation, incluant l'analyse et une �
 
 
 
-## 112. TP 5C · Préparer une démo et un livrable rechargeable
+## 120. TP 5C · Préparer une démo et un livrable rechargeable
 
 Jour 5 · apres-midi · 40 min
 
@@ -1919,7 +2092,7 @@ ORGANISATION : 20 min de démonstration, 20 min de model card et de recommandati
 
 
 
-## 113. TP 5D · Soutenances, revue croisée et bilan
+## 121. TP 5D · Soutenances, revue croisée et bilan
 
 Jour 5 · apres-midi · 50 min
 

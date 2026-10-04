@@ -144,7 +144,7 @@ for(let i=0;i<slides.length;i++){
       const formulaH=d.formula?65:0;
       const bullets=d.bullets||[];
       const remaining=579-top-formulaH;
-      const tableHeight=Math.min(remaining-(bullets.length?76:0),Math.max(150,vals.length*51));
+      const tableHeight=Math.min(remaining-(bullets.length?76:0),Math.max(150,vals.length*(d.table_row_height||51)));
       const table=slide.tables.add({rows:vals.length,columns:vals[0].length,left:82,top,width:1115,height:tableHeight,values:vals,columnTracks:vals[0].map(()=>({mode:'fr',value:1}))});
       const fs=vals[0].length>=4?20:22;
       table.cells.block({row:0,column:0,rowCount:vals.length,columnCount:vals[0].length}).assign({textStyle:{typeface:'DM Sans',fontSize:fs,color:COLORS.ink},margins:{left:12,right:12,top:9,bottom:9},anchor:'center'});
@@ -171,7 +171,7 @@ for(let i=0;i<slides.length;i++){
 for(const s of originals)s.delete();
 const candidate=path.join(build,'candidate.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
-const finalPath=path.join(out,process.env.NLP_DECK_NAME||'CYBERSUP-NLP-M2-35h-visuel.pptx');
+const finalPath=path.join(out,process.env.NLP_DECK_NAME||'CYBERSUP-NLP-M2-35h-introduction.pptx');
 const result=await finalizePresentation({workspaceDir:root,candidatePath:candidate,finalPath,pythonExecutable:python,
   integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),
   layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),

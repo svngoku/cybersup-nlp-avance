@@ -26,7 +26,9 @@ Au tableau, conserver trois colonnes : « hypothèse », « observation », « d
 
 Pendant un calcul, laisser une minute silencieuse avant l'échange. Pour les blocs de vingt minutes, viser douze minutes d'explication, cinq de travail actif et trois de correction. Si plus d'un tiers du groupe ne peut expliquer la sortie, reprendre un exemple plus petit avant d'introduire une nouvelle API. Les seuils servent l'animation, pas la notation.
 
-## Diagnostic d'entrée — 12 minutes incluses au J1
+## Questions de diagnostic — réparties dans les activités du J1
+
+Utiliser ces questions au fil de l'accueil, de l'introduction et des rappels concernés ; elles ne forment pas un créneau supplémentaire. Le diagnostic de deux minutes à la fin de l'introduction vérifie les familles de représentations ; le quiz de fin de matinée reprend les prérequis encore fragiles.
 
 | Question courte | Attendu | Si difficulté |
 |---|---|---|
@@ -40,6 +42,8 @@ Pendant un calcul, laisser une minute silencieuse avant l'échange. Pour les blo
 Les bases de machine learning et de deep learning ont été travaillées dans les cours voisins. Faire des rappels ciblés, sans répéter une semaine de théorie. Un niveau M2 justifie de lire les dimensions et les hypothèses ; il ne justifie pas de laisser une formule sans exemple.
 
 ## Jour 1 — Faire sentir la différence entre mot, token et vecteur
+
+**Démarrer par les repères, avant les formules.** Après cinq minutes d'accueil, les huit nouvelles diapositives occupent 45 minutes. Faire nommer les objets et lire les exemples avant de présenter les méthodes. Pour TF-IDF, distinguer les contributions de Luhn, Spärck Jones et Salton ; pour Word2Vec, lire CBOW puis Skip-gram ; pour GloVe/fastText, comparer l'information apprise ; pour ELMo/BERT, expliquer ce que le contexte change. Les [sources historiques](SOURCES_INTRO_NLP.md) précisent chercheurs, équipes et dates de prépublication/publication. Les dates situent les idées, elles ne constituent pas un objectif de mémorisation. Les notes de chaque diapositive donnent un déroulé, une question, une réponse et une remédiation.
 
 Commencer avec « Le colis est arrivé » et « Le colis n'est pas arrivé ». Demander la conséquence métier d'effacer la négation. On peut simplifier la ponctuation selon la tâche, mais aucune recette de nettoyage n'est universelle. La casse peut porter de l'information pour des noms propres ; les emojis peuvent porter le sentiment. Faire écrire ce que chaque transformation retire.
 

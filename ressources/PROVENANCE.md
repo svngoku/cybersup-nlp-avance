@@ -41,6 +41,10 @@ Le [cours Hugging Face](https://huggingface.co/learn/llm-course/fr/chapter1/1) e
 
 [Stanford CS224N](https://web.stanford.edu/class/cs224n/) sert de référence théorique. Nous ne recopions ni les devoirs ni leurs solutions. Les petits calculs guidés sont originaux et visent les mêmes notions : représentation, dimensions, attention et protocole d'évaluation. Les articles Attention Is All You Need, BERT, LoRA et QLoRA sont référencés pour leurs concepts ; leurs figures et tableaux de performances ne deviennent pas des résultats du cours.
 
+### Introduction historique du J1
+
+Les dates, chercheurs, institutions et contributions de l'introduction sont documentés dans [SOURCES_INTRO_NLP.md](../docs/SOURCES_INTRO_NLP.md), à partir des publications originales et de leurs notices institutionnelles ou éditoriales. Les formulations françaises et exemples sont originaux. Les repères distinguent notamment IDF/TF-IDF, vecteurs statiques/contextuels et prépublication/publication ; aucune figure, photo ou page de ces articles n'est recopiée. La fiche peut accompagner les deux packs : elle ne contient pas de corrigé.
+
 ## Corpus et modèles
 
 Les données du fil rouge sont de courts textes fictifs intégrés aux notebooks, conçus pour l'enseignement. Les noms, lieux et identifiants illustrent des cas synthétiques ; ils ne proviennent pas de dossiers réels de clients. La présence de scénarios artificiels proches rend nécessaire un split groupé et limite la portée des scores. Aucun résultat obtenu sur ce corpus n'est présenté comme un benchmark public ou une validation métier.
