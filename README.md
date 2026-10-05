@@ -26,8 +26,8 @@ Les modèles entraînés sur les petits corpus pédagogiques ne constituent pas 
 
 | Public | Fichier | Usage |
 |---|---|---|
-| Formateur | [PowerPoint du cours](output/CYBERSUP-NLP-M2-35h-introduction.pptx) | Version illustrée avec introduction NLP et notes du présentateur |
-| Tous | [PDF de projection](output/CYBERSUP-NLP-M2-35h-introduction.pdf) | Version illustrée avec introduction NLP, sans notes du présentateur |
+| Formateur | [PowerPoint du cours](output/CYBERSUP-NLP-M2-35h-autoporteur.pptx) | Version autoporteuse, définitions, lexique et notes du présentateur |
+| Tous | [PDF de projection](output/CYBERSUP-NLP-M2-35h-autoporteur.pdf) | Version autoporteuse avec lexique, sans notes du présentateur |
 | Formateur | [Notes détaillées](output/Notes-presentateur.md) | Explications orales, exemples, questions et réponses par diapositive |
 | Formateur | `CYBERSUP-NLP-M2-Pack-formateur.zip` | Archive livrée séparément : support, notes, guides et corrigés |
 | Étudiants | `CYBERSUP-NLP-M2-Pack-etudiant.zip` | Archive livrée séparément : notebooks et consignes étudiantes |
@@ -40,6 +40,8 @@ Les archives se distribuent séparément. Après décompression du pack formateu
 Le [guide formateur](docs/GUIDE_FORMATEUR.md) prépare l'animation ; il complète les notes du PowerPoint. Les [consignes étudiantes](docs/ETUDIANTS.md) et le [guide Colab](docs/COLAB.md) permettent de démarrer sans accès à un dépôt GitHub. Le [guide Runpod L4](docs/RUNPOD_OPTION.md) s'applique uniquement si l'école fournit cet accès ; aucune machine n'est provisionnée par le cours.
 
 Le [fil conducteur pratique, réservé au formateur](docs/FIL_CONDUCTEUR_PRATIQUE.md) relie chaque journée à deux microdémonstrations dans les cellules réelles des notebooks : question à prédire, manipulation, observation et retour au schéma. Il fournit aussi trois défis gradués par après-midi et une preuve à montrer toutes les trente minutes. Ces activités occupent les créneaux existants des 35 heures ; aucun livre supplémentaire n'est nécessaire pour animer les notions en classe.
+
+Le [glossaire NLP](docs/GLOSSAIRE_NLP.md) reprend les définitions avec exemples et renvois aux diapositives. Le lexique projetable figure en fin de support ; ses pages sont des références et n’ajoutent pas de temps aux 35 heures. Le [guide vidéo formateur](docs/VIDEOS_HF_FORMATEUR.md) fournit sept liens Hugging Face, les questions de pause et les réponses attendues.
 
 ## Parcours pratique
 

@@ -48,7 +48,9 @@ Les jours 2 à 5 suivent neuf blocs de 20 minutes : **12 minutes d'explication, 
 | 75–100 | Sac de mots, TF-IDF et première baseline | Calculer une pondération ; microdémo de recherche ; lire une confusion |
 | 100–125 | Tokenisation, BPE et tenseurs | Faire deux fusions ; comparer des vocabulaires ; distinguer token et ID |
 | 125–150 | Embeddings, cosinus et contre-exemples | Calculer un cosinus ; expliquer une proximité trompeuse |
-| 150–180 | Comparaison, quiz et protocole du TP | Écrire une hypothèse testable et justifier le choix de représentation |
+| 150–160 | Comparaison de représentations | Fixer le corpus, la pertinence et les requêtes |
+| 160–170 | MRR et Recall@k | Calculer les deux scores sur les mêmes rangs et expliquer leur différence |
+| 170–180 | Quiz et protocole du TP | Justifier le choix de représentation |
 | **Total matin** | **180 min** | |
 
 Les huit diapositives d'introduction occupent 45 minutes, de la minute 5 à la minute 50. Les [repères historiques sourcés](SOURCES_INTRO_NLP.md) donnent les dates, chercheurs et institutions ; les années ne sont pas à mémoriser pour l'évaluation. Les calculs détaillés arrivent après l'intuition, et la pratique de l'après-midi reste inchangée.
@@ -187,3 +189,7 @@ Au-delà de huit binômes, utiliser une galerie en deux rotations de vingt minut
 | **Total** | **420 min = 7 h** | **2 100 min = 35 h** |
 
 Chaque TP possède un parcours essentiel et des investigations. Si le rythme ralentit, retirer d'abord une extension ou une expérience supplémentaire. Conserver l'analyse d'erreurs, l'export et le débrief. Les lectures externes préparent ou prolongent le cours ; elles ne sont pas un travail obligatoire caché dans les 35 heures.
+
+## Repères pour relire le support
+
+Le glossaire projetable en annexe et le [glossaire écrit](GLOSSAIRE_NLP.md) explicitent les termes et les sigles. Ces pages de référence ont une durée additionnelle nulle. Les extraits HF remplacent une partie des explications dans les créneaux existants. Les après-midi conservent leurs 240 minutes.

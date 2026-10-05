@@ -120,9 +120,11 @@ for(let i=0;i<slides.length;i++){
     const titleSize=d.title.length>67?36:d.title.length>51?40:43;
     text(slide,'course-title',d.title,80,84,1118,110,titleSize,{typeface:'Archivo Black'});
     const diagram=diagrams[String(i+1)],equation=formulas[String(i+1)];
-    if(diagram){
-      await insertAsset(slide,diagram,{left:82,top:183,width:1115,height:350});
-      text(slide,'diagram-caption',diagram.caption,82,546,1115,44,23,{color:COLORS.accent});
+    if(d.kind==='glossary'){
+      bodyLines(slide,d.bullets||[],201,386,1115,24);
+    } else if(diagram){
+      await insertAsset(slide,diagram,{left:82,top:183,width:1115,height:340});
+      text(slide,'diagram-caption',d.diagram_caption||diagram.caption,82,530,1115,55,23,{color:COLORS.accent});
     } else if(equation){
       if(!d.formula_latex || !d.formula_symbols?.length)throw new Error(`Missing LaTeX annotations on slide ${i+1}`);
       await insertAsset(slide,equation,equationPosition(equation,{left:82,top:195,width:1115,height:118}));
@@ -164,6 +166,10 @@ for(let i=0;i<slides.length;i++){
     }
     }
   }
+  if(d.video){
+    const link=text(slide,'hf-video-link','Vidéo HF · '+d.video.title,82,589,1050,20,14,{color:COLORS.blue});
+    link.text.set([[{run:'Vidéo HF · '+d.video.title,textStyle:{underline:'sng'},link:{uri:d.video.video_url,isExternal:true}}]]);
+  }
   const notes=[`DIAPOSITIVE ${i+1} — ${d.title}`,`Jour ${d.day||0} · ${d.period||'repère'} · ${d.minutes||0} min`,d.notes||'',additionalNotes(d,i),d.sources?.length?`\nSources\n${d.sources.join('\n')}`:''].join('\n\n');
   slide.speakerNotes.textFrame.setText(notes);
   manifest.push({slide:i+1,id:slide.id,title:d.title,day:d.day,minutes:d.minutes,period:d.period,notesWords:notes.split(/\s+/).length,table:tableOwners.includes(i+1),diagram:!!diagrams[String(i+1)],formulaImage:!!formulas[String(i+1)]});
@@ -171,7 +177,7 @@ for(let i=0;i<slides.length;i++){
 for(const s of originals)s.delete();
 const candidate=path.join(build,'candidate.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
-const finalPath=path.join(out,process.env.NLP_DECK_NAME||'CYBERSUP-NLP-M2-35h-introduction.pptx');
+const finalPath=path.join(out,process.env.NLP_DECK_NAME||'CYBERSUP-NLP-M2-35h-autoporteur.pptx');
 const result=await finalizePresentation({workspaceDir:root,candidatePath:candidate,finalPath,pythonExecutable:python,
   integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),
   layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),

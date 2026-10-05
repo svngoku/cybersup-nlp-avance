@@ -4,7 +4,7 @@
     "png": "assets/formulas/slide-18.png",
     "latex": "w_{t,d}=\\operatorname{tf}(t,d)\\,\\ln\\!\\left(\\frac{N}{\\operatorname{df}(t)}\\right)",
     "alt": "poids(t,d) = tf(t,d) × log(N / df(t))",
-    "caption": "Un terme compte davantage s’il distingue le document du corpus.",
+    "caption": "Pondérer un terme par sa fréquence dans la fiche et sa rareté parmi les fiches.",
     "symbols": [
       "t : terme ; d : document",
       "tf(t,d) : occurrences de t dans d",
@@ -27,7 +27,7 @@
     "png": "assets/formulas/slide-26.png",
     "latex": "\\operatorname{cos}(\\mathbf{u},\\mathbf{v})=\\frac{\\mathbf{u}^{\\mathsf T}\\mathbf{v}}{\\lVert\\mathbf{u}\\rVert_2\\,\\lVert\\mathbf{v}\\rVert_2}",
     "alt": "cos(u,v) = (u · v) / (||u|| × ||v||)",
-    "caption": "Comparer la direction des vecteurs, indépendamment de leur taille.",
+    "caption": "Comparer l’angle entre deux vecteurs après normalisation de leur longueur.",
     "symbols": [
       "u, v : vecteurs de même dimension D",
       "uᵀv : produit scalaire, somme de D produits",
@@ -44,12 +44,58 @@
     "sha256_svg": "889b0d84d533cefdb5f691bce0e68368aa50b021b9f2fb8530621b9b431344d0",
     "sha256_png": "dd278a644c0f8811b983e7a551bfbb725223fcb7accb484ecfc877b6a96fde74"
   },
-  "40": {
+  "29": {
+    "svg": "assets/formulas/slide-29.svg",
+    "png": "assets/formulas/slide-29.png",
+    "latex": "\\mathrm{MRR}=\\frac{1}{N}\\sum_{q=1}^{N}\\mathrm{RR}_q,\\qquad \\mathrm{RR}_q=\\frac{1}{r_q}",
+    "alt": "MRR = moyenne des inverses des premiers rangs pertinents",
+    "caption": "Mean Reciprocal Rank : moyenne des inverses des premiers rangs pertinents.",
+    "symbols": [
+      "N = 3 requêtes évaluées",
+      "r_q : rang, compté à partir de 1",
+      "Aucun pertinent : RR_q = 0",
+      "MRR ≈ 0,583 sur cet exemple"
+    ],
+    "width": 1494,
+    "height": 330,
+    "display_width": 498,
+    "display_height": 110,
+    "scale": 3,
+    "color": "#282A59",
+    "effective_em_px": 30.74,
+    "sha256_svg": "2fe968cf0e9dae41fd6731e37e380081978ee1ae2aaede52f89affce1550ed68",
+    "sha256_png": "f3a634f2acdd94a2fee5d153a770da659091f867fdeb42141e292ed57fcf3b0c"
+  },
+  "30": {
+    "svg": "assets/formulas/slide-30.svg",
+    "png": "assets/formulas/slide-30.png",
+    "latex": "\\mathrm{Recall}@k(q)=\\frac{|\\,T_k(q)\\cap R(q)\\,|}{|R(q)|}",
+    "alt": "Recall@k = part des documents pertinents retrouvés dans les k premiers",
+    "caption": "Rappel à k : part des documents pertinents présents parmi les k premiers résultats.",
+    "symbols": [
+      "q : une requête ; k : nombre de résultats",
+      "Tₖ(q) : les k premiers documents renvoyés",
+      "R(q) : ensemble des documents pertinents",
+      "∩ : intersection ; |…| : nombre d’éléments",
+      "Moyenne finale : un poids égal par requête",
+      "Une seule fiche pertinente : score 0 ou 1"
+    ],
+    "width": 1596,
+    "height": 330,
+    "display_width": 532,
+    "display_height": 110,
+    "scale": 3,
+    "color": "#282A59",
+    "effective_em_px": 38.84,
+    "sha256_svg": "0be94832ddcfdfc93cb88fe7399d74ddac3aef985aea9dde360f0a852dd805c8",
+    "sha256_png": "b621a8d27d7ccdd24c0356dfee397d5f387d9fd0676abe3adfe75170a1538e4f"
+  },
+  "42": {
     "svg": "assets/formulas/slide-40.svg",
     "png": "assets/formulas/slide-40.png",
     "latex": "a_i=\\frac{\\exp(s_i/\\sqrt{d_k})}{\\sum_{j=1}^{n}\\exp(s_j/\\sqrt{d_k})}",
     "alt": "a_i = exp(s_i / √d_k) / Σ_j exp(s_j / √d_k)",
-    "caption": "Transformer les scores d’une requête en poids dont la somme vaut un.",
+    "caption": "Diviser les scores par √dₖ puis appliquer softmax pour obtenir des poids qui somment à un.",
     "symbols": [
       "sᵢ = qᵀkᵢ : score face à la clé i",
       "dₖ : nombre de coordonnées par clé",
@@ -67,12 +113,12 @@
     "sha256_svg": "5abc443d4a39911a20bf68440d873c67bc053c0095a340bdca17dac37a77961e",
     "sha256_png": "7a7cd948f31b7b6fce5e267f292c06f2a9ed3f48031563e7a91972cd6aef1f4f"
   },
-  "41": {
+  "43": {
     "svg": "assets/formulas/slide-41.svg",
     "png": "assets/formulas/slide-41.png",
     "latex": "\\mathbf{o}=\\sum_{i=1}^{3}a_i\\mathbf{v}_i\\approx\\begin{pmatrix}1{,}604\\\\1{,}198\\end{pmatrix}",
     "alt": "sortie ≈ 0,401(2,0) + 0,198(0,2) + 0,401(2,2) = (1,604 ; 1,198)",
-    "caption": "Chaque poids dose la contribution d’une valeur à la nouvelle représentation.",
+    "caption": "Chaque poids dose la contribution du vecteur V associé à la représentation de sortie.",
     "symbols": [
       "aᵢ : poids de la position i",
       "vᵢ : vecteur de valeur à 2 coordonnées",
@@ -89,12 +135,12 @@
     "sha256_svg": "39b0530309dc6590a44754baeca10fa3c27460d8d4ed4f49927050ac76fb0a9c",
     "sha256_png": "953de0035f171eb94bc55ab7fa1d116700f85583aa7838bb9c8cc718046abe55"
   },
-  "58": {
+  "60": {
     "svg": "assets/formulas/slide-58.svg",
     "png": "assets/formulas/slide-58.png",
     "latex": "\\mathcal{L}=-\\ln(p_y)",
     "alt": "L = −log p(classe correcte)",
-    "caption": "Plus la bonne classe reçoit de probabilité, plus sa pénalité diminue.",
+    "caption": "La cross-entropie compare les logits à la classe vraie : moins elle reçoit de probabilité, plus la pénalité augmente.",
     "symbols": [
       "y : indice de la vraie classe",
       "pᵧ : probabilité donnée à cette classe",
@@ -111,12 +157,12 @@
     "sha256_svg": "5adb13abf3f2870225fca2d72c0859f9d49e7448dd20d45ea7dc3136068ccb8b",
     "sha256_png": "5158bc98aeb67ffb3f0122e106fe605780163e124ab67f0d66371d19894b3714"
   },
-  "61": {
+  "63": {
     "svg": "assets/formulas/slide-61.svg",
     "png": "assets/formulas/slide-61.png",
     "latex": "B_{\\mathrm{eff}}=B_{\\mathrm{GPU}}\\times A\\times G",
     "alt": "batch effectif = batch par GPU × accumulation × nombre de GPU",
-    "caption": "Accumuler plusieurs petits lots augmente le lot d’une mise à jour.",
+    "caption": "L’accumulation regroupe plusieurs micro-batchs pour une mise à jour ; elle ne change pas le nombre d’époques.",
     "symbols": [
       "B_GPU : exemples par micro-batch et par GPU",
       "A : nombre de micro-batchs accumulés",
@@ -133,12 +179,12 @@
     "sha256_svg": "c74c14e273fc5d15de4bfbb2e4f78af75a1f495f7e051da4fb5e2ff0a7f043fa",
     "sha256_png": "fb234c20f63dff29df6ad20c878b152f30d93f33b1cb0559508a9f413d34b257"
   },
-  "63": {
+  "65": {
     "svg": "assets/formulas/slide-63.svg",
     "png": "assets/formulas/slide-63.png",
     "latex": "F_1=\\frac{2PR}{P+R},\\qquad F_{1,\\mathrm{macro}}=\\frac{1}{C}\\sum_{c=1}^{C}F_{1,c}",
     "alt": "F1 = 2PR / (P + R) ; macro-F1 = moyenne des F1 par classe",
-    "caption": "Calculer un F1 par classe, puis leur donner le même poids.",
+    "caption": "Calculer précision, rappel et F1 par classe ; macro-F1 donne le même poids à chaque classe.",
     "symbols": [
       "P : précision ; R : rappel d’une classe",
       "F₁ : moyenne harmonique de P et R",
@@ -156,12 +202,12 @@
     "sha256_svg": "a08cec1eb4a012eaa78d4cd71ce9139222511cfbfc4094e2044f43c0f50d84d8",
     "sha256_png": "f8e8485a34927ee082d246147efa5b484643c4c7e51d8bb9dc1fbb9cc065cc98"
   },
-  "86": {
+  "88": {
     "svg": "assets/formulas/slide-86.svg",
     "png": "assets/formulas/slide-86.png",
     "latex": "\\mathbf{y}=W_0\\mathbf{x}+\\frac{\\alpha}{r}\\,BA\\mathbf{x}",
     "alt": "y = W₀x + (α / r) B A x",
-    "caption": "Ajouter une correction entraînable de faible rang à une matrice gelée.",
+    "caption": "LoRA apprend une correction de rang au plus r, avec deux petites matrices ; la base reste gelée.",
     "symbols": [
       "x : entrée d_in ; y : sortie d_out",
       "W₀ : matrice gelée, d_out × d_in",
@@ -179,7 +225,7 @@
     "sha256_svg": "d9f23892de634d259b8b432d7f4cc05982f73ed881666f9a107ac1d6889da837",
     "sha256_png": "87a0ddf88c4efcf04dab37d32b58460dfecbbcbd17cdad17b8d5cd664e0a48a4"
   },
-  "87": {
+  "89": {
     "svg": "assets/formulas/slide-87.svg",
     "png": "assets/formulas/slide-87.png",
     "latex": "\\begin{aligned}N_{\\mathrm{complet}}&=d_{\\mathrm{out}}d_{\\mathrm{in}}\\\\N_{\\mathrm{LoRA}}&=r\\left(d_{\\mathrm{in}}+d_{\\mathrm{out}}\\right)\\end{aligned}",
@@ -201,12 +247,12 @@
     "sha256_svg": "953dac2a5cda1d58ecfa768dbd4a9f808da26a5a29e2fd87a3db641552cd60e1",
     "sha256_png": "d4553cabf52c0025b624bbabb3fec5516d54da12386cba51cd386620d2ba63a8"
   },
-  "89": {
+  "91": {
     "svg": "assets/formulas/slide-89.svg",
     "png": "assets/formulas/slide-89.png",
     "latex": "\\begin{aligned}M_{\\mathrm{total}}\\approx{}&M_{\\mathrm{poids}}+M_{\\mathrm{gradients}}+M_{\\mathrm{optimiseur}}\\\\&+M_{\\mathrm{activations}}+M_{\\mathrm{buffers}}\\end{aligned}",
     "alt": "M ≈ poids + gradients + optimiseur + activations + buffers",
-    "caption": "Les poids ne représentent qu’une partie de la mémoire nécessaire.",
+    "caption": "La longueur et le micro-batch changent la mémoire des activations, en plus de celle des poids.",
     "symbols": [
       "M_total : mémoire totale approximative",
       "M_poids : paramètres du modèle et adaptateurs",

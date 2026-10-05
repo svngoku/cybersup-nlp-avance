@@ -1,13 +1,13 @@
 # Validation et préparation de la séance
 
-État au 4 octobre 2026.
+État au 5 octobre 2026.
 
-- 121 diapositives éditables et autant de notes du présentateur.
-- 28 tableaux natifs dans le support.
+- 172 diapositives éditables et autant de notes du présentateur.
+- 29 tableaux natifs dans le support.
 - 15 illustrations et architectures originales, avec sources SVG et descriptions accessibles.
-- 10 formules rendues en images depuis LaTeX ; sources, légendes des symboles et explications détaillées conservées.
+- 12 formules rendues en images depuis LaTeX ; sources, légendes des symboles et explications détaillées conservées.
 - 5 journées de 420 minutes, soit 35 heures hors pauses et déjeuner.
-- 14 notebooks valides en JSON et syntaxe Python, sans sorties préremplies.
+- 15 notebooks valides en JSON et syntaxe Python, sans sorties préremplies.
 - Export PDF du support. Les notes détaillées se consultent dans PowerPoint ou Notes-presentateur.md.
 - Pack étudiant contrôlé par liste autorisée, sans PowerPoint contenant les notes, corrigés ou guide formateur.
 

@@ -1,0 +1,96 @@
+{
+  "verified_date": "2026-10-05",
+  "videos": [
+    {
+      "day": 1,
+      "slide_title": "Tokeniser : choisir les unités lues par le modèle",
+      "title": "Tokenizers Overview",
+      "page_url": "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+      "video_url": "https://www.youtube.com/watch?v=VFp38yj8h3A",
+      "language": "Anglais ; page d’accompagnement en français",
+      "pause_cue": "Quand les étapes texte, tokens et identifiants ont été montrées.",
+      "question": "Un token est-il toujours un mot ?",
+      "answer": "Non. L’unité dépend du tokenizer : mot, fragment, signe ou unité spéciale.",
+      "activity_minutes": 3,
+      "verified_date": "2026-10-05"
+    },
+    {
+      "day": 2,
+      "slide_title": "Encodeur, décodeur, encodeur-décodeur",
+      "title": "The Transformer architecture",
+      "page_url": "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+      "video_url": "https://www.youtube.com/watch?v=H39Z_720T5s",
+      "language": "Anglais ; page d’accompagnement en français",
+      "pause_cue": "Quand encodeur et décodeur sont distingués dans l’architecture.",
+      "question": "Quelle partie peut consulter toute la source ? Quelle partie ne doit pas lire les tokens futurs de sortie ?",
+      "answer": "L’encodeur consulte la source autorisée. Le décodeur causal utilise le préfixe disponible, sans tokens futurs de sortie.",
+      "activity_minutes": 3,
+      "verified_date": "2026-10-05"
+    },
+    {
+      "day": 2,
+      "slide_title": "Préentraînement et adaptation ne répondent pas à la même question",
+      "title": "What is Transfer Learning?",
+      "page_url": "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+      "video_url": "https://www.youtube.com/watch?v=BqqfQnyjmgg",
+      "language": "Anglais ; page d’accompagnement en français",
+      "pause_cue": "Quand préentraînement et fine-tuning sont mis en relation.",
+      "question": "Qu’est-ce que l’on récupère avant l’adaptation ?",
+      "answer": "Des poids préentraînés et leur configuration, avec le tokenizer compatible. La tête de tâche peut être nouvelle.",
+      "activity_minutes": 3,
+      "verified_date": "2026-10-05"
+    },
+    {
+      "day": 3,
+      "slide_title": "Une étape d'apprentissage en cinq actions",
+      "title": "The Trainer API",
+      "page_url": "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+      "video_url": "https://www.youtube.com/watch?v=nvBXf7s7vTI",
+      "language": "Anglais ; page d’accompagnement en français",
+      "pause_cue": "Quand les objets fournis au Trainer sont présentés.",
+      "question": "Qui décide du bon label et de la bonne métrique : Trainer ou notre protocole ?",
+      "answer": "Le protocole et les données définissent la tâche. Trainer orchestre les opérations configurées.",
+      "activity_minutes": 3,
+      "verified_date": "2026-10-05"
+    },
+    {
+      "day": 3,
+      "slide_title": "NER : retrouver des segments et leur type",
+      "title": "Tasks: Token Classification",
+      "page_url": "https://huggingface.co/learn/llm-course/fr/chapter7/2",
+      "video_url": "https://www.youtube.com/watch?v=wVHdVlPScxA",
+      "language": "Anglais ; page d’accompagnement en français",
+      "pause_cue": "Quand une étiquette est attribuée à chaque position du texte.",
+      "question": "Pourquoi classer toute la phrase ne suffit-il pas pour la NER ?",
+      "answer": "Il faut localiser les segments et leurs types, puis conserver leur alignement avec le texte.",
+      "activity_minutes": 3,
+      "verified_date": "2026-10-05"
+    },
+    {
+      "day": 4,
+      "slide_title": "Résumer : conserver les faits utiles sous une contrainte",
+      "title": "Tasks: Summarization",
+      "page_url": "https://huggingface.co/learn/llm-course/fr/chapter7/5",
+      "video_url": "https://www.youtube.com/watch?v=yHnr5Dk2zCI",
+      "language": "Anglais ; page d’accompagnement en français",
+      "pause_cue": "Quand la tâche source longue vers résumé court a été illustrée.",
+      "question": "Quels faits du colis AB123 doivent survivre au résumé ?",
+      "answer": "La référence, la date, l’article manquant et la demande de vérification, sans inventer un remboursement.",
+      "activity_minutes": 3,
+      "verified_date": "2026-10-05"
+    },
+    {
+      "day": 5,
+      "slide_title": "La métrique dépend de l'unité de réussite",
+      "title": "What is the ROUGE metric?",
+      "page_url": "https://huggingface.co/learn/llm-course/fr/chapter7/5",
+      "video_url": "https://www.youtube.com/watch?v=TMshhnrEXlg",
+      "language": "Anglais ; page d’accompagnement en français",
+      "pause_cue": "Quand le recouvrement entre résumé candidat et référence est expliqué.",
+      "question": "Un recouvrement élevé suffit-il à prouver qu’un résumé est fidèle ?",
+      "answer": "Non. Ajouter une négation peut inverser le fait en conservant presque tous les mots. Vérifier les affirmations contre la source.",
+      "activity_minutes": 3,
+      "verified_date": "2026-10-05"
+    }
+  ]
+}

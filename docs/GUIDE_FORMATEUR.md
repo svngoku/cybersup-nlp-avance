@@ -133,3 +133,9 @@ Le [projet](../evaluation/PROJET.md) se termine dans les 240 minutes, avec une r
 Utiliser les cinq questions quotidiennes du [quiz](../evaluation/QUIZ.md) comme diagnostic ; elles peuvent être discutées à deux puis reformulées individuellement. Leur corrigé précise les éléments à attendre. Le projet est noté sur 20 ; si une note globale est souhaitée, l'école peut retenir 80 % projet et 20 % quiz individuel converti sur 20. Annoncer la règle avant le cours.
 
 Accepter « résultat indécidable avec ce petit jeu » si le raisonnement est correct. Récompenser une erreur analysée et une recommandation de ne pas déployer. Demander à chacun une phrase de sortie : **« Je sais maintenant…, ma preuve est…, ma prochaine vérification serait… »**
+
+## Définitions et rappels au fil du cours
+
+Les notes commencent par les définitions utiles à la diapositive, chacune avec un exemple et un point de vigilance. Faire reformuler une notion, puis tester la reformulation sur un exemple. Au besoin, projeter la page indiquée du lexique plutôt que quitter le support. Le [glossaire écrit](GLOSSAIRE_NLP.md) donne les mêmes repères. MRR et Recall@k disposent de deux calculs guidés sur les mêmes classements au J1, puis d’un rappel au J5.
+
+Le [guide des vidéos HF](VIDEOS_HF_FORMATEUR.md) précise les extraits, les pauses par concept et les réponses attendues. Les liens sont aussi dans le PowerPoint et le PDF. Chaque activité remplace trois minutes d’explication dans le créneau existant. Préparer le passage avant la séance, commenter en français et conserver la possibilité d’utiliser directement le schéma du cours.

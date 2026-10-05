@@ -34,6 +34,13 @@ def main():
             totals[slide['day']] += slide.get('minutes', 0)
         assert slide.get('notes'), slide['title']
     assert len(slides) >= 90, 'Incomplete five-day course'
+    for day in range(1, 6):
+        assert sum(s.get('minutes', 0) for s in slides if s.get('day') == day and s.get('period') == 'matin') == 180
+        assert sum(s.get('minutes', 0) for s in slides if s.get('day') == day and s.get('period') == 'apres-midi') == 240
+    definitions = json.loads((ROOT/'course/definitions.json').read_text())['definitions']
+    for entry in definitions:
+        assert entry['definition'] and entry['example'] and entry['pitfall']
+        assert entry['term'] in slides[entry['glossary_slide']-1]['notes']
     assert all(totals[d] == 420 for d in range(1, 6)), totals
     nb_files = sorted((ROOT / 'notebooks').rglob('*.ipynb'))
     assert len(nb_files) >= 14, len(nb_files)
@@ -60,7 +67,7 @@ def main():
             assert (ROOT/asset['png']).is_file()
             assert (ROOT/asset['svg']).is_file()
             assert asset.get('alt'), num
-    pptx = OUT / 'CYBERSUP-NLP-M2-35h-introduction.pptx'
+    pptx = OUT / 'CYBERSUP-NLP-M2-35h-autoporteur.pptx'
     with zipfile.ZipFile(pptx) as z:
         slide_parts = [n for n in z.namelist() if re.fullmatch(r'ppt/slides/slide\d+.xml', n)]
         note_parts = [n for n in z.namelist() if re.fullmatch(r'ppt/notesSlides/notesSlide\d+.xml', n)]
@@ -77,12 +84,13 @@ def main():
         for num in set(diagrams) | set(formulas):
             xml = ET.fromstring(z.read(f'ppt/slides/slide{num}.xml'))
             assert len(xml.findall('.//p:pic',pns)) >= 1, f'Missing slide image {num}'
-    pdf = OUT / 'CYBERSUP-NLP-M2-35h-introduction.pdf'
+    pdf = OUT / 'CYBERSUP-NLP-M2-35h-autoporteur.pdf'
     assert pdf.exists() and pdf.stat().st_size > 10000, 'Export PDF first'
     assert (OUT / 'Notes-presentateur.md').exists()
     student_paths = [pdf, ROOT/'docs/ETUDIANTS.md', ROOT/'docs/COLAB.md', ROOT/'docs/PROGRAMME_35H.md', ROOT/'evaluation/PROJET.md', ROOT/'evaluation/QUIZ.md', ROOT/'evaluation/MODEL_CARD.md', ROOT/'ressources/RESSOURCES_VERIFIEES.md', ROOT/'ressources/PROVENANCE.md', ROOT/'requirements-colab.txt']
     student_paths += sorted((ROOT/'notebooks/etudiants').glob('*.ipynb'))
     student_paths.append(ROOT/'docs/SOURCES_INTRO_NLP.md')
+    student_paths.append(ROOT/'docs/GLOSSAIRE_NLP.md')
     if (ROOT/'docs/RUNPOD_OPTION.md').exists():
         student_paths.append(ROOT/'docs/RUNPOD_OPTION.md')
     assert len([x for x in student_paths if x.suffix=='.ipynb']) == 7
@@ -93,6 +101,7 @@ def main():
     student_zip = OUT/'CYBERSUP-NLP-M2-Pack-etudiant.zip'
     template_path = ROOT/'CYBERSUP - TEMPLATE DATA_IA.pptx'
     teacher_paths = set(student_paths + [pptx, OUT/'Notes-presentateur.md', ROOT/'README.md', ROOT/'docs/GUIDE_FORMATEUR.md', ROOT/'evaluation/CORRIGES_QUIZ.md'])
+    teacher_paths.add(ROOT/'docs/VIDEOS_HF_FORMATEUR.md')
     practical_guide_path = ROOT/'docs/FIL_CONDUCTEUR_PRATIQUE.md'
     if practical_guide_path.is_file():
         teacher_paths.add(practical_guide_path)
@@ -111,11 +120,11 @@ def main():
             assert runtime_doc.is_file(), runtime_doc
             teacher_paths.add(runtime_doc)
     teacher_zip = OUT/'CYBERSUP-NLP-M2-Pack-formateur.zip'
-    report = {'date':'2026-10-04','slides':len(slides),'slides_with_notes':len(note_parts),'native_tables':table_count,'diagrams':len(diagrams),'latex_formula_images':len(formulas),'notebooks':len(nb_files),'minutes_by_day':dict(totals),'colab_t4_executed':False,'student_pack_files':len(student_paths),'instructor_pack_files':len(teacher_paths),'template_included':False}
+    report = {'date':'2026-10-05','slides':len(slides),'slides_with_notes':len(note_parts),'native_tables':table_count,'diagrams':len(diagrams),'latex_formula_images':len(formulas),'notebooks':len(nb_files),'minutes_by_day':dict(totals),'colab_t4_executed':False,'student_pack_files':len(student_paths),'instructor_pack_files':len(teacher_paths),'template_included':False}
     (ROOT/'.build/course-validation.json').write_text(json.dumps(report, ensure_ascii=False, indent=2))
     validation_path.write_text(f'''# Validation et préparation de la séance
 
-État au 4 octobre 2026.
+État au 5 octobre 2026.
 
 - {len(slides)} diapositives éditables et autant de notes du présentateur.
 - {table_count} tableaux natifs dans le support.

@@ -1,0 +1,2945 @@
+{
+  "definitions": [
+    {
+      "term": "NLP / TAL",
+      "definition": "Le traitement automatique du langage naturel (TAL), ou Natural Language Processing (NLP), regroupe les méthodes qui transforment des textes en sorties utiles et vérifiables.",
+      "example": "À partir d’un ticket, classer l’intention, extraire une référence ou retrouver une FAQ sont trois tâches NLP différentes.",
+      "pitfall": "NLP ne signifie pas seulement chatbot ou génération de texte.",
+      "day": 1,
+      "first_slide": 5,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/1"
+      ],
+      "slides": [
+        5
+      ],
+      "glossary_slide": 124
+    },
+    {
+      "term": "langage naturel",
+      "definition": "Langage utilisé par les personnes pour communiquer, à l’écrit ou à l’oral.",
+      "example": "Une demande client contient des sous-entendus et des ambiguïtés.",
+      "pitfall": "Un texte grammatical peut rester ambigu ou factuellement faux.",
+      "day": 1,
+      "first_slide": 5,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/1"
+      ],
+      "slides": [
+        5
+      ],
+      "glossary_slide": 124
+    },
+    {
+      "term": "LLM",
+      "definition": "Large Language Model : modèle de langage doté de nombreux paramètres, entraîné à modéliser des séquences de tokens.",
+      "example": "Le petit Qwen du TP permet d’observer la génération sous budget.",
+      "pitfall": "La taille seule ne garantit ni les faits ni le respect des consignes.",
+      "day": 1,
+      "first_slide": 5,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/1"
+      ],
+      "slides": [
+        5
+      ],
+      "glossary_slide": 124
+    },
+    {
+      "term": "document",
+      "definition": "Une unité de texte choisie pour une tâche, par exemple un ticket ou une fiche FAQ.",
+      "example": "La fiche « réinitialiser mon mot de passe » est un document de l’index.",
+      "pitfall": "Un document n’est pas nécessairement un fichier entier.",
+      "day": 1,
+      "first_slide": 6,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter6/1"
+      ],
+      "slides": [
+        6
+      ],
+      "glossary_slide": 124
+    },
+    {
+      "term": "corpus",
+      "definition": "Un ensemble de documents rassemblés pour une analyse ou un apprentissage.",
+      "example": "Les 12 fiches FAQ et les requêtes annotées forment des collections distinctes du corpus de l’exercice.",
+      "pitfall": "Un corpus n’est pas automatiquement représentatif du domaine réel.",
+      "day": 1,
+      "first_slide": 6,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter6/1"
+      ],
+      "slides": [
+        6
+      ],
+      "glossary_slide": 125
+    },
+    {
+      "term": "token",
+      "definition": "Une unité produite par un tokenizer : mot, morceau de mot, signe ou unité spéciale.",
+      "example": "« remboursement » peut être un token ou plusieurs sous-tokens selon le tokenizer.",
+      "pitfall": "Token ne veut pas toujours dire mot entier.",
+      "day": 1,
+      "first_slide": 6,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter6/1"
+      ],
+      "slides": [
+        6
+      ],
+      "glossary_slide": 125
+    },
+    {
+      "term": "type lexical",
+      "definition": "Une forme distincte comptée dans un texte ou un corpus, quelle que soit sa fréquence.",
+      "example": "Dans « colis, colis, retard », les types sont colis et retard ; il y en a deux.",
+      "pitfall": "Un type n’est pas une occurrence : colis apparaît deux fois mais reste un seul type.",
+      "day": 1,
+      "first_slide": 6,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter6/1"
+      ],
+      "slides": [
+        6
+      ],
+      "glossary_slide": 125
+    },
+    {
+      "term": "vocabulaire",
+      "definition": "L’inventaire des tokens qu’un tokenizer sait encoder, souvent associé à des identifiants entiers.",
+      "example": "Une entrée du vocabulaire peut associer le token « colis » à l’identifiant 1234.",
+      "pitfall": "Un identifiant n’est ni une mesure de sens ni un classement de proximité.",
+      "day": 1,
+      "first_slide": 6,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter6/1"
+      ],
+      "slides": [
+        6
+      ],
+      "glossary_slide": 125
+    },
+    {
+      "term": "embedding",
+      "definition": "Une représentation apprise sous forme de vecteur dense, pour un token ou une séquence selon le modèle.",
+      "example": "Un encodeur peut représenter deux formulations proches par des vecteurs voisins.",
+      "pitfall": "Un embedding n’est pas une définition lisible ni une garantie de compréhension.",
+      "day": 1,
+      "first_slide": 6,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter6/1"
+      ],
+      "slides": [
+        6
+      ],
+      "glossary_slide": 126
+    },
+    {
+      "term": "recherche d’information",
+      "definition": "Tâche qui classe des documents selon leur pertinence pour une requête.",
+      "example": "Pour « colis en retard », la fiche qui explique le suivi doit remonter avant une fiche de facturation.",
+      "pitfall": "Le meilleur score dépend de la représentation et de la pertinence définie pour l’exercice.",
+      "day": 1,
+      "first_slide": 7,
+      "sources": [
+        "https://academic.oup.com/mind/article/LIX/236/433/986238",
+        "https://doi.org/10.1145/365153.365168",
+        "https://web.stanford.edu/class/linguist289/luhn57.pdf",
+        "https://www.cl.cam.ac.uk/archive/ksj21/ksjdigipapers/jdoc72.pdf",
+        "https://arxiv.org/abs/1301.3781",
+        "https://aclanthology.org/D14-1162/",
+        "https://aclanthology.org/Q17-1010/",
+        "https://aclanthology.org/N18-1202/",
+        "https://aclanthology.org/N19-1423/",
+        "https://arxiv.org/abs/1706.03762",
+        "https://openai.com/index/language-unsupervised/"
+      ],
+      "slides": [
+        7
+      ],
+      "glossary_slide": 126
+    },
+    {
+      "term": "sac de mots",
+      "definition": "Représentation qui compte les termes d’un document sans conserver leur ordre.",
+      "example": "« colis facture colis » devient colis=2, facture=1.",
+      "pitfall": "Deux textes avec les mêmes comptes peuvent exprimer des intentions opposées.",
+      "day": 1,
+      "first_slide": 8,
+      "sources": [
+        "https://web.stanford.edu/class/linguist289/luhn57.pdf",
+        "https://www.cl.cam.ac.uk/archive/ksj21/ksjdigipapers/jdoc72.pdf",
+        "https://doi.org/10.1145/361219.361220",
+        "https://www.sciencedirect.com/science/article/pii/0306457388900210"
+      ],
+      "slides": [
+        8
+      ],
+      "glossary_slide": 126
+    },
+    {
+      "term": "TF-IDF",
+      "definition": "Pondération qui combine la fréquence d’un terme dans un document (TF) et sa rareté parmi les documents (IDF). TF-IDF signifie term frequency–inverse document frequency.",
+      "example": "« bloqué » présent dans une seule fiche distingue davantage que « compte » présent partout.",
+      "pitfall": "Un terme rare peut être une faute ou du bruit ; rareté ne signifie pas pertinence.",
+      "day": 1,
+      "first_slide": 8,
+      "sources": [
+        "https://web.stanford.edu/class/linguist289/luhn57.pdf",
+        "https://www.cl.cam.ac.uk/archive/ksj21/ksjdigipapers/jdoc72.pdf",
+        "https://doi.org/10.1145/361219.361220",
+        "https://www.sciencedirect.com/science/article/pii/0306457388900210"
+      ],
+      "slides": [
+        8
+      ],
+      "glossary_slide": 126
+    },
+    {
+      "term": "IDF",
+      "definition": "Inverse document frequency : facteur qui réduit le poids des termes présents dans beaucoup de documents.",
+      "example": "Avec N=4 et df=1, log(N/df)=log(4) ; si df=4, le poids non lissé vaut zéro.",
+      "pitfall": "Les bibliothèques ajoutent parfois un lissage ou une autre normalisation : préciser la variante avant de comparer des valeurs.",
+      "day": 1,
+      "first_slide": 8,
+      "sources": [
+        "https://web.stanford.edu/class/linguist289/luhn57.pdf",
+        "https://www.cl.cam.ac.uk/archive/ksj21/ksjdigipapers/jdoc72.pdf",
+        "https://doi.org/10.1145/361219.361220",
+        "https://www.sciencedirect.com/science/article/pii/0306457388900210"
+      ],
+      "slides": [
+        8
+      ],
+      "glossary_slide": 127
+    },
+    {
+      "term": "lexical / sémantique",
+      "definition": "Lexical concerne les formes des mots ; sémantique concerne leur sens dans un usage et un contexte.",
+      "example": "« colis » et « paquet » diffèrent lexicalement mais peuvent désigner le même objet.",
+      "pitfall": "Un score dit sémantique reste une mesure produite par un modèle, pas une preuve de compréhension.",
+      "day": 1,
+      "first_slide": 8,
+      "sources": [
+        "https://web.stanford.edu/class/linguist289/luhn57.pdf",
+        "https://www.cl.cam.ac.uk/archive/ksj21/ksjdigipapers/jdoc72.pdf",
+        "https://doi.org/10.1145/361219.361220",
+        "https://www.sciencedirect.com/science/article/pii/0306457388900210"
+      ],
+      "slides": [
+        8
+      ],
+      "glossary_slide": 127
+    },
+    {
+      "term": "Word2Vec",
+      "definition": "Famille de méthodes qui apprend des vecteurs de mots en prédisant des mots à partir de leur contexte, ou l’inverse.",
+      "example": "Dans « le colis arrive », une fenêtre autour de colis fournit des exemples d’apprentissage.",
+      "pitfall": "Word2Vec n’est ni le premier embedding ni un modèle complet de compréhension de phrases.",
+      "day": 1,
+      "first_slide": 9,
+      "sources": [
+        "https://arxiv.org/abs/1301.3781",
+        "https://arxiv.org/abs/1310.4546"
+      ],
+      "slides": [
+        9
+      ],
+      "glossary_slide": 127
+    },
+    {
+      "term": "CBOW",
+      "definition": "Continuous Bag of Words : agrège les mots du contexte local pour prédire le mot central.",
+      "example": "Avec « le _ arrive », CBOW prédit « colis » à partir de le et arrive.",
+      "pitfall": "Le contexte est agrégé ; cette forme de base ne préserve pas directement son ordre.",
+      "day": 1,
+      "first_slide": 9,
+      "sources": [
+        "https://arxiv.org/abs/1301.3781",
+        "https://arxiv.org/abs/1310.4546"
+      ],
+      "slides": [
+        9
+      ],
+      "glossary_slide": 127
+    },
+    {
+      "term": "Skip-gram",
+      "definition": "Variante de Word2Vec qui part du mot central pour prédire les mots voisins de son contexte.",
+      "example": "À partir de « colis », prédire « le » et « arrive » dans une fenêtre donnée.",
+      "pitfall": "Les mots prédits sont des cibles d’apprentissage, pas des ajouts automatiques au document.",
+      "day": 1,
+      "first_slide": 9,
+      "sources": [
+        "https://arxiv.org/abs/1301.3781",
+        "https://arxiv.org/abs/1310.4546"
+      ],
+      "slides": [
+        9
+      ],
+      "glossary_slide": 128
+    },
+    {
+      "term": "auto-supervision",
+      "definition": "Apprentissage où une cible est construite à partir des données elles-mêmes, sans annotation humaine pour chaque exemple.",
+      "example": "Le texte fournit le mot central à prédire pour CBOW.",
+      "pitfall": "L’absence d’annotation manuelle ne rend pas les données ou la tâche sans biais.",
+      "day": 1,
+      "first_slide": 9,
+      "sources": [
+        "https://arxiv.org/abs/1301.3781",
+        "https://arxiv.org/abs/1310.4546"
+      ],
+      "slides": [
+        9
+      ],
+      "glossary_slide": 128
+    },
+    {
+      "term": "GloVe",
+      "definition": "Global Vectors : méthode qui apprend des vecteurs à partir de statistiques globales de cooccurrence des mots.",
+      "example": "Elle exploite combien de fois colis et retard apparaissent dans des voisinages du corpus.",
+      "pitfall": "Cooccurrence indique une association dans les données, pas une synonymie.",
+      "day": 1,
+      "first_slide": 10,
+      "sources": [
+        "https://aclanthology.org/D14-1162/",
+        "https://nlp.stanford.edu/pubs/glove.pdf",
+        "https://arxiv.org/abs/1607.04606",
+        "https://aclanthology.org/Q17-1010/"
+      ],
+      "slides": [
+        10
+      ],
+      "glossary_slide": 128
+    },
+    {
+      "term": "fastText",
+      "definition": "Méthode qui représente un mot à partir de son vecteur et de vecteurs de n-grammes de caractères, afin de partager de l’information entre formes proches.",
+      "example": "« remboursement » et « remboursements » peuvent partager des fragments appris.",
+      "pitfall": "Les fragments ne sont pas nécessairement des morphèmes et ne garantissent pas la correction d’une faute.",
+      "day": 1,
+      "first_slide": 10,
+      "sources": [
+        "https://aclanthology.org/D14-1162/",
+        "https://nlp.stanford.edu/pubs/glove.pdf",
+        "https://arxiv.org/abs/1607.04606",
+        "https://aclanthology.org/Q17-1010/"
+      ],
+      "slides": [
+        10
+      ],
+      "glossary_slide": 128
+    },
+    {
+      "term": "n-gramme de caractères",
+      "definition": "Séquence de n caractères consécutifs extraite d’une forme écrite.",
+      "example": "Pour « chat », les trigrammes internes possibles incluent cha et hat.",
+      "pitfall": "Un n-gramme de caractères fastText n’est pas un sous-token BPE.",
+      "day": 1,
+      "first_slide": 10,
+      "sources": [
+        "https://aclanthology.org/D14-1162/",
+        "https://nlp.stanford.edu/pubs/glove.pdf",
+        "https://arxiv.org/abs/1607.04606",
+        "https://aclanthology.org/Q17-1010/"
+      ],
+      "slides": [
+        10
+      ],
+      "glossary_slide": 129
+    },
+    {
+      "term": "représentation statique",
+      "definition": "Vecteur fixe associé à une entrée lexicale dans un modèle donné, quel que soit son contexte d’emploi.",
+      "example": "Un vecteur Word2Vec pour « banque » reste le même dans « banque de données » et « banque prêteuse ».",
+      "pitfall": "La proximité avec un mot ne garantit pas que les deux soient interchangeables.",
+      "day": 1,
+      "first_slide": 11,
+      "sources": [
+        "https://aclanthology.org/N18-1202/",
+        "https://arxiv.org/abs/1810.04805",
+        "https://aclanthology.org/N19-1423/",
+        "https://openai.com/index/language-unsupervised/"
+      ],
+      "slides": [
+        11
+      ],
+      "glossary_slide": 129
+    },
+    {
+      "term": "représentation contextuelle",
+      "definition": "Vecteur interne calculé à partir d’une occurrence et des tokens autour d’elle, selon l’architecture et le contexte autorisé.",
+      "example": "« banque de données » et « banque refuse le prêt » peuvent produire des représentations différentes de banque.",
+      "pitfall": "Le contexte rend la représentation variable, mais ne garantit ni raisonnement juste ni fidélité factuelle.",
+      "day": 1,
+      "first_slide": 11,
+      "sources": [
+        "https://aclanthology.org/N18-1202/",
+        "https://arxiv.org/abs/1810.04805",
+        "https://aclanthology.org/N19-1423/",
+        "https://openai.com/index/language-unsupervised/"
+      ],
+      "slides": [
+        11
+      ],
+      "glossary_slide": 129
+    },
+    {
+      "term": "BERT",
+      "definition": "Bidirectional Encoder Representations from Transformers : famille de modèles à encodeur Transformer entraînés notamment avec un objectif de token masqué.",
+      "example": "DistilBERT multilingue reprend une partie de l’approche BERT dans une version distillée.",
+      "pitfall": "BERT désigne une famille et une architecture d’encodeur, pas un chatbot génératif par défaut.",
+      "day": 1,
+      "first_slide": 11,
+      "sources": [
+        "https://aclanthology.org/N18-1202/",
+        "https://arxiv.org/abs/1810.04805",
+        "https://aclanthology.org/N19-1423/",
+        "https://openai.com/index/language-unsupervised/"
+      ],
+      "slides": [
+        11
+      ],
+      "glossary_slide": 129
+    },
+    {
+      "term": "GPT",
+      "definition": "Generative Pre-trained Transformer : famille de modèles Transformer à décodeur causal qui prédisent la suite à partir d’un préfixe.",
+      "example": "Un modèle de type GPT complète « Le colis est arrivé… » token après token.",
+      "pitfall": "Qwen est une autre famille de checkpoints à décodeur causal, pas un modèle GPT d’OpenAI.",
+      "day": 1,
+      "first_slide": 11,
+      "sources": [
+        "https://aclanthology.org/N18-1202/",
+        "https://arxiv.org/abs/1810.04805",
+        "https://aclanthology.org/N19-1423/",
+        "https://openai.com/index/language-unsupervised/"
+      ],
+      "slides": [
+        11
+      ],
+      "glossary_slide": 130
+    },
+    {
+      "term": "distillation",
+      "definition": "Entraînement d’un modèle élève pour reproduire certaines sorties ou représentations d’un modèle enseignant.",
+      "example": "DistilBERT est une famille de modèles obtenus par distillation.",
+      "pitfall": "Le modèle élève ne conserve pas nécessairement toutes les capacités de l’enseignant.",
+      "day": 1,
+      "first_slide": 11,
+      "sources": [
+        "https://aclanthology.org/N18-1202/",
+        "https://arxiv.org/abs/1810.04805",
+        "https://aclanthology.org/N19-1423/",
+        "https://openai.com/index/language-unsupervised/"
+      ],
+      "slides": [
+        11
+      ],
+      "glossary_slide": 130
+    },
+    {
+      "term": "NER",
+      "definition": "Named Entity Recognition, ou reconnaissance d’entités nommées : repérer dans un texte les segments correspondant à des catégories définies.",
+      "example": "Dans « Commande AB123 à Lyon », étiqueter AB123 comme référence et Lyon comme lieu.",
+      "pitfall": "Une entité détectée n’est pas nécessairement correcte ; les frontières et la catégorie s’évaluent séparément.",
+      "day": 1,
+      "first_slide": 14,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/2"
+      ],
+      "slides": [
+        14,
+        67
+      ],
+      "glossary_slide": 130
+    },
+    {
+      "term": "classification",
+      "definition": "Affectation d’une ou plusieurs catégories à une entrée selon une règle de tâche.",
+      "example": "Attribuer « facturation » à un ticket de double débit.",
+      "pitfall": "La classe attendue dépend du guide d’annotation, surtout pour les demandes multiples.",
+      "day": 1,
+      "first_slide": 14,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/2"
+      ],
+      "slides": [
+        14
+      ],
+      "glossary_slide": 130
+    },
+    {
+      "term": "jeu de données",
+      "definition": "Exemples organisés avec les champs nécessaires à une tâche, parfois accompagnés de labels ou de références pertinentes.",
+      "example": "Une requête FAQ avec l’identifiant de sa fiche attendue constitue un exemple de recherche annoté.",
+      "pitfall": "Les données fictives servent à expliquer la méthode, pas à prouver une performance métier.",
+      "day": 1,
+      "first_slide": 15,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter5/1"
+      ],
+      "slides": [
+        15
+      ],
+      "glossary_slide": 131
+    },
+    {
+      "term": "pertinence",
+      "definition": "Règle qui indique quels résultats comptent comme corrects pour une requête donnée.",
+      "example": "Une fiche indiquant comment suivre un colis peut être pertinente pour « où est ma commande ? ».",
+      "pitfall": "Une métrique de recherche n’a de sens qu’avec une pertinence définie avant l’évaluation.",
+      "day": 1,
+      "first_slide": 15,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter5/1"
+      ],
+      "slides": [
+        15
+      ],
+      "glossary_slide": 131
+    },
+    {
+      "term": "annotation / label",
+      "definition": "L’annotation attribue une information de référence à un exemple ; un label est l’étiquette utilisée comme cible.",
+      "example": "Annoter un message « facturation » ou une ville comme lieu.",
+      "pitfall": "Un désaccord entre annotateurs peut signaler une règle ambiguë plutôt qu’une faute individuelle.",
+      "day": 1,
+      "first_slide": 15,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter5/1"
+      ],
+      "slides": [
+        15
+      ],
+      "glossary_slide": 131
+    },
+    {
+      "term": "split",
+      "definition": "Partition d’un jeu de données en sous-ensembles réservés à des rôles différents, souvent train, validation et test.",
+      "example": "Des paraphrases d’un même scénario sont gardées ensemble dans une seule partition.",
+      "pitfall": "Un découpage aléatoire par ligne peut séparer des exemples quasi identiques.",
+      "day": 1,
+      "first_slide": 16,
+      "sources": [
+        "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+      ],
+      "slides": [
+        16
+      ],
+      "glossary_slide": 131
+    },
+    {
+      "term": "fuite de données",
+      "definition": "Accès, pendant l’apprentissage ou le choix du système, à une information qui ne serait pas disponible dans l’usage ou l’évaluation finale.",
+      "example": "Une paraphrase d’un ticket de test présente dans train peut gonfler artificiellement le score.",
+      "pitfall": "Une excellente mesure ne démontre pas la généralisation si les partitions partagent leurs scénarios.",
+      "day": 1,
+      "first_slide": 16,
+      "sources": [
+        "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+      ],
+      "slides": [
+        16,
+        103
+      ],
+      "glossary_slide": 132
+    },
+    {
+      "term": "train / validation / test",
+      "definition": "Train sert à ajuster les paramètres ; validation à choisir les réglages ; test à mesurer le système retenu une fois.",
+      "example": "Choisir k sur validation, puis rapporter la mesure finale sur les requêtes test gardées à part.",
+      "pitfall": "Réutiliser le test pour régler le système transforme le test en validation.",
+      "day": 1,
+      "first_slide": 16,
+      "sources": [
+        "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+      ],
+      "slides": [
+        16
+      ],
+      "glossary_slide": 132
+    },
+    {
+      "term": "paraphrase",
+      "definition": "Reformulation qui conserve le sens pertinent pour la tâche.",
+      "example": "« Où est mon colis ? » et « Je voudrais suivre ma commande ».",
+      "pitfall": "Une négation ou une date modifiée peut changer le sens et invalider la paraphrase.",
+      "day": 1,
+      "first_slide": 16,
+      "sources": [
+        "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+      ],
+      "slides": [
+        16
+      ],
+      "glossary_slide": 132
+    },
+    {
+      "term": "vecteur creux",
+      "definition": "Vecteur dont la plupart des coordonnées sont nulles, souvent obtenu en comptant les termes d’un grand vocabulaire.",
+      "example": "Un document de trois mots n’active que quelques colonnes d’un vocabulaire de milliers de termes.",
+      "pitfall": "Creux décrit le nombre de valeurs nulles, pas la qualité ou l’importance sémantique.",
+      "day": 1,
+      "first_slide": 17,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction"
+      ],
+      "slides": [
+        17
+      ],
+      "glossary_slide": 132
+    },
+    {
+      "term": "n-gramme de tokens",
+      "definition": "Suite de n tokens consécutifs utilisée comme unité de représentation ou de comparaison.",
+      "example": "« colis reçu » est un bigramme si les tokens sont les mots.",
+      "pitfall": "Les frontières dépendent du tokenizer ; ne pas confondre avec les n-grammes de caractères.",
+      "day": 1,
+      "first_slide": 17,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction"
+      ],
+      "slides": [
+        17
+      ],
+      "glossary_slide": 133
+    },
+    {
+      "term": "TF",
+      "definition": "Term frequency : fréquence ou présence d’un terme à l’intérieur d’un document, selon la variante choisie.",
+      "example": "Dans le document « colis colis », le compte brut de colis vaut 2.",
+      "pitfall": "Le compte brut, la fréquence normalisée et la présence binaire donnent des valeurs différentes.",
+      "day": 1,
+      "first_slide": 18,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#tfidf-term-weighting"
+      ],
+      "slides": [
+        18
+      ],
+      "glossary_slide": 133
+    },
+    {
+      "term": "df",
+      "definition": "Document frequency : nombre de documents du corpus qui contiennent le terme au moins une fois.",
+      "example": "Si « bloqué » apparaît dans une seule des quatre fiches, df=1.",
+      "pitfall": "df compte les documents contenant le terme, pas toutes ses occurrences.",
+      "day": 1,
+      "first_slide": 18,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#tfidf-term-weighting"
+      ],
+      "slides": [
+        18
+      ],
+      "glossary_slide": 133
+    },
+    {
+      "term": "N",
+      "definition": "Nombre total de documents de la collection utilisée pour calculer IDF.",
+      "example": "Pour quatre fiches indexées, N=4.",
+      "pitfall": "N désigne ici les documents de l’index, pas les requêtes de validation.",
+      "day": 1,
+      "first_slide": 18,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#tfidf-term-weighting"
+      ],
+      "slides": [
+        18
+      ],
+      "glossary_slide": 133
+    },
+    {
+      "term": "baseline",
+      "definition": "Système de référence simple et reproductible, utilisé pour juger si une méthode plus complexe apporte un gain.",
+      "example": "Comparer un embedding de phrase à une recherche TF-IDF sur les mêmes requêtes et fiches.",
+      "pitfall": "Une baseline faible ou mal réglée rend la comparaison trompeuse.",
+      "day": 1,
+      "first_slide": 19,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction"
+      ],
+      "slides": [
+        19,
+        120
+      ],
+      "glossary_slide": 134
+    },
+    {
+      "term": "Recall@k",
+      "definition": "Rappel à k : fraction des documents pertinents retrouvés parmi les k premiers résultats, calculée par requête puis moyennée.",
+      "example": "Si 6 requêtes sur 8 trouvent leur fiche dans les trois premiers résultats, Recall@3=6/8=0,75.",
+      "pitfall": "Avec plusieurs résultats pertinents attendus, le rappel classique à k compte les éléments pertinents retrouvés, pas seulement si un élément apparaît.",
+      "day": 1,
+      "first_slide": 19,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction"
+      ],
+      "slides": [
+        19,
+        106
+      ],
+      "glossary_slide": 134
+    },
+    {
+      "term": "MRR",
+      "definition": "Mean Reciprocal Rank : moyenne, sur les requêtes, de l’inverse du rang du premier résultat pertinent ; une absence de résultat pertinent reçoit zéro.",
+      "example": "Premiers rangs pertinents 1, 2 et absent donnent MRR=(1+1/2+0)/3=0,5.",
+      "pitfall": "MRR ignore les autres résultats pertinents après le premier.",
+      "day": 1,
+      "first_slide": 19,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction"
+      ],
+      "slides": [
+        19,
+        106
+      ],
+      "glossary_slide": 134
+    },
+    {
+      "term": "accuracy",
+      "definition": "Exactitude globale : proportion de prédictions exactement correctes parmi toutes les observations évaluées.",
+      "example": "17 prédictions correctes sur 20 donnent 85 %.",
+      "pitfall": "Un score global peut masquer une classe rare mal reconnue.",
+      "day": 1,
+      "first_slide": 20,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics"
+      ],
+      "slides": [
+        20
+      ],
+      "glossary_slide": 134
+    },
+    {
+      "term": "matrice de confusion",
+      "definition": "Table qui croise classes attendues et prédites pour montrer les bonnes réponses et les confusions.",
+      "example": "Deux demandes livraison prédites facturation apparaissent hors diagonale.",
+      "pitfall": "Lire les axes et la convention de normalisation avant d’interpréter les cellules.",
+      "day": 1,
+      "first_slide": 20,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics"
+      ],
+      "slides": [
+        20
+      ],
+      "glossary_slide": 135
+    },
+    {
+      "term": "tokenizer",
+      "definition": "Composant qui découpe le texte selon un vocabulaire et convertit les unités en identifiants pour un modèle donné.",
+      "example": "Un tokenizer peut encoder un emoji comme plusieurs unités plutôt qu’un seul token.",
+      "pitfall": "Le découpage exact dépend du tokenizer ; les sous-mots ne sont pas des morphèmes garantis.",
+      "day": 1,
+      "first_slide": 21,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://www.youtube.com/watch?v=VFp38yj8h3A"
+      ],
+      "slides": [
+        21
+      ],
+      "glossary_slide": 135
+    },
+    {
+      "term": "BPE",
+      "definition": "Byte Pair Encoding : méthode qui construit un vocabulaire en fusionnant progressivement les paires d’unités les plus fréquentes.",
+      "example": "Une fusion b+a → ba permet ensuite de compter de nouvelles paires avec ba.",
+      "pitfall": "Il faut recompter après chaque fusion ; le BPE réel peut ajouter des marqueurs et traiter les octets autrement.",
+      "day": 1,
+      "first_slide": 21,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://www.youtube.com/watch?v=VFp38yj8h3A"
+      ],
+      "slides": [
+        21
+      ],
+      "glossary_slide": 135
+    },
+    {
+      "term": "WordPiece",
+      "definition": "Algorithme de sous-mots qui choisit des unités selon un vocabulaire appris et un critère de score de fusion, utilisé notamment dans BERT.",
+      "example": "Un mot rare peut être encodé comme une suite de morceaux connus.",
+      "pitfall": "WordPiece n’est pas identique au BPE même si les deux découpent en sous-mots.",
+      "day": 1,
+      "first_slide": 21,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://www.youtube.com/watch?v=VFp38yj8h3A"
+      ],
+      "slides": [
+        21
+      ],
+      "glossary_slide": 135
+    },
+    {
+      "term": "tokenisation unigram",
+      "definition": "Méthode qui apprend un vocabulaire de sous-mots puis choisit un découpage de forte probabilité, plutôt que de construire uniquement une suite de fusions BPE.",
+      "example": "Un même mot peut avoir plusieurs segmentations candidates et le tokenizer retient une segmentation favorisée par son modèle.",
+      "pitfall": "Unigram ici désigne une méthode de tokenisation, pas un modèle de langue à un seul token de contexte.",
+      "day": 1,
+      "first_slide": 21,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://www.youtube.com/watch?v=VFp38yj8h3A"
+      ],
+      "slides": [
+        21
+      ],
+      "glossary_slide": 136
+    },
+    {
+      "term": "UTF-8",
+      "definition": "Encodage de caractères Unicode en unités d’octets de longueur variable.",
+      "example": "Un caractère accentué peut occuper plusieurs octets en UTF-8.",
+      "pitfall": "Un octet n’est pas forcément un caractère, et un token n’est pas forcément un octet.",
+      "day": 1,
+      "first_slide": 21,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://www.youtube.com/watch?v=VFp38yj8h3A"
+      ],
+      "slides": [
+        21
+      ],
+      "glossary_slide": 136
+    },
+    {
+      "term": "troncature",
+      "definition": "Suppression d’une partie des tokens pour respecter une longueur maximale d’entrée.",
+      "example": "Limiter une demande à 128 tokens peut retirer la référence située à la fin.",
+      "pitfall": "La troncature perd de l’information ; vérifier quelle partie du texte est conservée.",
+      "day": 1,
+      "first_slide": 21,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/4",
+        "https://www.youtube.com/watch?v=VFp38yj8h3A"
+      ],
+      "slides": [
+        21
+      ],
+      "glossary_slide": 136
+    },
+    {
+      "term": "Unicode",
+      "definition": "Norme qui attribue des points de code aux caractères de nombreux systèmes d’écriture et symboles.",
+      "example": "é peut être stocké comme caractère précomposé ou comme e suivi d’un accent combinant.",
+      "pitfall": "Deux chaînes visuellement identiques peuvent avoir des suites de points de code différentes.",
+      "day": 1,
+      "first_slide": 22,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter6/4"
+      ],
+      "slides": [
+        22
+      ],
+      "glossary_slide": 136
+    },
+    {
+      "term": "normalisation Unicode",
+      "definition": "Transformation définie qui rend certaines représentations Unicode équivalentes sous une forme canonique ou de compatibilité.",
+      "example": "NFC peut composer e et un accent combinant en une forme précomposée.",
+      "pitfall": "Normaliser ne signifie pas supprimer tous les accents ; ne pas confondre NFC et NFKC.",
+      "day": 1,
+      "first_slide": 22,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter6/4"
+      ],
+      "slides": [
+        22
+      ],
+      "glossary_slide": 137
+    },
+    {
+      "term": "lemmatisation",
+      "definition": "Réduction d’une forme fléchie à son lemme, souvent une forme de dictionnaire, à l’aide d’analyses linguistiques.",
+      "example": "« payées » peut être ramené à « payer » selon l’outil et le contexte.",
+      "pitfall": "Une lemmatisation erronée peut supprimer une distinction utile ; les Transformers attendent souvent le texte brut.",
+      "day": 1,
+      "first_slide": 22,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter6/4"
+      ],
+      "slides": [
+        22
+      ],
+      "glossary_slide": 137
+    },
+    {
+      "term": "racinisation",
+      "definition": "Réduction heuristique d’un mot à une racine approximative en retirant des suffixes, sans garantir un mot de dictionnaire.",
+      "example": "Un algorithme peut ramener plusieurs formes de remboursement à une même chaîne tronquée.",
+      "pitfall": "Une racine tronquée n’est pas un lemme et peut fusionner des mots différents.",
+      "day": 1,
+      "first_slide": 22,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter6/4"
+      ],
+      "slides": [
+        22
+      ],
+      "glossary_slide": 137
+    },
+    {
+      "term": "fusion BPE",
+      "definition": "Étape d’apprentissage qui remplace une paire adjacente fréquente par une nouvelle unité, puis recalcule les fréquences.",
+      "example": "Après b+a → ba, « bas » devient ba+s avant la prochaine fusion.",
+      "pitfall": "Apprendre les fusions du vocabulaire et appliquer ces fusions à un texte sont deux étapes distinctes.",
+      "day": 1,
+      "first_slide": 23,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter6/5"
+      ],
+      "slides": [
+        23
+      ],
+      "glossary_slide": 137
+    },
+    {
+      "term": "tenseur",
+      "definition": "Tableau numérique à une ou plusieurs dimensions manipulé par le modèle.",
+      "example": "input_ids pour trois phrases complétées à longueur cinq forme un tableau de taille 3×5.",
+      "pitfall": "La forme d’un tenseur indique ses dimensions, pas à elle seule la signification de chaque axe.",
+      "day": 1,
+      "first_slide": 24,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/5"
+      ],
+      "slides": [
+        24
+      ],
+      "glossary_slide": 138
+    },
+    {
+      "term": "batch",
+      "definition": "Petit groupe d’exemples traités ensemble dans une même opération du modèle.",
+      "example": "Trois phrases peuvent constituer un batch de taille 3.",
+      "pitfall": "Les phrases d’un batch doivent être mises en forme compatible, souvent par padding et masque.",
+      "day": 1,
+      "first_slide": 24,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/5"
+      ],
+      "slides": [
+        24,
+        63
+      ],
+      "glossary_slide": 138
+    },
+    {
+      "term": "input_ids",
+      "definition": "Suite d’identifiants entiers qui représente les tokens après tokenisation.",
+      "example": "[101, 1234, 102] peut coder un début, un token et une fin selon le tokenizer.",
+      "pitfall": "Les nombres sont des indices arbitraires du vocabulaire, pas des vecteurs sémantiques.",
+      "day": 1,
+      "first_slide": 24,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/5"
+      ],
+      "slides": [
+        24
+      ],
+      "glossary_slide": 138
+    },
+    {
+      "term": "attention_mask",
+      "definition": "Masque qui distingue les positions réelles des positions de padding dans une entrée batched.",
+      "example": "[1,1,1,0] indique trois positions conservées et une position de padding.",
+      "pitfall": "Ce masque de padding n’est pas le masque causal qui interdit l’accès au futur.",
+      "day": 1,
+      "first_slide": 24,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/5"
+      ],
+      "slides": [
+        24,
+        62
+      ],
+      "glossary_slide": 138
+    },
+    {
+      "term": "padding",
+      "definition": "Tokens ajoutés pour donner aux séquences d’un batch une longueur commune.",
+      "example": "Une phrase de trois tokens reçoit une position de remplissage pour rejoindre une séquence de quatre.",
+      "pitfall": "Le padding n’est pas du texte observé et doit être masqué selon l’usage.",
+      "day": 1,
+      "first_slide": 24,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/5"
+      ],
+      "slides": [
+        24,
+        62
+      ],
+      "glossary_slide": 139
+    },
+    {
+      "term": "représentation dense",
+      "definition": "Vecteur où la plupart des coordonnées sont non nulles, appris ou calculé pour résumer des caractéristiques.",
+      "example": "Un embedding de phrase peut relier « colis en retard » à « ma livraison n’arrive pas ».",
+      "pitfall": "Une proximité dense peut suivre le thème sans préserver une négation ou un détail critique.",
+      "day": 1,
+      "first_slide": 25,
+      "sources": [
+        "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "slides": [
+        25
+      ],
+      "glossary_slide": 139
+    },
+    {
+      "term": "embedding de phrase",
+      "definition": "Vecteur unique calculé pour représenter une séquence entière, avec une méthode propre au modèle.",
+      "example": "Encoder une requête et chaque FAQ permet de comparer leurs vecteurs.",
+      "pitfall": "Le résultat dépend de l’objectif d’entraînement et de la méthode d’agrégation ; un vecteur de token n’est pas automatiquement un embedding de phrase.",
+      "day": 1,
+      "first_slide": 25,
+      "sources": [
+        "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+      ],
+      "slides": [
+        25
+      ],
+      "glossary_slide": 139
+    },
+    {
+      "term": "similarité cosinus",
+      "definition": "Produit scalaire de deux vecteurs normalisés par leurs longueurs ; elle compare leur direction.",
+      "example": "(1,0) et (2,0) ont un cosinus de 1 car ils pointent dans la même direction.",
+      "pitfall": "Un score élevé ne prouve pas que les textes ont la même intention, notamment en présence de négation.",
+      "day": 1,
+      "first_slide": 26,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html"
+      ],
+      "slides": [
+        26
+      ],
+      "glossary_slide": 139
+    },
+    {
+      "term": "produit scalaire",
+      "definition": "Somme des produits des coordonnées correspondantes de deux vecteurs de même dimension.",
+      "example": "(1, 2) · (3, 4) = 1×3 + 2×4 = 11.",
+      "pitfall": "Le produit scalaire dépend de la norme des vecteurs, contrairement au cosinus normalisé.",
+      "day": 1,
+      "first_slide": 26,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html"
+      ],
+      "slides": [
+        26
+      ],
+      "glossary_slide": 140
+    },
+    {
+      "term": "norme L2",
+      "definition": "Longueur d’un vecteur, calculée par la racine carrée de la somme des carrés de ses coordonnées.",
+      "example": "La norme L2 de (3, 4) vaut √(9+16) = 5.",
+      "pitfall": "Le cosinus avec un vecteur nul n’est pas défini ; annoncer la convention logicielle.",
+      "day": 1,
+      "first_slide": 26,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html"
+      ],
+      "slides": [
+        26
+      ],
+      "glossary_slide": 140
+    },
+    {
+      "term": "Recall@k et hit rate",
+      "definition": "Avec une seule FAQ pertinente par requête, Recall@k est égal au hit rate : la proportion de requêtes dont la FAQ attendue figure dans les k premiers résultats.",
+      "example": "Sur 8 requêtes, si la FAQ attendue figure dans les trois premiers pour 6, Recall@3 et hit rate@3 valent 0,75.",
+      "pitfall": "Avec plusieurs éléments pertinents par requête, le rappel classique mesure la fraction de tous ces éléments retrouvés parmi les k premiers ; ce n’est pas simplement un indicateur oui/non.",
+      "day": 1,
+      "first_slide": 28,
+      "sources": [
+        "https://www.sbert.net/examples/sentence_transformer/applications/semantic-search/README.html"
+      ],
+      "slides": [
+        28
+      ],
+      "glossary_slide": 140
+    },
+    {
+      "term": "protocole de comparaison",
+      "definition": "Conditions fixées pour comparer équitablement plusieurs représentations : mêmes requêtes, corpus, pertinence et mesure.",
+      "example": "Comparer TF-IDF et embeddings sur les huit mêmes requêtes annotées.",
+      "pitfall": "Changer les requêtes ou la définition de pertinence entre systèmes invalide l’interprétation du gain.",
+      "day": 1,
+      "first_slide": 28,
+      "sources": [
+        "https://www.sbert.net/examples/sentence_transformer/applications/semantic-search/README.html"
+      ],
+      "slides": [
+        28,
+        120
+      ],
+      "glossary_slide": 140
+    },
+    {
+      "term": "prédiction du prochain token",
+      "definition": "Objectif qui apprend à attribuer une distribution aux tokens pouvant suivre un préfixe.",
+      "example": "Après « Le colis », les continuations possibles peuvent inclure « arrive » ou « manque » selon le contexte.",
+      "pitfall": "Le texte d’entraînement fournit des cibles, mais les continuations ne sont pas toutes également vraies ou utiles.",
+      "day": 2,
+      "first_slide": 37,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter7/6"
+      ],
+      "slides": [
+        37
+      ],
+      "glossary_slide": 141
+    },
+    {
+      "term": "décalage entrée-cible",
+      "definition": "Construction où les tokens précédents servent d’entrée et le token suivant de cible à chaque position.",
+      "example": "Entrée « Le colis » → cible « arrive ».",
+      "pitfall": "Le modèle ne doit pas voir la cible future au moment de calculer la prédiction.",
+      "day": 2,
+      "first_slide": 37,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter7/6"
+      ],
+      "slides": [
+        37
+      ],
+      "glossary_slide": 141
+    },
+    {
+      "term": "RNN",
+      "definition": "Recurrent Neural Network, ou réseau neuronal récurrent : traite une séquence en propageant un état d’une position à la suivante.",
+      "example": "En lisant « le colis arrive », l’état après colis est transmis au traitement d’arrive.",
+      "pitfall": "Les RNN ne sont pas tous incapables de retenir les longues dépendances, mais l’information suit un chemin séquentiel.",
+      "day": 2,
+      "first_slide": 38,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        38
+      ],
+      "glossary_slide": 141
+    },
+    {
+      "term": "attention",
+      "definition": "Calcul qui compare une représentation à plusieurs positions, puis combine leurs informations avec des poids calculés à partir de projections apprises.",
+      "example": "Pour interpréter « il », une position peut accorder du poids au nom « colis » mentionné plus tôt.",
+      "pitfall": "Les poids d’attention seuls n’expliquent pas intégralement la décision du modèle.",
+      "day": 2,
+      "first_slide": 38,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        38
+      ],
+      "glossary_slide": 141
+    },
+    {
+      "term": "séquence",
+      "definition": "Suite ordonnée de tokens, généralement munie de positions et de masques.",
+      "example": "Les tokens de « le colis arrive » forment une séquence de longueur trois.",
+      "pitfall": "Un sac de mots conserve les éléments mais perd leur ordre.",
+      "day": 2,
+      "first_slide": 38,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        38
+      ],
+      "glossary_slide": 142
+    },
+    {
+      "term": "query (Q), key (K), value (V)",
+      "definition": "Dans l’attention, Q exprime la position qui interroge, K sert à calculer la compatibilité de chaque position, et V porte le contenu pondéré dans la sortie.",
+      "example": "Une requête cherche une notice en comparant Q aux K, puis récupère les informations correspondantes depuis V.",
+      "pitfall": "K et V peuvent provenir du même token mais de projections apprises distinctes ; V ne sert pas à calculer les poids.",
+      "day": 2,
+      "first_slide": 39,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4"
+      ],
+      "slides": [
+        39
+      ],
+      "glossary_slide": 142
+    },
+    {
+      "term": "projection linéaire",
+      "definition": "Transformation d’un vecteur par une matrice de paramètres appris, éventuellement suivie d’un biais.",
+      "example": "À partir de X, les matrices WQ, WK et WV produisent les représentations Q, K et V.",
+      "pitfall": "Les projections ne correspondent pas à des champs nommés explicitement dans le texte.",
+      "day": 2,
+      "first_slide": 39,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4"
+      ],
+      "slides": [
+        39
+      ],
+      "glossary_slide": 142
+    },
+    {
+      "term": "produit matriciel",
+      "definition": "Opération qui combine les lignes d’une matrice avec les colonnes d’une autre ; les dimensions internes doivent être compatibles.",
+      "example": "Pour Q de forme 3×2 et Kᵀ de forme 2×3, QKᵀ a la forme 3×3.",
+      "pitfall": "Vérifier l’ordre des axes : les lignes correspondent ici aux requêtes et les colonnes aux clés.",
+      "day": 2,
+      "first_slide": 40,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        40
+      ],
+      "glossary_slide": 142
+    },
+    {
+      "term": "dimension d_k",
+      "definition": "Nombre de coordonnées d’une clé et d’une requête dans une tête d’attention donnée.",
+      "example": "Une clé (1,0) a d_k=2.",
+      "pitfall": "d_k n’est pas nécessairement la dimension totale du modèle ni le nombre de tokens.",
+      "day": 2,
+      "first_slide": 40,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        40
+      ],
+      "glossary_slide": 143
+    },
+    {
+      "term": "matrice / transposée",
+      "definition": "Une matrice est un tableau à deux dimensions ; sa transposée échange lignes et colonnes.",
+      "example": "K de forme 3×2 donne Kᵀ de forme 2×3.",
+      "pitfall": "Transposer ne signifie pas inverser une matrice.",
+      "day": 2,
+      "first_slide": 40,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        40
+      ],
+      "glossary_slide": 143
+    },
+    {
+      "term": "score de compatibilité",
+      "definition": "Produit scalaire entre une query et une key ; un score plus élevé contribue à un poids d’attention plus élevé après normalisation.",
+      "example": "q=(1,0) et k=(1,1) donnent qᵀk=1.",
+      "pitfall": "Un score brut n’est pas une probabilité et peut être positif ou négatif.",
+      "day": 2,
+      "first_slide": 41,
+      "sources": [],
+      "slides": [
+        41
+      ],
+      "glossary_slide": 143
+    },
+    {
+      "term": "softmax",
+      "definition": "Fonction qui transforme un vecteur de scores en poids positifs ou nuls dont la somme vaut un, sur les positions autorisées.",
+      "example": "Sans mise à l’échelle, softmax([1, 0, 1]) ≈ [0,422 ; 0,155 ; 0,422]. Après division par √2, on obtient [0,401 ; 0,198 ; 0,401].",
+      "pitfall": "La somme vaut un par requête et sur l’axe des clés ; les positions interdites doivent être masquées avant la normalisation.",
+      "day": 2,
+      "first_slide": 42,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        42,
+        59
+      ],
+      "glossary_slide": 143
+    },
+    {
+      "term": "mise à l’échelle par √d_k",
+      "definition": "Division des scores de produit scalaire par la racine de la dimension des clés avant softmax afin de contrôler leur amplitude.",
+      "example": "Pour d_k=2, le score 1 devient 1/√2≈0,707.",
+      "pitfall": "Cette division ne transforme pas le score en cosinus et ne change pas d_k en dimension totale du modèle.",
+      "day": 2,
+      "first_slide": 42,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        42
+      ],
+      "glossary_slide": 144
+    },
+    {
+      "term": "somme pondérée",
+      "definition": "Somme des vecteurs V après multiplication de chacun par son poids d’attention.",
+      "example": "0,401(2,0)+0,198(0,2)+0,401(2,2)≈(1,604;1,198).",
+      "pitfall": "La sortie est une représentation vectorielle, pas directement un mot ou une explication.",
+      "day": 2,
+      "first_slide": 43,
+      "sources": [],
+      "slides": [
+        43
+      ],
+      "glossary_slide": 144
+    },
+    {
+      "term": "masque causal",
+      "definition": "Masque qui interdit à chaque position d’utiliser les clés correspondant aux positions futures, afin de prédire la suite sans la révéler.",
+      "example": "À la position de « colis », le modèle peut voir « Le », mais pas « arrive » dans « Le colis arrive ».",
+      "pitfall": "Masquer les futurs scores avant softmax ; un masque de padding répond à une autre question.",
+      "day": 2,
+      "first_slide": 44,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/6"
+      ],
+      "slides": [
+        44
+      ],
+      "glossary_slide": 144
+    },
+    {
+      "term": "attention multi-tête",
+      "definition": "Calcul de plusieurs attentions en parallèle avec des projections distinctes, puis concaténation et projection de leurs sorties.",
+      "example": "Avec 256 dimensions et 8 têtes de même taille, chaque tête peut traiter 32 dimensions.",
+      "pitfall": "Les têtes ne sont pas des modèles indépendants et n’ont pas un rôle linguistique fixe garanti.",
+      "day": 2,
+      "first_slide": 45,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        45
+      ],
+      "glossary_slide": 144
+    },
+    {
+      "term": "concaténation",
+      "definition": "Assemblage de vecteurs le long d’un axe, sans les moyenner.",
+      "example": "Huit sorties de 32 coordonnées donnent 256 coordonnées concaténées.",
+      "pitfall": "Concaténer conserve les blocs côte à côte ; une projection ultérieure peut ensuite les mélanger.",
+      "day": 2,
+      "first_slide": 45,
+      "sources": [
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "slides": [
+        45
+      ],
+      "glossary_slide": 145
+    },
+    {
+      "term": "MLP / FFN",
+      "definition": "Multi-Layer Perceptron / Feed-Forward Network : réseau de couches appliqué aux caractéristiques de chaque position, généralement avec une transformation non linéaire.",
+      "example": "Après l’attention, le FFN transforme séparément la représentation de chaque token avec des paramètres partagés entre positions.",
+      "pitfall": "Le FFN mélange les caractéristiques d’une position ; l’attention réalise l’échange d’information entre positions.",
+      "day": 2,
+      "first_slide": 46,
+      "sources": [
+        "https://arxiv.org/abs/1607.06450",
+        "https://arxiv.org/abs/1512.03385"
+      ],
+      "slides": [
+        46
+      ],
+      "glossary_slide": 145
+    },
+    {
+      "term": "connexion résiduelle",
+      "definition": "Chemin qui additionne l’entrée d’un sous-bloc à sa transformation, lorsque leurs formes sont compatibles.",
+      "example": "x=[1,2] et f(x)=[0,5,−0,5] donnent x+f(x)=[1,5,1,5].",
+      "pitfall": "C’est une addition, pas une concaténation ni une moyenne.",
+      "day": 2,
+      "first_slide": 46,
+      "sources": [
+        "https://arxiv.org/abs/1607.06450",
+        "https://arxiv.org/abs/1512.03385"
+      ],
+      "slides": [
+        46
+      ],
+      "glossary_slide": 145
+    },
+    {
+      "term": "normalisation",
+      "definition": "Opération qui remet à l’échelle les caractéristiques d’une représentation selon une règle du modèle, comme LayerNorm.",
+      "example": "LayerNorm agit sur les caractéristiques d’un token selon l’axe prévu par l’architecture.",
+      "pitfall": "Elle n’est pas le softmax sur les clés ; son ordre dans le bloc varie selon l’architecture.",
+      "day": 2,
+      "first_slide": 46,
+      "sources": [
+        "https://arxiv.org/abs/1607.06450",
+        "https://arxiv.org/abs/1512.03385"
+      ],
+      "slides": [
+        46
+      ],
+      "glossary_slide": 145
+    },
+    {
+      "term": "information positionnelle",
+      "definition": "Représentation ou transformation qui donne au modèle un signal sur la position des tokens ou leurs relations d’ordre.",
+      "example": "Elle permet de distinguer « le client rembourse le vendeur » de « le vendeur rembourse le client ».",
+      "pitfall": "Un identifiant de token n’encode pas son rang dans la séquence ; longueur maximale ne garantit pas la qualité sur tout document.",
+      "day": 2,
+      "first_slide": 47,
+      "sources": [
+        "https://arxiv.org/abs/2104.09864"
+      ],
+      "slides": [
+        47
+      ],
+      "glossary_slide": 146
+    },
+    {
+      "term": "encodeur Transformer",
+      "definition": "Architecture qui construit des représentations d’une séquence d’entrée en exploitant le contexte autorisé de cette séquence.",
+      "example": "Un encodeur de type BERT fournit des représentations pour classifier un message ou étiqueter ses tokens.",
+      "pitfall": "Un encodeur seul n’est pas automatiquement un générateur causal.",
+      "day": 2,
+      "first_slide": 48,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/5",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/7",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=H39Z_720T5s"
+      ],
+      "slides": [
+        48
+      ],
+      "glossary_slide": 146
+    },
+    {
+      "term": "décodeur causal",
+      "definition": "Architecture qui prédit des tokens de sortie à partir du préfixe disponible, avec accès empêché aux tokens futurs.",
+      "example": "Un modèle de famille GPT reçoit « Le colis » puis génère le token suivant.",
+      "pitfall": "Classification et résumé restent possibles avec un décodeur via une tâche adaptée ; les exemples du tableau ne sont pas des interdictions.",
+      "day": 2,
+      "first_slide": 48,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/5",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/7",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=H39Z_720T5s"
+      ],
+      "slides": [
+        48
+      ],
+      "glossary_slide": 146
+    },
+    {
+      "term": "encodeur-décodeur",
+      "definition": "Architecture qui encode une séquence source puis génère une séquence cible en consultant la source et le préfixe de sortie.",
+      "example": "T5 peut encoder une demande et générer sa traduction ou son résumé.",
+      "pitfall": "La cross-attention relie le décodeur à la source, elle ne lui donne pas accès aux futures cibles.",
+      "day": 2,
+      "first_slide": 48,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/5",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/7",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=H39Z_720T5s"
+      ],
+      "slides": [
+        48
+      ],
+      "glossary_slide": 146
+    },
+    {
+      "term": "T5",
+      "definition": "Text-to-Text Transfer Transformer : famille encodeur-décodeur qui formule de nombreuses tâches sous forme d’entrée texte vers sortie texte.",
+      "example": "Une entrée à résumer est encodée puis une sortie plus courte est générée.",
+      "pitfall": "T5 est un exemple d’architecture ; ses capacités dépendent du checkpoint et de son entraînement.",
+      "day": 2,
+      "first_slide": 48,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/5",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/7",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=H39Z_720T5s"
+      ],
+      "slides": [
+        48
+      ],
+      "glossary_slide": 147
+    },
+    {
+      "term": "préentraînement masqué",
+      "definition": "Objectif où certains tokens d’entrée sont masqués et prédits en s’appuyant sur le contexte rendu disponible par le modèle.",
+      "example": "Pour « Le colis est [MASK] », proposer « arrivé » à partir des mots observés.",
+      "pitfall": "Un modèle masqué n’est pas nécessairement un modèle conversationnel ou un classifieur métier.",
+      "day": 2,
+      "first_slide": 49,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/10",
+        "https://arxiv.org/abs/1810.04805",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=BqqfQnyjmgg"
+      ],
+      "slides": [
+        49
+      ],
+      "glossary_slide": 147
+    },
+    {
+      "term": "fine-tuning",
+      "definition": "Poursuite de l’apprentissage d’un checkpoint préentraîné sur une tâche ou un format ciblé.",
+      "example": "Adapter l’encodeur et une tête de classification aux intentions annotées du support.",
+      "pitfall": "Le checkpoint préentraîné seul ne connaît pas automatiquement les labels du projet.",
+      "day": 2,
+      "first_slide": 49,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/10",
+        "https://arxiv.org/abs/1810.04805",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=BqqfQnyjmgg"
+      ],
+      "slides": [
+        49,
+        59
+      ],
+      "glossary_slide": 147
+    },
+    {
+      "term": "tête de classification",
+      "definition": "Couche de sortie ajoutée à une représentation du modèle pour produire des scores de classes définies.",
+      "example": "Une tête à cinq sorties peut produire un logit pour chacune des cinq intentions.",
+      "pitfall": "Une nouvelle tête doit être entraînée et évaluée ; sa forme correcte ne garantit pas de prédictions fiables.",
+      "day": 2,
+      "first_slide": 49,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/10",
+        "https://arxiv.org/abs/1810.04805",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=BqqfQnyjmgg"
+      ],
+      "slides": [
+        49
+      ],
+      "glossary_slide": 147
+    },
+    {
+      "term": "préentraînement",
+      "definition": "Apprentissage initial de représentations sur un corpus général avant une adaptation éventuelle à une tâche.",
+      "example": "Un modèle apprend à prédire des tokens sur de nombreux textes.",
+      "pitfall": "Le fine-tuning poursuit l’apprentissage à partir de poids déjà appris.",
+      "day": 2,
+      "first_slide": 49,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/10",
+        "https://arxiv.org/abs/1810.04805",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=BqqfQnyjmgg"
+      ],
+      "slides": [
+        49
+      ],
+      "glossary_slide": 148
+    },
+    {
+      "term": "paramètre / hyperparamètre",
+      "definition": "Un paramètre est appris à partir des données ; un hyperparamètre règle l’architecture ou l’apprentissage.",
+      "example": "Une valeur de poids est un paramètre ; le taux d’apprentissage est un hyperparamètre.",
+      "pitfall": "Choisir les hyperparamètres sur le test biaise la mesure finale.",
+      "day": 2,
+      "first_slide": 49,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter1/10",
+        "https://arxiv.org/abs/1810.04805",
+        "https://huggingface.co/learn/llm-course/fr/chapter1/4",
+        "https://www.youtube.com/watch?v=BqqfQnyjmgg"
+      ],
+      "slides": [
+        49
+      ],
+      "glossary_slide": 148
+    },
+    {
+      "term": "pipeline",
+      "definition": "Interface logicielle de haut niveau qui enchaîne préparation des entrées, exécution du modèle et post-traitement pour une tâche choisie.",
+      "example": "Un pipeline fill-mask tokenise la phrase, calcule des scores puis affiche des tokens candidats.",
+      "pitfall": "pipeline() ne désigne ni une architecture ni un entraînement automatique ; tâche et checkpoint doivent être compatibles.",
+      "day": 2,
+      "first_slide": 50,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/2"
+      ],
+      "slides": [
+        50
+      ],
+      "glossary_slide": 148
+    },
+    {
+      "term": "checkpoint",
+      "definition": "État enregistré d’un modèle, comprenant ses paramètres et souvent sa configuration après une étape d’apprentissage.",
+      "example": "Charger un checkpoint DistilBERT multilingue avec le tokenizer correspondant.",
+      "pitfall": "Un checkpoint n’est pas nécessairement adapté à la tâche, à la langue ou à la version choisie.",
+      "day": 2,
+      "first_slide": 50,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/2"
+      ],
+      "slides": [
+        50,
+        64,
+        93
+      ],
+      "glossary_slide": 148
+    },
+    {
+      "term": "logits",
+      "definition": "Scores réels non normalisés produits avant softmax pour des classes ou des tokens candidats.",
+      "example": "[2,0] devient environ [0,88,0,12] après softmax à température 1.",
+      "pitfall": "Les logits ne sont pas des probabilités et un score élevé ne valide pas un fait.",
+      "day": 2,
+      "first_slide": 50,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/2"
+      ],
+      "slides": [
+        50,
+        59,
+        70
+      ],
+      "glossary_slide": 149
+    },
+    {
+      "term": "inférence",
+      "definition": "Utilisation d’un modèle pour calculer une sortie à partir d’une nouvelle entrée.",
+      "example": "Obtenir la classe d’un message avec les poids déjà appris.",
+      "pitfall": "L’inférence seule ne met pas à jour les poids du modèle.",
+      "day": 2,
+      "first_slide": 50,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/2"
+      ],
+      "slides": [
+        50,
+        93
+      ],
+      "glossary_slide": 149
+    },
+    {
+      "term": "API",
+      "definition": "Application Programming Interface : interface définie qui permet à un programme d’utiliser une bibliothèque ou un service.",
+      "example": "pipeline() est une entrée d’API Python ; une API distante peut recevoir une requête HTTP.",
+      "pitfall": "API ne signifie pas forcément service payant ou distant.",
+      "day": 2,
+      "first_slide": 50,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter2/2"
+      ],
+      "slides": [
+        50
+      ],
+      "glossary_slide": 149
+    },
+    {
+      "term": "décodage glouton (greedy)",
+      "definition": "À chaque étape, sélectionne le token de probabilité la plus élevée sans tirer au hasard.",
+      "example": "Pour [0,50; 0,30; 0,20], greedy choisit le premier token.",
+      "pitfall": "La sortie est déterministe pour un calcul fixé mais peut être répétitive ou erronée.",
+      "day": 2,
+      "first_slide": 51,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/text_generation"
+      ],
+      "slides": [
+        51
+      ],
+      "glossary_slide": 149
+    },
+    {
+      "term": "échantillonnage",
+      "definition": "Choix aléatoire d’un token selon une distribution de probabilités, souvent après filtrage des candidats.",
+      "example": "Un token à probabilité 0,30 peut être tiré même si un autre vaut 0,50.",
+      "pitfall": "La diversité accrue ne garantit ni exactitude ni meilleure fidélité.",
+      "day": 2,
+      "first_slide": 51,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/text_generation"
+      ],
+      "slides": [
+        51
+      ],
+      "glossary_slide": 150
+    },
+    {
+      "term": "température",
+      "definition": "Paramètre qui divise les logits avant softmax ; une température basse concentre la distribution et une température haute l’aplatit.",
+      "example": "Pour les logits [2,0], T=1 donne environ [0,88;0,12] et T=2 environ [0,73;0,27].",
+      "pitfall": "La température change le choix des tokens, pas les connaissances ou les poids appris ; elle n’a pas d’effet de diversité en greedy.",
+      "day": 2,
+      "first_slide": 51,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/text_generation"
+      ],
+      "slides": [
+        51
+      ],
+      "glossary_slide": 150
+    },
+    {
+      "term": "top-k",
+      "definition": "Filtrage qui ne garde que les k tokens les plus probables avant échantillonnage.",
+      "example": "Avec top-k=3, seuls les trois candidats de plus forte probabilité restent disponibles.",
+      "pitfall": "k fixe le nombre de candidats, pas leur masse totale de probabilité.",
+      "day": 2,
+      "first_slide": 51,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/text_generation"
+      ],
+      "slides": [
+        51
+      ],
+      "glossary_slide": 150
+    },
+    {
+      "term": "top-p",
+      "definition": "Échantillonnage à noyau : conserve le plus petit ensemble des tokens les plus probables dont la probabilité cumulée atteint p, puis renormalise.",
+      "example": "Avec [0,50;0,30;0,15;0,05] et p=0,8, les deux premiers candidats sont retenus.",
+      "pitfall": "Le nombre de candidats varie avec la distribution ; top-p n’est pas équivalent à un k fixe.",
+      "day": 2,
+      "first_slide": 51,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/text_generation"
+      ],
+      "slides": [
+        51
+      ],
+      "glossary_slide": 150
+    },
+    {
+      "term": "prompt",
+      "definition": "Texte ou structure de messages fournie au modèle comme contexte et consigne de génération.",
+      "example": "« Résume en une phrase : le colis AB123 est arrivé mardi avec un article manquant. »",
+      "pitfall": "Un prompt clair ne garantit pas que le modèle respecte les faits ou la consigne.",
+      "day": 2,
+      "first_slide": 52,
+      "sources": [
+        "https://huggingface.co/docs/transformers/chat_templating",
+        "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
+      ],
+      "slides": [
+        52,
+        81
+      ],
+      "glossary_slide": 151
+    },
+    {
+      "term": "chat template",
+      "definition": "Formatage propre à un modèle qui transforme les rôles et messages en tokens ou marqueurs attendus par son entraînement.",
+      "example": "Le template peut sérialiser un message utilisateur puis signaler qu’une réponse assistant doit commencer.",
+      "pitfall": "Le format brut d’un autre modèle peut provoquer une génération mal formée ou mal conditionnée.",
+      "day": 2,
+      "first_slide": 52,
+      "sources": [
+        "https://huggingface.co/docs/transformers/chat_templating",
+        "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
+      ],
+      "slides": [
+        52,
+        85
+      ],
+      "glossary_slide": 151
+    },
+    {
+      "term": "max_new_tokens",
+      "definition": "Limite supérieure du nombre de tokens nouveaux générés, sans compter les tokens du prompt.",
+      "example": "max_new_tokens=40 autorise au plus 40 tokens de continuation.",
+      "pitfall": "Un token n’est pas un mot ; la limite ne fixe ni le nombre de caractères ni la fidélité.",
+      "day": 2,
+      "first_slide": 52,
+      "sources": [
+        "https://huggingface.co/docs/transformers/chat_templating",
+        "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
+      ],
+      "slides": [
+        52
+      ],
+      "glossary_slide": 151
+    },
+    {
+      "term": "id2label / label2id",
+      "definition": "Correspondances sauvegardées entre l’indice numérique d’une classe et son nom, dans les deux sens.",
+      "example": "0 ↔ livraison ; 1 ↔ facturation.",
+      "pitfall": "Un ordre incohérent affiche des noms erronés même si les calculs du modèle sont inchangés.",
+      "day": 3,
+      "first_slide": 59,
+      "sources": [
+        "https://huggingface.co/docs/transformers/tasks/sequence_classification"
+      ],
+      "slides": [
+        59
+      ],
+      "glossary_slide": 152
+    },
+    {
+      "term": "loss (fonction de perte)",
+      "definition": "Valeur calculée à partir des prédictions et des cibles, que l’entraînement cherche à réduire.",
+      "example": "Si la vraie classe reçoit 0,8, −ln(0,8) ≈ 0,223.",
+      "pitfall": "Une loss basse sur l’entraînement ne garantit pas de bonnes prédictions sur de nouveaux exemples.",
+      "day": 3,
+      "first_slide": 60,
+      "sources": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html"
+      ],
+      "slides": [
+        60
+      ],
+      "glossary_slide": 152
+    },
+    {
+      "term": "entropie croisée (cross-entropy)",
+      "definition": "Loss de classification qui pénalise la faible probabilité attribuée à la classe correcte.",
+      "example": "PyTorch CrossEntropyLoss reçoit généralement des logits et les indices des classes vraies.",
+      "pitfall": "Ne pas appliquer softmax avant CrossEntropyLoss lorsque l’API attend des logits.",
+      "day": 3,
+      "first_slide": 60,
+      "sources": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html"
+      ],
+      "slides": [
+        60
+      ],
+      "glossary_slide": 152
+    },
+    {
+      "term": "forward pass (passe avant)",
+      "definition": "Calcul qui fait traverser les entrées au modèle pour produire des prédictions.",
+      "example": "Un batch de messages donne cinq logits par message.",
+      "pitfall": "La passe avant calcule les sorties ; elle ne met pas à elle seule les poids à jour.",
+      "day": 3,
+      "first_slide": 61,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+        "https://www.youtube.com/watch?v=nvBXf7s7vTI"
+      ],
+      "slides": [
+        61
+      ],
+      "glossary_slide": 152
+    },
+    {
+      "term": "backpropagation (rétropropagation)",
+      "definition": "Calcul qui propage l’erreur de la loss vers les paramètres afin d’obtenir leurs gradients.",
+      "example": "La loss finale contribue aux gradients de la tête et, si elle est dégelée, de l’encodeur.",
+      "pitfall": "La rétropropagation calcule des gradients ; c’est l’optimiseur qui applique la mise à jour.",
+      "day": 3,
+      "first_slide": 61,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+        "https://www.youtube.com/watch?v=nvBXf7s7vTI"
+      ],
+      "slides": [
+        61
+      ],
+      "glossary_slide": 153
+    },
+    {
+      "term": "gradient",
+      "definition": "Dérivée qui indique comment la loss changerait si un paramètre changeait légèrement.",
+      "example": "Un gradient négatif peut conduire l’optimiseur à augmenter le paramètre pour réduire la loss.",
+      "pitfall": "Ce n’est pas une prédiction ni une garantie que chaque mise à jour améliore la validation.",
+      "day": 3,
+      "first_slide": 61,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+        "https://www.youtube.com/watch?v=nvBXf7s7vTI"
+      ],
+      "slides": [
+        61
+      ],
+      "glossary_slide": 153
+    },
+    {
+      "term": "optimiseur",
+      "definition": "Algorithme qui utilise les gradients et ses réglages pour mettre à jour les paramètres entraînables.",
+      "example": "AdamW adapte les mises à jour à l’historique des gradients et applique une décroissance des poids.",
+      "pitfall": "Changer d’optimiseur ou de réglages peut changer le résultat même avec les mêmes données.",
+      "day": 3,
+      "first_slide": 61,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+        "https://www.youtube.com/watch?v=nvBXf7s7vTI"
+      ],
+      "slides": [
+        61
+      ],
+      "glossary_slide": 153
+    },
+    {
+      "term": "AdamW",
+      "definition": "Optimiseur adaptatif qui estime des moyennes des gradients et sépare la décroissance des poids de l’adaptation du pas.",
+      "example": "Un fine-tuning utilise souvent AdamW avec un learning rate faible.",
+      "pitfall": "AdamW ne choisit ni les bonnes données ni la bonne métrique.",
+      "day": 3,
+      "first_slide": 61,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+        "https://www.youtube.com/watch?v=nvBXf7s7vTI"
+      ],
+      "slides": [
+        61
+      ],
+      "glossary_slide": 153
+    },
+    {
+      "term": "learning rate (taux d’apprentissage)",
+      "definition": "Réglage qui détermine l’ampleur des mises à jour des paramètres par l’optimiseur.",
+      "example": "Un taux trop élevé peut faire osciller ou diverger la loss.",
+      "pitfall": "Ce n’est ni la taille du batch ni le nombre de mises à jour.",
+      "day": 3,
+      "first_slide": 61,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+        "https://www.youtube.com/watch?v=nvBXf7s7vTI"
+      ],
+      "slides": [
+        61
+      ],
+      "glossary_slide": 154
+    },
+    {
+      "term": "Trainer",
+      "definition": "Classe Hugging Face Transformers qui orchestre l’entraînement et l’évaluation selon une configuration fournie.",
+      "example": "Trainer reçoit modèle, arguments, jeux de données, tokenizer ou collator et calcul de métriques.",
+      "pitfall": "Il automatise la boucle mais ne vérifie pas que les labels, partitions ou scores sont corrects.",
+      "day": 3,
+      "first_slide": 61,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/4",
+        "https://huggingface.co/learn/llm-course/fr/chapter3/3",
+        "https://www.youtube.com/watch?v=nvBXf7s7vTI"
+      ],
+      "slides": [
+        61
+      ],
+      "glossary_slide": 154
+    },
+    {
+      "term": "collator",
+      "definition": "Fonction qui assemble des exemples en batch et complète au besoin leurs entrées et leurs labels.",
+      "example": "Un collator dynamique padde chaque batch jusqu’à sa séquence la plus longue.",
+      "pitfall": "Inspecter le batch produit : le dataset seul ne révèle ni les formes ni les masques finaux.",
+      "day": 3,
+      "first_slide": 62,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter3/2"
+      ],
+      "slides": [
+        62
+      ],
+      "glossary_slide": 154
+    },
+    {
+      "term": "pas d’entraînement (step)",
+      "definition": "Dans ce support, une étape désigne une mise à jour de l’optimiseur ; vérifier la convention du compteur utilisé.",
+      "example": "Quatre micro-batchs accumulés peuvent contribuer à un pas d’optimiseur.",
+      "pitfall": "Certaines bibliothèques comptent aussi les micro-batchs comme steps ; ne pas comparer sans définir le compteur.",
+      "day": 3,
+      "first_slide": 63,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/trainer"
+      ],
+      "slides": [
+        63
+      ],
+      "glossary_slide": 154
+    },
+    {
+      "term": "époque (epoch)",
+      "definition": "Un passage complet sur les exemples du jeu d’entraînement, selon l’ordre et les exclusions définis.",
+      "example": "30 micro-batchs de 8 couvrent 240 exemples en une époque.",
+      "pitfall": "Une époque n’est pas une mise à jour unique ; elle peut contenir plusieurs pas d’optimiseur.",
+      "day": 3,
+      "first_slide": 63,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/trainer"
+      ],
+      "slides": [
+        63
+      ],
+      "glossary_slide": 155
+    },
+    {
+      "term": "accumulation de gradients",
+      "definition": "Addition des gradients de plusieurs micro-batchs avant d’effectuer une mise à jour.",
+      "example": "Accumuler quatre micro-batchs de 8 donne un lot effectif de 32 exemples sur un GPU, hors dernier groupe partiel.",
+      "pitfall": "Cela réduit la mémoire des activations simultanées, mais ne reproduit pas tous les effets d’un batch physique de 32.",
+      "day": 3,
+      "first_slide": 63,
+      "sources": [
+        "https://huggingface.co/docs/transformers/main_classes/trainer"
+      ],
+      "slides": [
+        63
+      ],
+      "glossary_slide": 155
+    },
+    {
+      "term": "jeu de validation",
+      "definition": "Partie réservée au choix du modèle et de ses réglages pendant le développement.",
+      "example": "Choisir le checkpoint au meilleur macro-F1 de validation selon une règle annoncée.",
+      "pitfall": "Des choix répétés guidés par la validation peuvent finir par s’y suradapter.",
+      "day": 3,
+      "first_slide": 64,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/cross_validation.html"
+      ],
+      "slides": [
+        64
+      ],
+      "glossary_slide": 155
+    },
+    {
+      "term": "jeu de test",
+      "definition": "Partie tenue à l’écart des choix de modèle, utilisée pour une estimation finale selon le protocole.",
+      "example": "Après sélection sur validation, calculer une fois les scores finaux sur le test réservé.",
+      "pitfall": "Si le score test guide un nouveau réglage, ce test n’est plus une mesure finale indépendante.",
+      "day": 3,
+      "first_slide": 64,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/cross_validation.html"
+      ],
+      "slides": [
+        64
+      ],
+      "glossary_slide": 155
+    },
+    {
+      "term": "surapprentissage (overfitting)",
+      "definition": "Situation où un modèle s’ajuste trop aux exemples d’entraînement et généralise moins bien à des exemples nouveaux.",
+      "example": "La loss train baisse tandis que le score de validation se dégrade.",
+      "pitfall": "Une divergence train-validation est un signal à examiner, pas une preuve isolée de sa cause.",
+      "day": 3,
+      "first_slide": 64,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/cross_validation.html"
+      ],
+      "slides": [
+        64
+      ],
+      "glossary_slide": 156
+    },
+    {
+      "term": "précision",
+      "definition": "Parmi les exemples prédits positifs pour une classe, part qui appartient réellement à cette classe.",
+      "example": "4 vrais positifs et 1 faux positif donnent une précision de 4/5 = 0,8.",
+      "pitfall": "Une forte précision peut coexister avec un rappel faible si le modèle prédit rarement cette classe.",
+      "day": 3,
+      "first_slide": 65,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html"
+      ],
+      "slides": [
+        65
+      ],
+      "glossary_slide": 156
+    },
+    {
+      "term": "rappel",
+      "definition": "Parmi les exemples réellement d’une classe, part que le modèle retrouve.",
+      "example": "4 vrais positifs et 4 faux négatifs donnent un rappel de 4/8 = 0,5.",
+      "pitfall": "Un rappel élevé peut venir de nombreuses prédictions positives erronées.",
+      "day": 3,
+      "first_slide": 65,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html"
+      ],
+      "slides": [
+        65
+      ],
+      "glossary_slide": 156
+    },
+    {
+      "term": "F1",
+      "definition": "Moyenne harmonique de la précision et du rappel, qui baisse lorsque l’un des deux est faible.",
+      "example": "Précision 0,8 et rappel 0,5 donnent F1 ≈ 0,615.",
+      "pitfall": "Le F1 ne précise pas quelle classe ou quelle règle d’agrégation a été utilisée.",
+      "day": 3,
+      "first_slide": 65,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html"
+      ],
+      "slides": [
+        65
+      ],
+      "glossary_slide": 156
+    },
+    {
+      "term": "macro-F1",
+      "definition": "Moyenne arithmétique des F1 calculés séparément pour chaque classe, avec le même poids pour chacune.",
+      "example": "Des F1 de 0,90 et 0,30 donnent un macro-F1 de 0,60.",
+      "pitfall": "Il ne pondère pas par le nombre d’exemples et ne prouve pas l’équité entre sous-groupes.",
+      "day": 3,
+      "first_slide": 65,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html"
+      ],
+      "slides": [
+        65,
+        106
+      ],
+      "glossary_slide": 157
+    },
+    {
+      "term": "TP / FP / FN",
+      "definition": "True Positive : vrai positif ; False Positive : faux positif ; False Negative : faux négatif, pour une classe et une unité d’évaluation données.",
+      "example": "Pour « facturation » : TP = bien détecté, FP = prédit à tort, FN = manqué.",
+      "pitfall": "Définir la classe positive avant de compter ; les lettres TP désignent aussi un travail pratique dans le cours.",
+      "day": 3,
+      "first_slide": 65,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html"
+      ],
+      "slides": [
+        65
+      ],
+      "glossary_slide": 157
+    },
+    {
+      "term": "micro-F1 / F1 pondéré",
+      "definition": "Micro-F1 agrège les comptes avant le calcul ; F1 pondéré moyenne les F1 de classe selon leurs effectifs réels.",
+      "example": "Une classe fréquente pèse davantage dans le F1 pondéré que dans macro-F1.",
+      "pitfall": "La moyenne macro est encore une autre agrégation ; donner son nom exact.",
+      "day": 3,
+      "first_slide": 65,
+      "sources": [
+        "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html"
+      ],
+      "slides": [
+        65
+      ],
+      "glossary_slide": 157
+    },
+    {
+      "term": "CPU / GPU / VRAM / OOM",
+      "definition": "CPU : processeur généraliste ; GPU : processeur adapté aux calculs parallèles ; VRAM : sa mémoire ; OOM : mémoire insuffisante.",
+      "example": "Réduire le micro-batch peut résoudre un manque de mémoire GPU.",
+      "pitfall": "Libérer la mémoire GPU ne libère pas l’espace disque du poste.",
+      "day": 3,
+      "first_slide": 66,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter8/4"
+      ],
+      "slides": [
+        66
+      ],
+      "glossary_slide": 157
+    },
+    {
+      "term": "BIO",
+      "definition": "Schéma d’étiquetage : B marque le début d’une entité, I sa continuation et O un token hors entité.",
+      "example": "B-PER I-PER étiquette « Marie Dupont » comme une personne complète.",
+      "pitfall": "Le type doit rester cohérent ; I-PER sans entité précédente peut former une séquence invalide selon la convention.",
+      "day": 3,
+      "first_slide": 67,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter7/2",
+        "https://www.youtube.com/watch?v=wVHdVlPScxA"
+      ],
+      "slides": [
+        67
+      ],
+      "glossary_slide": 158
+    },
+    {
+      "term": "span (segment)",
+      "definition": "Portion de texte délimitée par un début et une fin, à laquelle on peut associer un type d’entité.",
+      "example": "« Marie Dupont » est un segment de deux mots de type personne.",
+      "pitfall": "Le bon type avec une mauvaise frontière reste une erreur en évaluation stricte.",
+      "day": 3,
+      "first_slide": 67,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter7/2",
+        "https://www.youtube.com/watch?v=wVHdVlPScxA"
+      ],
+      "slides": [
+        67
+      ],
+      "glossary_slide": 158
+    },
+    {
+      "term": "sous-token",
+      "definition": "Morceau d’un mot produit par le tokenizer, qui peut découper un mot rare en plusieurs unités.",
+      "example": "Un tokenizer peut représenter « Dupont » par « Du » et « ##pont ».",
+      "pitfall": "Le découpage dépend du tokenizer ; ne pas le supposer à partir d’un exemple illustratif.",
+      "day": 3,
+      "first_slide": 68,
+      "sources": [
+        "https://huggingface.co/docs/transformers/tasks/token_classification"
+      ],
+      "slides": [
+        68
+      ],
+      "glossary_slide": 158
+    },
+    {
+      "term": "word_id",
+      "definition": "Indice reliant un sous-token au mot d’origine de la séquence, quand le tokenizer fournit cet alignement.",
+      "example": "Les sous-tokens « Du » et « ##pont » peuvent tous deux avoir word_id 1.",
+      "pitfall": "Les tokens spéciaux peuvent avoir word_id None ; leur absence d’indice ne les rend pas des mots annotés.",
+      "day": 3,
+      "first_slide": 68,
+      "sources": [
+        "https://huggingface.co/docs/transformers/tasks/token_classification"
+      ],
+      "slides": [
+        68,
+        70
+      ],
+      "glossary_slide": 158
+    },
+    {
+      "term": "−100 / ignore_index",
+      "definition": "Valeur conventionnelle qui indique à certaines fonctions de loss d’ignorer cette position, et non une classe à prédire.",
+      "example": "La continuation « ##pont » reçoit −100 si seule la première partie du mot est supervisée.",
+      "pitfall": "La convention et l’API doivent correspondre ; −100 ne signifie pas que le sous-token est absent de l’entrée.",
+      "day": 3,
+      "first_slide": 68,
+      "sources": [
+        "https://huggingface.co/docs/transformers/tasks/token_classification"
+      ],
+      "slides": [
+        68
+      ],
+      "glossary_slide": 159
+    },
+    {
+      "term": "masque de labels",
+      "definition": "Indicateur des positions dont les cibles participent au calcul de la loss.",
+      "example": "Un sous-token peut avoir attention_mask = 1 et label = −100 : visible en entrée, ignoré comme cible.",
+      "pitfall": "Ne pas confondre les positions à lire avec les positions à superviser.",
+      "day": 3,
+      "first_slide": 69,
+      "sources": [
+        "https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html",
+        "https://huggingface.co/docs/transformers/main_classes/data_collator"
+      ],
+      "slides": [
+        69
+      ],
+      "glossary_slide": 159
+    },
+    {
+      "term": "argmax",
+      "definition": "Opération qui renvoie l’indice de la valeur maximale d’un tableau de scores.",
+      "example": "Pour [0,2 ; 0,7 ; 0,1], argmax renvoie l’indice 1 avec des indices commençant à zéro.",
+      "pitfall": "Argmax retourne un indice, pas la valeur 0,7 ni le nom de la classe.",
+      "day": 3,
+      "first_slide": 70,
+      "sources": [
+        "https://huggingface.co/docs/transformers/tasks/token_classification"
+      ],
+      "slides": [
+        70
+      ],
+      "glossary_slide": 159
+    },
+    {
+      "term": "évaluation stricte d’entité",
+      "definition": "Règle qui compte une entité comme correcte seulement si son début, sa fin et son type concordent avec la référence.",
+      "example": "Prédire « Marie » pour « Marie Dupont : PER » est une erreur de frontière.",
+      "pitfall": "Préciser la règle et le schéma avant de comparer des scores issus de métriques différentes.",
+      "day": 3,
+      "first_slide": 71,
+      "sources": [
+        "https://github.com/chakki-works/seqeval"
+      ],
+      "slides": [
+        71
+      ],
+      "glossary_slide": 159
+    },
+    {
+      "term": "artefact de modèle",
+      "definition": "Ensemble de fichiers nécessaires pour identifier, recharger et utiliser un modèle ou son adaptation.",
+      "example": "Poids, configuration, tokenizer, mapping des labels et versions de l’expérience.",
+      "pitfall": "Des poids isolés peuvent être inutilisables si manquent tokenizer, configuration ou modèle de base requis.",
+      "day": 3,
+      "first_slide": 74,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter4/3"
+      ],
+      "slides": [
+        74
+      ],
+      "glossary_slide": 160
+    },
+    {
+      "term": "graine aléatoire (seed)",
+      "definition": "Valeur initiale qui rend répétables certains tirages pseudo-aléatoires dans un protocole donné.",
+      "example": "Fixer la graine avant de mélanger les données et d’initialiser une tête neuve.",
+      "pitfall": "Une graine ne garantit pas une reproduction bit à bit sur tout matériel ou toute bibliothèque.",
+      "day": 3,
+      "first_slide": 74,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter4/3"
+      ],
+      "slides": [
+        74
+      ],
+      "glossary_slide": 160
+    },
+    {
+      "term": "RAG (Retrieval-Augmented Generation, génération augmentée par récupération)",
+      "definition": "Méthode qui recherche des passages pertinents et les ajoute au contexte avant la génération.",
+      "example": "Retrouver une procédure à jour puis demander au modèle de répondre à partir de ce texte.",
+      "pitfall": "Le RAG ne garantit pas que la recherche retrouve les bonnes sources ni que la réponse les respecte.",
+      "day": 4,
+      "first_slide": 81,
+      "sources": [
+        "https://arxiv.org/abs/2005.11401",
+        "https://huggingface.co/learn/llm-course/en/chapter11/1"
+      ],
+      "slides": [
+        81
+      ],
+      "glossary_slide": 161
+    },
+    {
+      "term": "SFT (Supervised Fine-Tuning, ajustement fin supervisé)",
+      "definition": "Adaptation d’un modèle à partir d’exemples d’entrées et de réponses cibles préparés par des personnes ou une règle documentée.",
+      "example": "Montrer des demandes de support suivies de réponses utiles et prudentes.",
+      "pitfall": "SFT décrit le type de supervision, pas la méthode d’économie mémoire comme LoRA.",
+      "day": 4,
+      "first_slide": 81,
+      "sources": [
+        "https://arxiv.org/abs/2005.11401",
+        "https://huggingface.co/learn/llm-course/en/chapter11/1"
+      ],
+      "slides": [
+        81,
+        82
+      ],
+      "glossary_slide": 161
+    },
+    {
+      "term": "few-shot dans le prompt",
+      "definition": "Utilisation de quelques exemples de la tâche dans le contexte pour guider la réponse, sans mise à jour des poids.",
+      "example": "Montrer deux demandes étiquetées avant de classer une nouvelle demande.",
+      "pitfall": "Distinguer les exemples en contexte d’un entraînement sur ces exemples.",
+      "day": 4,
+      "first_slide": 81,
+      "sources": [
+        "https://arxiv.org/abs/2005.11401",
+        "https://huggingface.co/learn/llm-course/en/chapter11/1"
+      ],
+      "slides": [
+        81
+      ],
+      "glossary_slide": 161
+    },
+    {
+      "term": "curation des données",
+      "definition": "Sélection, vérification et organisation d’exemples dont on documente l’origine et les transformations.",
+      "example": "Retirer un doublon, corriger une contradiction, consigner la décision.",
+      "pitfall": "Un corpus propre en apparence peut rester déséquilibré ou contenir une fuite de données.",
+      "day": 4,
+      "first_slide": 84,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/en/chapter10/1"
+      ],
+      "slides": [
+        84
+      ],
+      "glossary_slide": 161
+    },
+    {
+      "term": "masque de loss",
+      "definition": "Masque qui détermine quelles positions prédites contribuent à la loss d’entraînement.",
+      "example": "Le prompt reste visible au modèle tandis que les labels du prompt valent −100 et ceux de la réponse sont conservés.",
+      "pitfall": "Masquer une cible n’enlève pas automatiquement son texte du contexte d’entrée.",
+      "day": 4,
+      "first_slide": 86,
+      "sources": [
+        "https://huggingface.co/docs/trl/sft_trainer"
+      ],
+      "slides": [
+        86
+      ],
+      "glossary_slide": 162
+    },
+    {
+      "term": "décalage causal (causal shift)",
+      "definition": "Alignement où les logits à une position prédisent le token suivant, sans donner accès à ce token futur.",
+      "example": "L’entrée « le colis » entraîne une cible « colis » à la position du token « le ».",
+      "pitfall": "Certaines pertes de modèles causaux effectuent déjà le décalage ; ne pas le refaire dans les données.",
+      "day": 4,
+      "first_slide": 87,
+      "sources": [
+        "https://huggingface.co/learn/llm-course/fr/chapter7/6",
+        "https://huggingface.co/docs/trl/sft_trainer"
+      ],
+      "slides": [
+        87
+      ],
+      "glossary_slide": 162
+    },
+    {
+      "term": "PEFT (Parameter-Efficient Fine-Tuning, ajustement fin économe en paramètres)",
+      "definition": "Famille de méthodes qui adapte un modèle en entraînant une petite partie des paramètres ou des paramètres ajoutés.",
+      "example": "LoRA ajoute de petites matrices entraînables à des poids de base gelés.",
+      "pitfall": "Moins de paramètres entraînables ne supprime pas les besoins de calcul, de mémoire d’activations ni d’évaluation.",
+      "day": 4,
+      "first_slide": 88,
+      "sources": [
+        "https://arxiv.org/abs/2106.09685"
+      ],
+      "slides": [
+        88
+      ],
+      "glossary_slide": 162
+    },
+    {
+      "term": "LoRA (Low-Rank Adaptation, adaptation de faible rang)",
+      "definition": "Méthode PEFT qui représente une correction de poids par le produit de deux petites matrices entraînables, tandis que la matrice de base reste généralement gelée.",
+      "example": "Une matrice 1024×1024 reçoit une correction BA de rang 8, avec 8×(1024+1024) paramètres.",
+      "pitfall": "Le rang réduit la taille de la correction ; il ne signifie pas que le modèle entier a peu de paramètres.",
+      "day": 4,
+      "first_slide": 88,
+      "sources": [
+        "https://arxiv.org/abs/2106.09685"
+      ],
+      "slides": [
+        88,
+        89
+      ],
+      "glossary_slide": 162
+    },
+    {
+      "term": "rang (rank)",
+      "definition": "Dimension intermédiaire qui borne le nombre de directions indépendantes représentées par une correction matricielle LoRA.",
+      "example": "Avec r = 8, A et B passent par un espace intermédiaire de dimension 8.",
+      "pitfall": "Un rang plus élevé ajoute des paramètres et n’assure pas automatiquement de meilleures sorties.",
+      "day": 4,
+      "first_slide": 88,
+      "sources": [
+        "https://arxiv.org/abs/2106.09685"
+      ],
+      "slides": [
+        88,
+        89
+      ],
+      "glossary_slide": 163
+    },
+    {
+      "term": "quantification",
+      "definition": "Représentation des poids avec moins de bits, en acceptant une approximation contrôlée pour réduire leur stockage.",
+      "example": "Stocker les poids de base sur 4 bits au lieu de FP16 réduit leur taille théorique.",
+      "pitfall": "Le nombre de bits de stockage ne fixe pas à lui seul la précision de calcul de toutes les opérations.",
+      "day": 4,
+      "first_slide": 90,
+      "sources": [
+        "https://arxiv.org/abs/2305.14314",
+        "https://huggingface.co/docs/peft/developer_guides/quantization",
+        "https://huggingface.co/docs/transformers/quantization/bitsandbytes"
+      ],
+      "slides": [
+        90
+      ],
+      "glossary_slide": 163
+    },
+    {
+      "term": "QLoRA (Quantized Low-Rank Adaptation)",
+      "definition": "Méthode qui garde une base quantifiée et gelée tout en entraînant des adaptateurs LoRA en précision de calcul adaptée.",
+      "example": "Une base en NF4 et des adaptateurs LoRA entraînables avec calcul FP16.",
+      "pitfall": "QLoRA ne signifie pas que gradients, activations et toutes les opérations se font en 4 bits.",
+      "day": 4,
+      "first_slide": 90,
+      "sources": [
+        "https://arxiv.org/abs/2305.14314",
+        "https://huggingface.co/docs/peft/developer_guides/quantization",
+        "https://huggingface.co/docs/transformers/quantization/bitsandbytes"
+      ],
+      "slides": [
+        90
+      ],
+      "glossary_slide": 163
+    },
+    {
+      "term": "NF4 (4-bit NormalFloat)",
+      "definition": "Format de quantification sur quatre bits conçu pour représenter efficacement des poids dont les valeurs suivent une distribution approximativement normale.",
+      "example": "QLoRA peut stocker la base dans NF4, puis déquantifier par blocs pour le calcul.",
+      "pitfall": "NF4 est un format de stockage des poids, pas une précision universelle pour les calculs.",
+      "day": 4,
+      "first_slide": 90,
+      "sources": [
+        "https://arxiv.org/abs/2305.14314",
+        "https://huggingface.co/docs/peft/developer_guides/quantization",
+        "https://huggingface.co/docs/transformers/quantization/bitsandbytes"
+      ],
+      "slides": [
+        90
+      ],
+      "glossary_slide": 163
+    },
+    {
+      "term": "dtype (type de données)",
+      "definition": "Format numérique utilisé pour stocker ou calculer des valeurs, avec une précision et un coût mémoire donnés.",
+      "example": "FP16 est un format flottant 16 bits utilisé pour certaines opérations sur GPU.",
+      "pitfall": "Le dtype des poids, des activations et des calculs peut différer.",
+      "day": 4,
+      "first_slide": 90,
+      "sources": [
+        "https://arxiv.org/abs/2305.14314",
+        "https://huggingface.co/docs/peft/developer_guides/quantization",
+        "https://huggingface.co/docs/transformers/quantization/bitsandbytes"
+      ],
+      "slides": [
+        90
+      ],
+      "glossary_slide": 164
+    },
+    {
+      "term": "FP16 / BF16",
+      "definition": "Deux formats flottants de 16 bits : FP16 offre plus de précision sur la mantisse ; BF16 offre une plage d’exposants plus large.",
+      "example": "Le TP T4 utilise les réglages compatibles prévus, sans supposer le BF16 natif.",
+      "pitfall": "16 bits ne signifie pas même plage numérique ni même prise en charge matérielle.",
+      "day": 4,
+      "first_slide": 90,
+      "sources": [
+        "https://arxiv.org/abs/2305.14314",
+        "https://huggingface.co/docs/peft/developer_guides/quantization",
+        "https://huggingface.co/docs/transformers/quantization/bitsandbytes"
+      ],
+      "slides": [
+        90
+      ],
+      "glossary_slide": 164
+    },
+    {
+      "term": "bitsandbytes",
+      "definition": "Bibliothèque qui fournit notamment des opérations et des couches quantifiées utilisées dans certains chargements de modèles.",
+      "example": "Un chargement QLoRA peut utiliser bitsandbytes pour la base 4 bits.",
+      "pitfall": "NF4 est un format ; bitsandbytes est une bibliothèque qui l’implémente.",
+      "day": 4,
+      "first_slide": 90,
+      "sources": [
+        "https://arxiv.org/abs/2305.14314",
+        "https://huggingface.co/docs/peft/developer_guides/quantization",
+        "https://huggingface.co/docs/transformers/quantization/bitsandbytes"
+      ],
+      "slides": [
+        90
+      ],
+      "glossary_slide": 164
+    },
+    {
+      "term": "activations",
+      "definition": "Valeurs intermédiaires produites par le réseau pendant la passe avant et parfois conservées pour calculer les gradients.",
+      "example": "La mémoire des activations augmente généralement avec la longueur des séquences et la taille du micro-batch.",
+      "pitfall": "Quantifier les poids ne quantifie pas automatiquement toutes les activations ni les états de l’optimiseur.",
+      "day": 4,
+      "first_slide": 91,
+      "sources": [
+        "https://huggingface.co/docs/transformers/perf_train_gpu_one"
+      ],
+      "slides": [
+        91
+      ],
+      "glossary_slide": 164
+    },
+    {
+      "term": "gradient checkpointing (recalcul des activations)",
+      "definition": "Technique qui conserve moins d’activations intermédiaires et en recalcule certaines pendant la rétropropagation.",
+      "example": "Activer le checkpointing peut réduire la mémoire au prix de calculs supplémentaires.",
+      "pitfall": "Ce réglage économise de la mémoire mais ralentit l’entraînement ; il n’est pas une sauvegarde de modèle.",
+      "day": 4,
+      "first_slide": 92,
+      "sources": [
+        "https://huggingface.co/docs/transformers/perf_train_gpu_one"
+      ],
+      "slides": [
+        92
+      ],
+      "glossary_slide": 165
+    },
+    {
+      "term": "ROUGE (Recall-Oriented Understudy for Gisting Evaluation)",
+      "definition": "Famille de mesures automatiques qui compare des unités lexicales ou des séquences communes entre un résumé et une référence.",
+      "example": "ROUGE-1 compare les recouvrements de mots après tokenisation.",
+      "pitfall": "Un recouvrement élevé ne prouve ni la fidélité factuelle ni l’utilité du résumé.",
+      "day": 4,
+      "first_slide": 95,
+      "sources": [
+        "https://aclanthology.org/W04-1013/"
+      ],
+      "slides": [
+        95,
+        106
+      ],
+      "glossary_slide": 165
+    },
+    {
+      "term": "ROUGE-1",
+      "definition": "Mesure le recouvrement des unigrammes, c’est-à-dire des unités d’un token, entre candidat et référence.",
+      "example": "« colis reçu mardi » et « colis arrivé mardi » partagent plusieurs mots après tokenisation.",
+      "pitfall": "Le résultat dépend de la tokenisation et du choix précision, rappel ou F-mesure.",
+      "day": 4,
+      "first_slide": 95,
+      "sources": [
+        "https://aclanthology.org/W04-1013/"
+      ],
+      "slides": [
+        95
+      ],
+      "glossary_slide": 165
+    },
+    {
+      "term": "ROUGE-2",
+      "definition": "Mesure le recouvrement des suites de deux tokens consécutifs entre résumé produit et référence.",
+      "example": "« colis reçu mardi » et « paquet reçu mardi » partagent le bigramme « reçu mardi ».",
+      "pitfall": "Une paraphrase correcte peut avoir peu de bigrammes en commun.",
+      "day": 4,
+      "first_slide": 95,
+      "sources": [
+        "https://aclanthology.org/W04-1013/"
+      ],
+      "slides": [
+        95
+      ],
+      "glossary_slide": 165
+    },
+    {
+      "term": "ROUGE-L",
+      "definition": "Mesure fondée sur la plus longue sous-séquence commune, qui conserve l’ordre sans exiger que les tokens soient contigus.",
+      "example": "« colis … reçu mardi » partage une sous-séquence avec « colis reçu mardi ».",
+      "pitfall": "Une sous-séquence commune ne détecte pas à elle seule une négation ou une inversion de fait.",
+      "day": 4,
+      "first_slide": 95,
+      "sources": [
+        "https://aclanthology.org/W04-1013/"
+      ],
+      "slides": [
+        95
+      ],
+      "glossary_slide": 166
+    },
+    {
+      "term": "résumé extractif",
+      "definition": "Résumé composé en sélectionnant des phrases ou passages de la source, souvent sans les reformuler.",
+      "example": "Choisir la phrase mentionnant l’article manquant et la demande de vérification.",
+      "pitfall": "Les phrases sélectionnées peuvent être redondantes ou manquer de contexte.",
+      "day": 4,
+      "first_slide": 95,
+      "sources": [
+        "https://aclanthology.org/W04-1013/"
+      ],
+      "slides": [
+        95
+      ],
+      "glossary_slide": 166
+    },
+    {
+      "term": "résumé abstractif",
+      "definition": "Résumé qui reformule et combine les informations de la source en générant de nouveaux textes.",
+      "example": "Reformuler plusieurs détails en une phrase concise destinée au service client.",
+      "pitfall": "La reformulation peut introduire des détails absents de la source.",
+      "day": 4,
+      "first_slide": 95,
+      "sources": [
+        "https://aclanthology.org/W04-1013/"
+      ],
+      "slides": [
+        95
+      ],
+      "glossary_slide": 166
+    },
+    {
+      "term": "hallucination (affirmation non étayée)",
+      "definition": "Contenu généré présenté comme vrai alors qu’il est absent ou contredit par les éléments fournis.",
+      "example": "Dire qu’un remboursement a été effectué alors que la source dit seulement qu’une vérification est demandée.",
+      "pitfall": "Une formulation plausible ou un ROUGE élevé ne constitue pas une preuve.",
+      "day": 4,
+      "first_slide": 96,
+      "sources": [],
+      "slides": [
+        96
+      ],
+      "glossary_slide": 166
+    },
+    {
+      "term": "fidélité factuelle",
+      "definition": "Mesure dans laquelle les affirmations du résumé sont soutenues par la source et n’en contredisent pas les faits.",
+      "example": "Vérifier séparément la référence, la date, le problème signalé et l’action demandée.",
+      "pitfall": "Un résumé fidèle peut omettre un fait important ; fidélité et couverture sont deux critères distincts.",
+      "day": 4,
+      "first_slide": 96,
+      "sources": [],
+      "slides": [
+        96
+      ],
+      "glossary_slide": 167
+    },
+    {
+      "term": "biais d’évaluation",
+      "definition": "Distorsion du résultat causée par un échantillon, une annotation, une métrique ou une procédure qui représente mal l’usage visé.",
+      "example": "Un test composé presque uniquement de messages courts masque les erreurs sur les longues demandes.",
+      "pitfall": "Une métrique définie correctement ne corrige pas à elle seule un échantillon non représentatif.",
+      "day": 5,
+      "first_slide": 103,
+      "sources": [],
+      "slides": [
+        103
+      ],
+      "glossary_slide": 168
+    },
+    {
+      "term": "benchmark",
+      "definition": "Protocole défini de tâches, données, métriques et conditions d’exécution servant à comparer des systèmes.",
+      "example": "Comparer les mêmes modèles sur les mêmes messages test et la même règle macro-F1.",
+      "pitfall": "Le nom d’un jeu ou d’une métrique ne suffit pas à rendre deux résultats comparables.",
+      "day": 5,
+      "first_slide": 104,
+      "sources": [],
+      "slides": [
+        104
+      ],
+      "glossary_slide": 168
+    },
+    {
+      "term": "robustesse",
+      "definition": "Capacité d’un système à conserver un comportement acceptable lorsque les entrées varient dans les conditions prévues.",
+      "example": "Tester paraphrases, négations, fautes ou messages hors domaine selon une règle fixe.",
+      "pitfall": "Réussir quelques variations ne prouve pas la robustesse à toutes les entrées possibles.",
+      "day": 5,
+      "first_slide": 104,
+      "sources": [],
+      "slides": [
+        104
+      ],
+      "glossary_slide": 168
+    },
+    {
+      "term": "reproductibilité",
+      "definition": "Possibilité de refaire une expérience et d’obtenir des résultats comparables à partir de ses données, réglages et artefacts documentés.",
+      "example": "Conserver graine, versions, partitions, configuration et script de mesure.",
+      "pitfall": "Des résultats proches ne sont pas nécessairement bit à bit identiques entre matériels.",
+      "day": 5,
+      "first_slide": 104,
+      "sources": [],
+      "slides": [
+        104
+      ],
+      "glossary_slide": 168
+    },
+    {
+      "term": "zéro-shot (zero-shot)",
+      "definition": "Utilisation d’un modèle pour une tâche sans exemple annoté de cette tâche dans son prompt ni adaptation dédiée sur ces exemples.",
+      "example": "Demander à un LLM de choisir une intention parmi cinq descriptions, sans fournir d’exemples étiquetés.",
+      "pitfall": "Il faut toujours définir la consigne, les classes, le décodage et le traitement des réponses invalides.",
+      "day": 5,
+      "first_slide": 105,
+      "sources": [
+        "https://huggingface.co/docs/transformers/chat_templating"
+      ],
+      "slides": [
+        105
+      ],
+      "glossary_slide": 169
+    },
+    {
+      "term": "JSON / parsing",
+      "definition": "JSON est un format textuel structuré ; le parsing analyse ce texte pour vérifier sa structure et récupérer ses champs.",
+      "example": "Décoder {\"label\":\"compte\"}, puis vérifier que compte est une classe autorisée.",
+      "pitfall": "Un JSON valide peut contenir une réponse fausse ; compter aussi les sorties invalides.",
+      "day": 5,
+      "first_slide": 105,
+      "sources": [
+        "https://huggingface.co/docs/transformers/chat_templating"
+      ],
+      "slides": [
+        105
+      ],
+      "glossary_slide": 169
+    },
+    {
+      "term": "bootstrap (rééchantillonnage bootstrap)",
+      "definition": "Méthode d’estimation de l’incertitude qui tire plusieurs échantillons avec remise à partir des observations disponibles et recalcule le score.",
+      "example": "Rééchantillonner les 20 cas test pour obtenir une distribution de macro-F1, si le protocole convient.",
+      "pitfall": "Les répétitions ne créent pas de nouvelles données indépendantes et ne réparent ni biais ni fuite.",
+      "day": 5,
+      "first_slide": 108,
+      "sources": [],
+      "slides": [
+        108
+      ],
+      "glossary_slide": 169
+    },
+    {
+      "term": "ablation",
+      "definition": "Expérience qui retire ou modifie un composant à la fois pour estimer sa contribution, en gardant le reste du protocole comparable.",
+      "example": "Comparer RAG activé puis désactivé sur les mêmes requêtes réservées.",
+      "pitfall": "Si plusieurs facteurs changent à la fois, leur effet individuel devient difficile à attribuer.",
+      "day": 5,
+      "first_slide": 112,
+      "sources": [],
+      "slides": [
+        112
+      ],
+      "glossary_slide": 169
+    },
+    {
+      "term": "latence",
+      "definition": "Temps écoulé entre une requête et la disponibilité de sa réponse, selon les bornes de mesure choisies.",
+      "example": "Mesurer séparément le chargement du modèle et le temps d’inférence par requête.",
+      "pitfall": "Sans préciser matériel, longueur, batch et inclusion du chargement, les chiffres ne sont pas comparables.",
+      "day": 5,
+      "first_slide": 113,
+      "sources": [
+        "https://pytorch.org/docs/stable/generated/torch.cuda.synchronize.html"
+      ],
+      "slides": [
+        113
+      ],
+      "glossary_slide": 170
+    },
+    {
+      "term": "démarrage à froid (cold start)",
+      "definition": "Première exécution qui inclut des coûts d’initialisation tels que chargement du modèle ou allocation du GPU.",
+      "example": "La première prédiction peut prendre plusieurs secondes alors que les suivantes sont plus rapides.",
+      "pitfall": "Ne pas mélanger temps de démarrage et temps d’inférence à chaud dans une même statistique.",
+      "day": 5,
+      "first_slide": 113,
+      "sources": [
+        "https://pytorch.org/docs/stable/generated/torch.cuda.synchronize.html"
+      ],
+      "slides": [
+        113
+      ],
+      "glossary_slide": 170
+    },
+    {
+      "term": "échauffement (warm-up)",
+      "definition": "Exécutions préalables destinées à laisser le système atteindre son régime stable avant les mesures chronométrées.",
+      "example": "Lancer quelques requêtes, puis chronométrer les suivantes dans les mêmes conditions.",
+      "pitfall": "Préciser que les essais d’échauffement sont exclus ; ils ne représentent pas le délai de la toute première requête.",
+      "day": 5,
+      "first_slide": 113,
+      "sources": [
+        "https://pytorch.org/docs/stable/generated/torch.cuda.synchronize.html"
+      ],
+      "slides": [
+        113
+      ],
+      "glossary_slide": 170
+    },
+    {
+      "term": "p50 / p95",
+      "definition": "Percentiles de latence : p50 est la médiane ; p95 est le seuil sous lequel se trouvent 95 % des mesures observées.",
+      "example": "p50 = 0,4 s et p95 = 1,2 s indiquent que la queue lente dépasse la médiane.",
+      "pitfall": "Le percentile dépend du nombre et des conditions des mesures ; rapporter aussi ces conditions.",
+      "day": 5,
+      "first_slide": 113,
+      "sources": [
+        "https://pytorch.org/docs/stable/generated/torch.cuda.synchronize.html"
+      ],
+      "slides": [
+        113
+      ],
+      "glossary_slide": 170
+    },
+    {
+      "term": "Gradio",
+      "definition": "Bibliothèque Python qui crée une interface web pour appeler une fonction et afficher ses résultats.",
+      "example": "Un champ texte envoie une demande au classifieur déjà chargé.",
+      "pitfall": "Une démo interactive ne garantit ni la qualité du modèle ni la robustesse d’un service de production.",
+      "day": 5,
+      "first_slide": 114,
+      "sources": [
+        "https://www.gradio.app/guides/quickstart"
+      ],
+      "slides": [
+        114
+      ],
+      "glossary_slide": 171
+    },
+    {
+      "term": "model card (fiche de modèle)",
+      "definition": "Document qui décrit un modèle, son origine, son entraînement, ses évaluations, ses usages prévus et ses limites.",
+      "example": "Indiquer le checkpoint de base, les données d’adaptation, les métriques et les cas à éviter.",
+      "pitfall": "Une fiche ne remplace ni les fichiers nécessaires au rechargement ni les preuves d’évaluation.",
+      "day": 5,
+      "first_slide": 115,
+      "sources": [
+        "https://huggingface.co/docs/hub/model-cards",
+        "https://huggingface.co/docs/hub/datasets-cards"
+      ],
+      "slides": [
+        115
+      ],
+      "glossary_slide": 171
+    },
+    {
+      "term": "data card (fiche de données)",
+      "definition": "Document qui précise l’origine, la construction, le contenu, les partitions, les limites et les droits associés à un jeu de données.",
+      "example": "Expliquer la provenance des messages et comment train, validation et test ont été séparés.",
+      "pitfall": "Ne pas présenter une licence ou une provenance inconnue comme vérifiée.",
+      "day": 5,
+      "first_slide": 115,
+      "sources": [
+        "https://huggingface.co/docs/hub/model-cards",
+        "https://huggingface.co/docs/hub/datasets-cards"
+      ],
+      "slides": [
+        115
+      ],
+      "glossary_slide": 171
+    },
+    {
+      "term": "licence",
+      "definition": "Conditions juridiques qui précisent les droits et obligations de réutilisation d’un modèle ou d’un jeu de données.",
+      "example": "Vérifier séparément les conditions du checkpoint de base et des données d’adaptation.",
+      "pitfall": "Publier un adaptateur n’efface pas les conditions applicables au modèle de base ni aux données.",
+      "day": 5,
+      "first_slide": 116,
+      "sources": [
+        "https://huggingface.co/docs/hub/repositories-settings",
+        "https://huggingface.co/docs/hub/model-cards"
+      ],
+      "slides": [
+        116
+      ],
+      "glossary_slide": 171
+    },
+    {
+      "term": "Hugging Face Hub / Space",
+      "definition": "Le Hub héberge des dépôts de modèles et de données ; un Space héberge une application de démonstration.",
+      "example": "Un dépôt conserve les poids ; un Space peut présenter une démo Gradio.",
+      "pitfall": "Publier des poids et déployer une application sont deux opérations distinctes.",
+      "day": 5,
+      "first_slide": 116,
+      "sources": [
+        "https://huggingface.co/docs/hub/repositories-settings",
+        "https://huggingface.co/docs/hub/model-cards"
+      ],
+      "slides": [
+        116
+      ],
+      "glossary_slide": 172
+    }
+  ]
+}

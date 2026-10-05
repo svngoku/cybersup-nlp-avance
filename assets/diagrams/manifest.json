@@ -13,91 +13,91 @@
     "alt": "Deux vecteurs illustratifs colis et livraison pointent dans des directions voisines ; facture pointe ailleurs. Deux phrases proches évoquent un colis non reçu.",
     "slide_title": "Un embedding rapproche des usages similaires"
   },
-  "37": {
+  "39": {
     "svg": "assets/diagrams/37_qkv.svg",
     "png": "assets/diagrams/37_qkv.png",
     "caption": "En self-attention, Q, K et V proviennent de trois projections apprises du même X.",
     "alt": "La séquence X alimente trois projections apprises WQ, WK et WV, produisant respectivement queries, keys et values avec leurs rôles distincts.",
     "slide_title": "Q, K, V : demander, comparer, récupérer"
   },
-  "42": {
+  "44": {
     "svg": "assets/diagrams/42_masque_causal.svg",
     "png": "assets/diagrams/42_masque_causal.png",
     "caption": "Le masque s’ajoute aux scores avant softmax : le futur reçoit une probabilité nulle.",
     "alt": "Matrice de masque causal quatre par quatre : zéro sur et sous la diagonale, moins l’infini au-dessus. La troisième position ne lit que les trois premières positions.",
     "slide_title": "Le masque causal empêche de lire la réponse future"
   },
-  "43": {
+  "45": {
     "svg": "assets/diagrams/43_multi_tetes.svg",
     "png": "assets/diagrams/43_multi_tetes.png",
     "caption": "Chaque tête apprend ses projections ; leurs sorties sont concaténées puis reprojetées.",
     "alt": "Deux branches d’attention parallèles reçoivent X, utilisent des projections différentes, puis rejoignent une concaténation et une projection de sortie WO.",
     "slide_title": "Plusieurs têtes : plusieurs comparaisons apprises"
   },
-  "44": {
+  "46": {
     "svg": "assets/diagrams/44_bloc_transformer.svg",
     "png": "assets/diagrams/44_bloc_transformer.png",
     "caption": "Exemple Post-LN de type BERT ; d’autres Transformers placent la normalisation autrement.",
     "alt": "Un bloc Post-LN relie entrée, attention, addition du premier résidu, LayerNorm, réseau positionnel FFN, addition du second résidu, LayerNorm et sortie.",
     "slide_title": "Un bloc ne se limite pas à l'attention"
   },
-  "46": {
+  "48": {
     "svg": "assets/diagrams/46_architectures.svg",
     "png": "assets/diagrams/46_architectures.png",
     "caption": "BERT encode ; GPT génère causalement ; T5 relie encodeur et décodeur par cross-attention.",
     "alt": "Trois colonnes comparent BERT encodeur bidirectionnel, GPT décodeur causal, et T5 avec encodeur, décodeur causal et liaison de cross-attention depuis le texte source.",
     "slide_title": "Encodeur, décodeur, encodeur-décodeur"
   },
-  "48": {
+  "50": {
     "svg": "assets/diagrams/48_pipeline.svg",
     "png": "assets/diagrams/48_pipeline.png",
     "caption": "pipeline() assemble ces étapes ; inspecter chacune aide à localiser une erreur.",
     "alt": "Un message est tokenisé en identifiants et masque, traité par le modèle qui produit des logits, puis post-traité pour obtenir une catégorie.",
     "slide_title": "Décomposer pipeline() pour savoir ce qui se passe"
   },
-  "57": {
+  "59": {
     "svg": "assets/diagrams/57_tetes_taches.svg",
     "png": "assets/diagrams/57_tetes_taches.png",
     "caption": "Une tête globale prédit une classe ; une tête NER prédit des labels par token.",
     "alt": "Un encodeur transforme quatre tokens en quatre vecteurs. Une branche agrège une représentation globale vers cinq classes ; une autre conserve les quatre positions vers des logits NER.",
     "slide_title": "Un encodeur et une tête répondent à notre question"
   },
-  "66": {
+  "68": {
     "svg": "assets/diagrams/66_alignement_ner.svg",
     "png": "assets/diagrams/66_alignement_ner.png",
     "caption": "Convention du TP : superviser le premier sous-token ; −100 ignore les autres dans la loss.",
     "alt": "Marie, Dupont et Lyon sont alignés avec CLS, Marie, Du, double dièse pont, Lyon et SEP. Les labels sont moins cent, B-PER, I-PER, moins cent, B-LOC, moins cent.",
     "slide_title": "Un mot annoté peut devenir plusieurs sous-tokens"
   },
-  "83": {
+  "85": {
     "svg": "assets/diagrams/83_chat_template.svg",
     "png": "assets/diagrams/83_chat_template.png",
     "caption": "Exemple de marqueurs Qwen ; utiliser le template associé au checkpoint.",
     "alt": "Les messages system, user et assistant deviennent un texte avec marqueurs im_start et im_end, puis le tokenizer produit les identifiants des marqueurs et du contenu.",
     "slide_title": "Le chat template transforme les rôles en tokens"
   },
-  "84": {
+  "86": {
     "svg": "assets/diagrams/84_masques_attention_loss.svg",
     "png": "assets/diagrams/84_masques_attention_loss.png",
     "caption": "Le prompt reste visible ; la loss porte ici sur la réponse et sa fin de séquence.",
     "alt": "Une table distingue tokens, masque d’attention et labels. Les trois tokens de contexte ont attention un et label moins cent ; réponse et EOS sont supervisés ; PAD est masqué et ignoré.",
     "slide_title": "Superviser la réponse, garder la question dans le contexte"
   },
-  "85": {
+  "87": {
     "svg": "assets/diagrams/85_decalage_causal.svg",
     "png": "assets/diagrams/85_decalage_causal.png",
     "caption": "Chaque logit à la position t vise le token t+1 ; appliquer ce décalage une seule fois.",
     "alt": "Les entrées le, colis, arrive, demain, EOS sont alignées avec les cibles colis, arrive, demain, EOS, aucune. Les quatre premières sorties prédisent le token suivant.",
     "slide_title": "Le décalage causal ne doit se produire qu'une fois"
   },
-  "88": {
+  "90": {
     "svg": "assets/diagrams/88_qlora.svg",
     "png": "assets/diagrams/88_qlora.png",
     "caption": "Base stockée en NF4 ; calcul en FP16 ici ; seuls les adaptateurs sont entraînables.",
     "alt": "L’entrée se sépare entre une base W0 gelée en quatre bits et une branche LoRA A puis B et facteur alpha sur r. Les deux contributions sont additionnées en sortie. Le calcul des couches quantifiées utilise FP16 dans cet exemple.",
     "slide_title": "QLoRA : quantifier la base, entraîner les adaptateurs"
   },
-  "92": {
+  "94": {
     "svg": "assets/diagrams/92_resume_fidele.svg",
     "png": "assets/diagrams/92_resume_fidele.png",
     "caption": "Chaque affirmation du résumé doit être étayée par un fait de la source.",
